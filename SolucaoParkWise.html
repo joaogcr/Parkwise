@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+
+<body>
+    <h1>Simulador Financeiro - ParkWise</h1>
+    <p>Isso é apenas um simulação, não tome como verdade absoluta mas sim como uma aproximação da realidade.</p>
+    <h3>Digite a capacidade total do estacionamento: </h3>
+    <input type="number" id="ipt_capacidadeTotal">
+    <h3>Digite a média de quantidade de vagas ocupadas: </h3>
+    <input type="number" id="ipt_vagasOcupadas">
+    <h3>Digite o preço por hora: </h3>
+    <input type="number" id="ipt_preco_hora">
+    <h3>Digite o preço para adicionar por hora </h3>
+    <input type="number" id="ipt_precoAdicional"> <br> <br>
+    <button onclick="simular()">Simular agora!</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function simular() {
+        var capacidade = Number(ipt_capacidadeTotal.value); // capacidade total do estacionamento
+        var preco = Number(ipt_preco_hora.value);  // preço por hora cobrado
+        var precoAdicional = Number(ipt_precoAdicional.value)  // preço adicional para cada hora que passa
+        var vagasOcupadas = Number(ipt_vagasOcupadas.value);  // vagas ocupadas no estacionemnto
+
+        var vagasLivres = capacidade - vagasOcupadas; // vagas livres no estacionamento
+
+        var valorParaCadaCarro = preco + precoAdicional * 2; // estimativa de 3 horas diárias por carro em cada vaga
+        var receita = vagasOcupadas * valorParaCadaCarro * 8; // receita do estacionamento gerado por cada vaga
+
+        var manutencao = preco * 30 / 100; // manutenção dos sensores é 30% do preço para cada carro
+        var lucroPotencial = vagasLivres * manutencao * 24; //prejuízo para cada vaga livre no estacionamento 
+
+        var lucro = receita - lucroPotencial;
+        var lucroPotencialSemanal = lucroPotencial * 7; // lucro semanal(constante)
+        var lucroPotencialMensal = lucroPotencial * 30; // lucro mensal(constante)
+
+        div_mensagem.innerHTML =
+            `
+        <br><br>
+        O Estacionamento tem capacidade total de ${capacidade} vagas, cobrando R$${preco} por hora e com adicional de R$${precoAdicional} por hora <br>
+        <p style = "color:green;"><b>Vagas Ocupadas: ${vagasOcupadas} </b></p>
+        <p style = "color:green;"><b>Receita Diária: R$${receita}</b></p>
+        <p style = "color:green;"><b>Receita Semanal: R$${receita * 7}</b></p>
+        <p style = "color:green;"><b>Receita Mensal: R$${receita * 30}</b></p>
+        <p style = "color:red;"><b>Vagas Livres: ${vagasLivres} </b></p>
+        <p style = "color:red;"><b>Receita Potencial Diária: R$${lucroPotencial}</b></p>
+        <h4>Utilizando a solução da ParkWise, sua nova simulação ficará assim:</h4>
+        Nova Receita Diária:  <b>R$${receita + (lucroPotencial * 0.4)}</b> <br><br>  
+        Nova Receita Semanal: <b>R$${(receita * 7) + (lucroPotencial * 7 * 0.4)}</b> <br><br>
+        Nova Receita Mensal:  <b>R$${(receita * 30) + (lucroPotencial * 30 * 0.4)}</b> <br><br>
+        <br>
+        `
+    }
+</script>

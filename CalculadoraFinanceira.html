@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+    <h1>Simulador Financeiro - ParkWise</h1> 
+    <p>Digite a capacidade total do estacionamento: </p>
+    <input type="number" id="ipt_capacidadeTotal">
+    <p>Digite a média de quantidade de vagas ocupadas: </p>
+    <input type="number" id="ipt_vagasOcupadas">
+    <p>Digite o preço por hora: </p>
+    <input type="number" id="ipt_preco_hora">
+    <p>Digite o preço para adicionar por hora </p>
+    <input type="number" id="ipt_precoAdicional"> <br> <br>
+    <button onclick="simular()">Simular agora!</button> 
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    // 3 horas diárias por vaga
+    function simular(){
+        var capacidade = Number(ipt_capacidadeTotal.value); // 20
+        var preco = Number(ipt_preco_hora.value); // 20
+        var precoAdicional = Number(ipt_precoAdicional.value) // 10 
+        var vagasOcupadas = Number(ipt_vagasOcupadas.value); // 12
+
+        var vagasLivres = capacidade - vagasOcupadas; // 8
+
+        var valor3Horas = preco + precoAdicional * 2;
+        var receita = vagasOcupadas * valor3Horas * 8;
+
+        var manutencao = preco * 0.3;
+        var prejuizo = vagasLivres * manutencao * preco;
+
+        var lucro = receita - prejuizo;
+        var lucroSemanal = lucro * 7;
+        var lucroMensal = lucro * 30;
+
+        div_mensagem.innerHTML = 
+        `
+        <br> <br>
+        O Estacionamento tem capacidade total de ${capacidade}, cobrando R$${preco} por hora e com adicional de R$${precoAdicional} por hora <br>
+        <p style = "color:green;">Vagas Ocupadas: ${vagasOcupadas} </p>
+        <p style = "color:green;">Receita: R$${receita}</p>
+        <p style = "color:red;">Vagas Livres: ${vagasLivres} </p>
+        <p style = "color:red;">Prejuízo: R$${prejuizo}</p>
+
+        Lucro Diário:  R$${lucro} <br>
+        Lucro Semanal: R$${lucroSemanal} <br>
+        Lucro Mensal:  R$${lucroMensal} <br>
+        <br>
+        `
+
+        var valorDescontado = receita * 0.75 * 1.65;
+        var aumentoValor = ((valorDescontado * 100) / receita) - 100;
+        
+
+       
+        if(receita <= prejuizo){
+             //diminuir o preço em 30% p/ aumentar em 50% a taxa de ocupação
+        var solucao = preco * 0.3;
+        var vagaNova = vagasOcupadas * 1.50;
+        var finalVaga = vagaNova - vagasLivres;
+
+        prejuizo = finalVaga * manutencao * preco;
+        var ajusteFinal = valorDescontado - prejuizo;
+            div_mensagem.innerHTML += 
+            `Com o prejuizo de R$${prejuizo * 30} por mês ou a falta do lucro , diminua o preço da vaga por 
+            30% isso poderá aumentar o fluxo de clientes em 50%, gerando assim uma receita de ${valorDescontado} <br> <br>
+            
+            Com isso haverá um aumento de ${aumentoValor}% na receita
+            <br><br>
+            Lucro Diário:  R$${ajusteFinal} <br>
+            Lucro Semanal: R$${ajusteFinal * 7} <br>
+            Lucro Mensal:  R$${ajusteFinal * 30} <br>
+            
+            `
+        } else {
+            div_mensagem.innerHTML += 
+            `O seu lucro é R$${lucroMensal} por mês, continue assim!`
+        }
+    }
+</script>
