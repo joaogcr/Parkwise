@@ -14,7 +14,7 @@ Implementação de um sensor de bloqueio para captar dados essenciais que otimiz
 
 ## Tecnologias:
 
-- **Sensores de bloqueio** TRCT5000
+- **Sensores de bloqueio** TCRT5000
 - **Servidor na Nuvem** (Linux Lubuntu)
 - **Página Web**
 - **Banco de Dados**
