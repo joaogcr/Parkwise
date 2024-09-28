@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.orange-line {
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+body {
+    background-color: #282828;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+.a:hover{
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+button:hover{
+    background-color: white;
+    color:#F46200;
+    transition: 0.8s ease-in-out;
+}
+
+
+section {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: center;
+}
+
+section>.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section>.logo>h2 {
+    font-size: 30px;
+}
+
+section>.logo>h2>span {
+    color: #F46200;
+}
+
+section>.logo>img {
+    width: 60px;
+    position: relative;
+    top: 10px;
+}
+
+section>.menu {
+    background-color: #000000;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 60px;
+    justify-content: space-around;
+}
+
+section>.menu>ul {
+    display: flex;
+    list-style: none;
+    gap: 100px;
+}
+
+section>.menu>ul>li>i {
+    margin-right: 15px;
+    color: #F46200;
+}
+
+section>button {
+    background-color: #F46200;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+}
+
+.tittle{
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+#titulo-Branco{
+    color: white;
+}
+
+#titulo-Laranja{
+    color: #F46200;
+}
+
+.diagrama{
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    padding: 20px 0 20px 0;
+}
+.box{
+    height: 70vh;
+}
+
+.Botao-Home{
+display: flex;
+justify-content: center;
+align-self: center;
+margin-top: 30px;
+
+}
+
+#botaoHome{
+    color: white;
+    background-color: #F46200;
+    border-radius: 15px;
+    border: 2px solid black;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 20px;
+}
