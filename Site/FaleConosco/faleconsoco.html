@@ -1,71 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ParkWise - Fale Conosco</title>
+    <link rel="stylesheet" href="estilo.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="imagem/Logo_ParkWise_black.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="orange-line"></div>
+    <section>
+      <div class="logo">
+        <img src="imagem/Logo_ParkWise.PNG" alt="Logo ParkWise" />
+        <h2>Park<span>Wise</span></h2>
+      </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fale Conosco - ParkWize</title>
-    <link rel="stylesheet" href="styles.fc.css">
-</head>
+      <div class="menu">
+        <ul>
+          <li><i class="fa-solid fa-file"></i>Suporte</li>
+          <li><i class="fa-solid fa-gear"></i>Serviços</li>
+          <li><i class="fa-solid fa-headphones-simple"></i>Fale Conosco</li>
+        </ul>
+      </div>
+      <button>Login</button>
+    </section>
 
-<body>
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="ParkWize Logo">
-            <span>ParkWise</span>
+    <div class="contact-container">
+      <h1>Fale Conosco</h1>
+      <p>
+        Estamos aqui para ajudar! Preencha o formulário abaixo para nos enviar
+        uma mensagem ou entre em contato pelos nossos canais de atendimento.
+      </p>
+
+      <div class="contact-form">
+        <div class="campo">
+          <label for="input_nome">Nome Completo</label>
+          <input type="text" id="input_nome" placeholder="Seu nome completo" />
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Simulador</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#" class="active">Fale conosco</a></li>
-            </ul>
-        </nav>
-        <button class="login-btn">Login</button>
-    </header>
-
-    <div class="container">
-        <div class="left-section">
-            <h1>Fale <span>Conosco</span></h1>
-            <p>Envie sua dúvida:</p>
-            <a href="#" class="home-btn">Home</a>
+        <div class="campo">
+          <label for="input_email">E-mail</label>
+          <input type="email" id="input_email" placeholder="Seu e-mail" />
         </div>
-
-        <div class="right-section">
-            <h2>Insira seus dados:</h2>
-            <form id="contactForm">
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="telefone" name="telefone" placeholder="Telefone" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="descricao" name="descricao" placeholder="Descrição" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Enviar</button>
-            </form>
+        <div class="campo">
+          <label for="input_telefone">Telefone/Celular</label>
+          <input
+            type="text"
+            id="input_telefone"
+            placeholder="(12) 34567-8910"
+          />
         </div>
+        <div class="campo">
+          <label for="input_mensagem">Mensagem</label>
+          <textarea id="input_mensagem" rows="5" placeholder="Sua mensagem"></textarea>
+        </div>
+        <div class="btn">
+          <button type="submit">Enviar</button>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <h3>Nossos canais de atendimento</h3>
+        <p>
+          <i class="fa-solid fa-envelope"></i> Email: contato@parkwise.com
+        </p>
+        <p>
+          <i class="fa-solid fa-phone"></i> Telefone: (11) 1234-5678
+        </p>
+        <p>
+          <i class="fa-solid fa-map-marker-alt"></i> Endereço: Av. Exemplo, 1234
+          - São Paulo, SP
+        </p>
+      </div>
     </div>
 
-    <script src="script.js"></script>
-</body>
-
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2024 ParkWise. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
 </html>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        let email = document.getElementById('email').value;
-        let telefone = document.getElementById('telefone').value;
-        let descricao = document.getElementById('descricao').value;
-
-        if (email === "" || telefone === "" || descricao === "") {
-            alert("Por favor, preencha todos os campos.");
-        } else {
-            alert("Mensagem enviada com sucesso!");
-            document.getElementById('contactForm').reset(); // Reseta o formulário
-        }
-    });
-
-</script>
