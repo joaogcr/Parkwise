@@ -25,7 +25,7 @@ section{
 section > .logo{
     display: flex;
     align-items: center;
-    gap: 10px   ;
+    gap: 10px;
 }
 
 section > .logo > h2 {
@@ -78,9 +78,12 @@ section > button{
 .card{
     display: flex;
     justify-content: center;
-    margin: auto;
-    width: 95%;
     padding: 20px;
+    align-items: center;
+    align-self: center;
+    border: 2px solid #000000;
+    height: calc(100vh - 100px); 
+    /* centralizando card no meio da tela, precisa fazer o calc de acordo com o footer e header */
 }
 
 .card > .cadastro-left{
@@ -141,8 +144,6 @@ section > button{
     "email" "telefone";
     column-gap: 20px;
     row-gap: 30px;
-
-
 }
 
 ::-webkit-input-placeholder {
