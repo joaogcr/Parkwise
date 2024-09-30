@@ -1,151 +1,169 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #333;
-    color: white;
-}
-
-header {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  h1, h2, h3, p {
+    color: #333;
+  }
+  
+  .orange-line {
+    width: 100%;
+    height: 5px;
+    background-color: #f46200;
+  }
+  
+  .logo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #333;
-}
-
-.logo img {
-    width: 50px;
-    height: auto;
-}
-
-.logo span {
+  }
+  
+  .logo img {
+    height: 60px;
+  }
+  
+  .logo h2 {
     font-size: 24px;
-    font-weight: bold;
-    color: #FF6A00;
     margin-left: 10px;
-}
-
-nav ul {
+  }
+  
+  .logo span {
+    color: #f46200;
+  }
+  
+  .menu ul {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 20px;
-    background-color: black; /* Fundo preto para os botões */
-    padding: 10px 20px;
-    border-radius: 25px; /* Bordas arredondadas */
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 5px 10px;
+    padding: 20px 0;
+  }
+  
+  .menu li {
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-nav a:hover {
-    color: #FF6A00; /* Cor laranja ao passar o mouse */
-}
-
-.login-btn {
-    background-color: #FF6A00;
-    color: white;
+    font-weight: bold;
+  }
+  
+  .menu li i {
+    margin-right: 8px;
+  }
+  
+  button {
     padding: 10px 20px;
+    background-color: #f46200;
     border: none;
-    border-radius: 25px; /* Bordas arredondadas para o botão de login */
+    color: white;
     cursor: pointer;
-    font-size: 16px;
-}
-
-.login-btn:hover {
-    background-color: #e65a00; /* Cor mais escura ao passar o mouse */
-}
-
-.container {
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #e25000;
+  }
+  
+  section {
     display: flex;
     justify-content: space-between;
-    padding: 40px;
-    gap: 0;
-}
-
-.left-section {
-    background-color: black;
-    padding: 40px;
-    width: 50%;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-right: 5px solid #FF6A00;
-}
-
-.left-section h1 {
-    font-size: 48px;
-    color: white;
-}
-
-.left-section h1 span {
-    color: #FF6A00;
-}
-
-.left-section p {
-    font-size: 18px;
-    color: #FF6A00;
-    margin: 20px 0;
-}
-
-.left-section .home-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #FF6A00;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.right-section {
-    background-color: #FF6A00;
-    padding: 40px;
-    width: 50%;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.right-section h2 {
-    font-size: 24px;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #000; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    color: #fff; 
+  }
+  
+  .contact-container h1 {
+    text-align: center;
+    color: #fff; 
+  }
+  
+  .contact-container p {
+    color: #fff; 
+  }
+  
+  .contact-form {
+    margin-top: 20px;
+  }
+  
+  .campo {
     margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group input,
-.form-group textarea {
+  }
+  
+  .campo label {
+    font-weight: bold;
+    color: #fff; 
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .campo input,
+  .campo textarea {
     width: 100%;
     padding: 10px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
-    background-color: #333;
-    color: white;
-}
-
-textarea {
-    height: 150px;
-}
-
-.submit-btn {
-    background-color: black;
+  }
+  
+  .campo input:focus,
+  .campo textarea:focus {
+    border-color: #f46200;
+  }
+  
+  .btn {
+    text-align: center;
+  }
+  
+  .btn button {
+    background-color: #f46200;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    font-size: 16px;
-    width: 100%;
     border-radius: 5px;
-}
+  }
+  
+  .btn button:hover {
+    background-color: #e25000;
+  }
+  
+  .contact-info {
+    margin-top: 40px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .contact-info p {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .contact-info i {
+    color: #f46200;
+    margin-right: 10px;
+  }
+  
+
+  footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
