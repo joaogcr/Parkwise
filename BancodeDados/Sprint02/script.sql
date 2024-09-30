@@ -89,3 +89,10 @@ INSERT INTO cliente (nomeCompleto, telefone, endereco, qtdEstacionamento, fkLogi
 	('Carlos Lima', '11955555555', 'Praça 5, 500', 1, 5, 5, 5);
     
 SELECT * FROM cliente;
+
+SELECT nomeCompleto as 'Nome Cliente', e.nome as Estacionamento, email as 'E-mail', telefone as 'Telefone' 
+	FROM cliente 
+    JOIN estacionamento as e 
+    ON fkEstacionamento = idEstacionamento
+    JOIN login
+    ON fkLogin = idLogin;
