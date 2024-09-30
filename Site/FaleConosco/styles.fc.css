@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF6A00;
+    margin-left: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    background-color: black; /* Fundo preto para os botões */
+    padding: 10px 20px;
+    border-radius: 25px; /* Bordas arredondadas */
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+nav a:hover {
+    color: #FF6A00; /* Cor laranja ao passar o mouse */
+}
+
+.login-btn {
+    background-color: #FF6A00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px; /* Bordas arredondadas para o botão de login */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-btn:hover {
+    background-color: #e65a00; /* Cor mais escura ao passar o mouse */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 0;
+}
+
+.left-section {
+    background-color: black;
+    padding: 40px;
+    width: 50%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 5px solid #FF6A00;
+}
+
+.left-section h1 {
+    font-size: 48px;
+    color: white;
+}
+
+.left-section h1 span {
+    color: #FF6A00;
+}
+
+.left-section p {
+    font-size: 18px;
+    color: #FF6A00;
+    margin: 20px 0;
+}
+
+.left-section .home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF6A00;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.right-section {
+    background-color: #FF6A00;
+    padding: 40px;
+    width: 50%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.right-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+}
+
+textarea {
+    height: 150px;
+}
+
+.submit-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+}
