@@ -121,3 +121,14 @@ e.nome as 'Nome do estacionamento',
 e.capacidadeVagas as 'Capacidade total',
 IFNULL(capacidadeVagas, 'Cliente invalido')
 FROM cliente as c JOIN estacionamento as e on c.idCliente = e.fkEstacionamentoCliente;
+
+SELECT c.nomeCompleto as 'Nome do Cliente', 
+	e.nome as 'Estacionamento',
+    concat(e.endereco, ' | ', e.cnpj) as 'Endereço + CNPJ',
+	sc.dataChamado as 'Data da abertura do Chamado', 
+	sc.descricao as 'Sobre o Chamado'
+    FROM cliente as c
+    JOIN estacionamento as e
+		ON e.fkEstacionamentoCliente = c.idCliente
+	JOIN suporteChamados as sc
+		ON sc.fkSuporteEstacionamento = idEstacionamento;
