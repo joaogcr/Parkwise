@@ -151,7 +151,7 @@ section>button {
     flex-direction: row;
     background-color: rgb(231, 220, 220);
     border-radius: 20px;
-    width: 100%;
+    width: 90%;
     height: 80%;
     padding: 40px;
     box-shadow: 10px 6px 1px #F46200;
@@ -165,8 +165,15 @@ section>button {
     width: 60%;
     height: 100%;
     flex-direction: column;
+    align-self: center;
     justify-content: space-between;
+    transition: 0.5s;
 
+}
+
+.bloco:hover{
+    height: 100%;
+    width: 80%;
 }
 
 .barra {
@@ -181,7 +188,6 @@ section>button {
     align-self: self-end;
     flex-direction: column;
     align-items: center;
-
 }
 
 .titulo-barra {
