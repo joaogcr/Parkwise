@@ -5,34 +5,34 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.orange-line {
-    background-color: #F46200;
-    padding: 20px;
-    margin-bottom: 20px;
-}
 
 body {
     background-color: #282828;
 }
 
-a{
+a {
     color: white;
     text-decoration: none;
     font-weight: 200;
     font-size: 20px;
 }
 
-.a:hover{
+a:hover {
     color: #F46200;
     transition: 0.8s ease-in-out;
 }
 
-button:hover{
+button:hover {
     background-color: white;
-    color:#F46200;
+    color: #F46200;
     transition: 0.8s ease-in-out;
 }
 
+.orange-line {
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
 section {
     display: flex;
@@ -92,42 +92,45 @@ section>button {
     font-size: 20px;
     align-items: center;
     border: none;
+    transition: 0.8s ease-in-out;
 }
 
-.tittle{
+.tittle {
     display: flex;
     font-size: 30px;
     justify-content: center;
-    padding-top: 80px;
+    padding-top: 90px;
 }
 
-#titulo-Branco{
+#titulo-Branco {
     color: white;
 }
 
-#titulo-Laranja{
+#titulo-Laranja {
     color: #F46200;
 }
 
-.diagrama{
+.box {
+    height: 60%;
+}
+
+.box2 {
     display: flex;
     justify-content: center;
-    height: 80%;
-    padding: 20px 0 20px 0;
-}
-.box{
-    height: 70vh;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
 }
 
-.Botao-Home{
-display: flex;
-justify-content: center;
-align-self: center;
-margin-top: 30px;
+.Botao-Home {
+    display: flex;
+    justify-content: center;
+    align-self: center;
 
 }
 
-#botaoHome{
+#botaoHome {
     color: white;
     background-color: #F46200;
     border-radius: 15px;
@@ -140,4 +143,91 @@ margin-top: 30px;
     font-weight: 700;
     text-decoration: none;
     font-size: 20px;
+}
+
+.diagrama {
+
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(231, 220, 220);
+    border-radius: 20px;
+    width: 100%;
+    height: 80%;
+    padding: 40px;
+    box-shadow: 10px 6px 1px #F46200;
+}
+
+.bloco {
+
+    display: flex;
+    background-color: #F46200;
+    border-radius: 20px;
+    width: 60%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.barra {
+
+    display: flex;
+    border: #000000 1px solid;
+    border-radius: 20px;
+    background-color: #000000;
+    height: 40%;
+    padding: 10px;
+    /* aling-self é utilizado para alinhar verticalmente */
+    align-self: self-end;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.titulo-barra {
+    color: white;
+}
+
+.seta {
+    align-self: center;
+}
+
+.seta img {
+    width: 40px;
+}
+
+#frase-Sensor {
+
+    color: #F46200;
+}
+
+#frase-Armazenamento {
+
+    color: #F46200;
+
+}
+
+#frase-Usuario {
+
+    color: #F46200;
+}
+
+#frase-DashBoard {
+
+    color: #F46200;
+}
+
+#frase-Passos {
+
+    color: #F46200;
+}
+
+.img-bloco {
+    padding: 25px;
+    text-align: center;
+    width: 100%;
+}
+
+.img-bloco img {
+    width: 60%;
 }
