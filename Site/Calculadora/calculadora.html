@@ -46,10 +46,126 @@
 
         </div>
 
+        <div class="botao">
+            <button onclick="simular()">Fazer simulação</button>
+        </div>
+
     </div>
 
-    <div class="botao">
-        <button onclick="simular()">Fazer simulação</button>
+    <div class="alinhar" id="div_aparecer">
+
+        <div class="titulo1">
+            <span>Sua simulação</span>
+        </div>
+
+        <br>
+
+        <div class="containerresul">
+
+            <div class="receitaVagas">
+
+                <div class="alinharVagas">
+
+                    <div class="vagas">
+                        <span>Vagas Ocupadas: </span>
+                        <div class="branco" id="div_vagasOcupadas"></div>
+
+                    </div>
+
+                    <div class="vagas">
+                        <span>Vagas Livres: </span>
+                        <div class="branco" id="div_vagasLivres"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="alinharReceita">
+
+                    <div class="receita">
+
+                        <span>Receita:</span>
+                        <div class="branco" id="div_receitaAtual"></div>
+
+                    </div>
+
+                    <div class="receita">
+
+                        <span>Receita potencial:</span>
+                        <div class="branco" id="div_receitaPotencial"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="lucro">
+
+                <div class="lucroDiario">
+
+                    <div class="texto">
+                        <span>Lucro Diário:</span>
+                    </div>
+                    <div class="laranja" id="div_lucroDiario"></div>
+
+                </div>
+
+                <div class="lucroSemanal">
+                    <div class="texto">
+                        <span>Lucro Semanal:</span>
+                    </div>
+                    <div class="laranja" id="div_lucroSemanal"></div>
+
+                </div>
+
+                <div class="lucroMensal">
+                    <div class="texto">
+                        <span>Lucro Mensal:</span>
+                    </div>
+                    <div class="laranja" id="div_lucroMensal"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="containerresul2">
+
+            <div class="titulo">
+
+                <h1 class="mensagem">Utilização a solução ParkWise, sua nova simulação ficará assim</h1>
+
+            </div>
+
+            <div class="lucro">
+
+                <div class="lucroDiario">
+
+                    <span>Lucro Diário:</span>
+                    <div class="preto" id="div_potencialDiario"></div>
+
+                </div>
+
+                <div class="lucroSemanal">
+
+                    <span>Lucro Semanal:</span>
+                    <div class="preto" id="div_potencialSemanal"></div>
+
+                </div>
+
+                <div class="lucroMensal">
+
+                    <span>Lucro Mensal:</span>
+                    <div class="preto" id="div_potencialMensal"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
     <div class="footer"></div>
@@ -60,7 +176,8 @@
 <script>
     function simular() {
 
-        div_calculadora.innerHTML = ``;
+        div_calculadora.style.display = "none";
+        div_aparecer.style.display = "flex";
 
         var capacidade = Number(ipt_capacidadeTotal.value); // capacidade total do estacionamento
         var preco = Number(ipt_preco_hora.value);  // preço por hora cobrado
@@ -79,21 +196,33 @@
         var lucroPotencialSemanal = lucroPotencial * 7; // lucro semanal(constante)
         var lucroPotencialMensal = lucroPotencial * 30; // lucro mensal(constante)
 
-        div_mensagem.innerHTML =
-            `
-        <br><br>
-        O Estacionamento tem capacidade total de ${capacidade} vagas, cobrando R$${preco} por hora e com adicional de R$${precoAdicional} por hora <br>
-        <p style = "color:green;"><b>Vagas Ocupadas: ${vagasOcupadas} </b></p>
-        <p style = "color:green;"><b>Receita Diária: R$${receita}</b></p>
-        <p style = "color:green;"><b>Receita Semanal: R$${receita * 7}</b></p>
-        <p style = "color:green;"><b>Receita Mensal: R$${receita * 30}</b></p>
-        <p style = "color:red;"><b>Vagas Livres: ${vagasLivres} </b></p>
-        <p style = "color:red;"><b>Receita Potencial Diária: R$${lucroPotencial}</b></p>
-        <h4>Utilizando a solução da ParkWise, sua nova simulação ficará assim:</h4>
-        Nova Receita Diária:  <b>R$${receita + (lucroPotencial * 0.4)}</b> <br><br>  
-        Nova Receita Semanal: <b>R$${(receita * 7) + (lucroPotencial * 7 * 0.4)}</b> <br><br>
-        Nova Receita Mensal:  <b>R$${(receita * 30) + (lucroPotencial * 30 * 0.4)}</b> <br><br>
-        <br>
-        `
+        // div_mensagem.innerHTML =
+        //     `
+        // <br><br>
+        // O Estacionamento tem capacidade total de ${capacidade} vagas, cobrando R$${preco} por hora e com adicional de R$${precoAdicional} por hora <br>
+        // <p style = "color:green;"><b>Vagas Ocupadas: ${vagasOcupadas} </b></p>
+        // <p style = "color:green;"><b>Receita Diária: R$${receita}</b></p>
+        // <p style = "color:green;"><b>Receita Semanal: R$${receita * 7}</b></p>
+        // <p style = "color:green;"><b>Receita Mensal: R$${receita * 30}</b></p>
+        // <p style = "color:red;"><b>Vagas Livres: ${vagasLivres} </b></p>
+        // <p style = "color:red;"><b>Receita Potencial Diária: R$${lucroPotencial}</b></p>
+        // <h4>Utilizando a solução da ParkWise, sua nova simulação ficará assim:</h4>
+        // Nova Receita Diária:  <b>R$${receita + (lucroPotencial * 0.4)}</b> <br><br>  
+        // Nova Receita Semanal: <b>R$${(receita * 7) + (lucroPotencial * 7 * 0.4)}</b> <br><br>
+        // Nova Receita Mensal:  <b>R$${(receita * 30) + (lucroPotencial * 30 * 0.4)}</b> <br><br>
+        // <br>
+        // `
+
+        div_vagasOcupadas.innerHTML = `${vagasOcupadas}`;
+        div_vagasLivres.innerHTML = `${vagasLivres}`;
+        div_receitaAtual.innerHTML = `R$${receita.toFixed(2)}`;
+        div_receitaPotencial.innerHTML = `R$${lucroPotencial.toFixed(2)}`;
+        div_lucroDiario.innerHTML = `R$${receita.toFixed(2)}`;
+        div_lucroSemanal.innerHTML = `R$${(receita * 7).toFixed(2)}`;
+        div_lucroMensal.innerHTML = `R$${(receita * 30).toFixed(2)}`;
+        div_potencialDiario.innerHTML = `R$${(receita + (lucroPotencial * 0.4)).toFixed(2)}`;
+        div_potencialSemanal.innerHTML = `R$${((receita * 7) + (lucroPotencial * 7 * 0.4)).toFixed(2)}`;
+        div_potencialMensal.innerHTML = `R$${((receita * 30) + (lucroPotencial * 30 * 0.4)).toFixed(2)}`;
+        
     }
 </script>
