@@ -5,27 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Financeira</title>
+
+    <link rel="stylesheet" href="../Calculadora/stylecalc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 </head>
 
 <body>
-    <h1>Simulador Financeiro - ParkWise</h1>
-    <p>Isso é apenas um simulação, não tome como verdade absoluta mas sim como uma aproximação da realidade.</p>
-    <h3>Digite a capacidade total do estacionamento: </h3>
-    <input type="number" id="ipt_capacidadeTotal">
-    <h3>Digite a média de quantidade de vagas ocupadas: </h3>
-    <input type="number" id="ipt_vagasOcupadas">
-    <h3>Digite o preço por hora: </h3>
-    <input type="number" id="ipt_preco_hora">
-    <h3>Digite o preço para adicionar por hora </h3>
-    <input type="number" id="ipt_precoAdicional"> <br> <br>
-    <button onclick="simular()">Simular agora!</button>
-    <div id="div_mensagem"></div>
+
+    <div class="orange-line"></div>
+    <section>
+        <div class="logo">
+            <img src="../Calculadora/imagem/ParkWise (1).png" alt="">
+            <h2>Park<span>Wise</span></h2>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><i class="fa-solid fa-file"></i>Suporte</li>
+                <li><i class="fa-solid fa-gear"></i>Serviços</li>
+                <li><i class="fa-solid fa-headphones-simple"></i>Fale Conosco</li>
+            </ul>
+        </div>
+        <button>Login</button>
+    </section>
+
+    <div class="container2" id="div_calculadora">
+
+        <div class="container">
+
+            <h1>Faça sua simulação com nossa calculadora</h1>
+            <br>
+            <h3>Total de vagas de seu estacionamento:</h3>
+            <input type="number" id="ipt_capacidadeTotal" placeholder="Insira o total de vagas">
+            <h3>Média de vagas ocupadas:</h3>
+            <input type="number" id="ipt_vagasOcupadas" placeholder="Insira a média de vagas ocupadas">
+            <h3>Preço da primeira hora:</h3>
+            <input type="number" id="ipt_preco_hora" placeholder="Insira o valor da primeira hora de uso">
+            <h3>Preço da hora adicional:</h3>
+            <input type="number" id="ipt_precoAdicional" placeholder="Insira o valor da hora adicional"> <br> <br>
+
+        </div>
+
+    </div>
+
+    <div class="botao">
+        <button onclick="simular()">Fazer simulação</button>
+    </div>
+
+    <div class="footer"></div>
+
 </body>
 
 </html>
 <script>
-    
     function simular() {
+
+        div_calculadora.innerHTML = ``;
+
         var capacidade = Number(ipt_capacidadeTotal.value); // capacidade total do estacionamento
         var preco = Number(ipt_preco_hora.value);  // preço por hora cobrado
         var precoAdicional = Number(ipt_precoAdicional.value)  // preço adicional para cada hora que passa
