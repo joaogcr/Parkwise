@@ -2,33 +2,31 @@ CREATE DATABASE ParkWise;
 
 USE ParkWise;
 
-CREATE TABLE cliente (
-    idCliente INT PRIMARY KEY AUTO_INCREMENT,
-    nomeCompleto VARCHAR(100),
-    telefone CHAR(13),
-    endereco VARCHAR(255),
-    qtdEstacionamento INT
+DROP DATABASE ParkWise;
+DROP TABLE estacionamento;
+
+CREATE TABLE usuario (
+    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+    nomeUsuario VARCHAR(100),
+    email CHAR(255),
+    senha VARCHAR(45)
 );
 
 CREATE TABLE sessao (
     idSessao INT PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR(255),
-    senha VARCHAR(45),
     horarioEntrada TIME,
-    horarioSaida TIME,
-    tokenAcesso INT,
-    fkSessaoCliente INT,
-    CONSTRAINT fk_Sessao_Cliente FOREIGN KEY (fkSessaoCliente) REFERENCES cliente(idCliente)
+    fkUsuario INT,
+    CONSTRAINT fk_Sessao_Cliente FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
 CREATE TABLE estacionamento (
     idEstacionamento INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
     endereco VARCHAR(45),
-    cnpj CHAR(18),
+    cnpjEstacionamento CHAR(18),
     capacidadeVagas INT,
     fkEstacionamentoCliente INT,
-    CONSTRAINT fk_Estacionamento_Cliente FOREIGN KEY (fkEstacionamentoCliente) REFERENCES cliente(idCliente)
+    CONSTRAINT fk_Estacionamento_Cliente FOREIGN KEY (fkEstacionamentoCliente) REFERENCES usuario(idUsuario)
 );
 
 CREATE TABLE sensor (
@@ -42,22 +40,34 @@ CREATE TABLE sensor (
 );
 
 CREATE TABLE suporteChamados (
-    idChamado INT PRIMARY KEY AUTO_INCREMENT,
+    id_suporte INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255),
     descricao VARCHAR(300),
     dataChamado DATE,
-    fkSuporteEstacionamento INT,
-    CONSTRAINT fk_SuporteChamados_Estacionamento FOREIGN KEY (fkSuporteEstacionamento) REFERENCES estacionamento(idEstacionamento)
+    fkUsuario INT,
+    CONSTRAINT fk_SuporteChamados_Estacionamento FOREIGN KEY (fkUsuario) REFERENCES estacionamento(idEstacionamento)
 );
 
-INSERT INTO cliente (nomeCompleto, telefone, endereco, qtdEstacionamento) VALUES 
-    ('João Silva', '11999999999', 'Av. Principal, 100', 1),
-    ('Maria Oliveira', '11988888888', 'Rua Secundária, 200', 2),
-    ('Pedro Santos', '11977777777', 'Travessa 3, 300', 1),
-    ('Ana Costa', '11966666666', 'Beco 4, 400', 1),
-    ('Carlos Lima', '11955555555', 'Praça 5, 500', 1);
+CREATE TABLE empresa (
+	idCliente int primary key auto_increment,
+	nomeEmpresa varchar(100),
+	telefone char(13),
+	endereco varchar(255),
+	qtdEstacionamento INT,
+	cnpjEmpresa char(18),
+	fkUsuario int,
+	constraint fkUsuarioEmpresa foreign key (fkUsuario)
+		references usuario(idUsuario)
+);
 
-INSERT INTO estacionamento (nome, endereco, cnpj, capacidadeVagas, fkEstacionamentoCliente) VALUES
+INSERT INTO usuario (nomeUsuario, email, senha) VALUES 
+    ('João Silva', 'joao.silva@gmail.com', 'Aventur@123!'),
+    ('Maria Oliveira', 'maria.oliveira@gmail.com', 'In0v@dora2024'),
+    ('Pedro Santos', 'pedro.santos@gmail.com', 'Dest!n0#456'),
+    ('Ana Costa', 'ana.costa@gmail.com', 'Exp!0r@Dora789'),
+    ('Carlos Lima', 'carlos.lima@gmail.com', 'S0nh@dor!2024');
+
+INSERT INTO estacionamento (nome, endereco, cnpjEstacionamento, capacidadeVagas, fkEstacionamentoCliente) VALUES
     ('Estacionamento Central', 'Rua A, 123', '12.345.678/0001-90', 100, 1),
     ('Estacionamento Norte', 'Rua B, 456', '98.765.432/0001-21', 80, 2),
     ('Estacionamento Sul', 'Rua C, 789', '54.321.678/0001-11', 120, 3),
