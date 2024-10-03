@@ -78,20 +78,20 @@ section > .login-button {
     border: none;
 }
 
-
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     color: white;
     padding: 30px;
     margin-top: 50px; 
+    height: 100%;
 }
 
 .left-section {
     background-color: black;
-    padding: 115px 40px; 
+    padding: 110px 40px; 
     border-radius: 20px;
-    width: 40%;
+    width: 50%;
     text-align: left;
     margin-bottom: 0; 
 }
@@ -103,7 +103,6 @@ section > .login-button {
     width: 50%;
     margin-bottom: 0; 
 }
-
 
 .left-section h1 {
     font-size: 100px; 
@@ -164,11 +163,7 @@ section > .login-button {
     font-size: 16px;
 }
 
-.right-section input[type="email"], 
-.right-section input[type="tel"],
-.right-section textarea {
-    border: 2px solid #ccc;
-}
+
 
 .send-button {
     background-color: black;
