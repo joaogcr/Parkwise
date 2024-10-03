@@ -48,7 +48,7 @@ entrada datetime,
 saida datetime, 
 fkSensor int,
 	constraint fkFluxoSensor foreign key (fkSensor)
-		references sensor(idSendor)
+		references sensor(idSensor)
 );
 
 INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro) VALUES
@@ -84,12 +84,23 @@ INSERT INTO sensor (localizacao, fkEstacionamento) VALUES
 	('180',6);
     
 INSERT INTO fluxo (entrada, saida, fkSensor) VALUES
-	('','', 1),
-	('','', 1),
-	('','', 2),
-	('','', 4),
-	('','', 3),
-	('','', 3),
-	('','', 6),
-	('','', 5);
+	('2024-10-04 09:15:00','2024-10-04 17:30:00', 1),
+	('2024-10-05 08:00:00','2024-10-05 16:45:00', 1),
+	('2024-10-06 10:20:00','2024-10-06 18:50:00', 2),
+	('2024-10-07 07:45:00','2024-10-07 14:30:00', 4),
+	('2024-10-08 13:00:00','2024-10-08 19:15:00', 3),
+	('2024-10-09 08:30:00','2024-10-09 16:00:00', 3),
+	('2024-10-10 11:10:00','2024-10-10 17:55:00', 6),
+	('2024-10-11 09:00:00','2024-10-11 18:30:00', 5);
+    
+SELECT nomeUsuario as 'Nome do Usuário', 
+	   e.nome as 'Nome do Estacionamento', 
+       e.capacidadeVagas as 'Total de Vagas'
+	FROM usuario
+    JOIN estacionamento as e
+		ON fkEstacionamento = idEstacionamento;
+    
+    
+
+
 
