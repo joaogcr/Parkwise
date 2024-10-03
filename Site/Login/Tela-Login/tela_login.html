@@ -34,36 +34,82 @@
     </section>
 
     <div class="card">
+
       <div class="cadastro-left">
         <h1><span style="color: #f46200">Efetue seu </span><br />Login</h1>
         <h3>Insira os dados solicitados ao lado</h3>
         <button><i class="fa-solid fa-right-from-bracket"></i>Home</button>
       </div>
+
       <div class="cadastro-right">
+
         <h2>Insira seus dados</h2>
+
         <div class="inputs">
           <div class="campo">
+
             <h5>CNPJ</h5>
             <input type="text" id="input_cnpj" placeholder="12.345678/0001-90"/>
-          </div>
-          <div class="campo">
+
+            </div>
+            <div class="campo">
             <h5>E-mail</h5>
             <input type="text" id="input_email" placeholder="exemplo@gmail.com"/>
-          </div>
-          <div class="campo">
+            </div>
+
+            <div class="campo">
             <h5>Senha</h5>
             <input type="password" id="input_senha" placeholder="********"/>
             </div>
+
             <div class="btn">
-            <button>Entrar</button>
+            <button onclick="validacao()">Entrar</button>
             <br>
             <a class="btnEsqueci">Esqueci minha senha</a>
-          </div>
-          </div>
-        </div>
 
+          </div>
         </div>
+          
+      </div>
+
       </div>
     </div>
+  </div>
   </body>
 </html>
+
+<script>
+    function validacao(){
+        var cnpj = input_cnpj.value;
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        // exemplo usuário 1
+        if(cnpj == '12.345.678/0001-90' && email == 'joao.silva123@gmail.com' && senha == 'Abc@1234'){
+          alert(`Seu usuário foi logado com sucesso!`)
+        } else {
+          alert('Senha/Email/CNPJ inválidos, ou usuário inexistente. Verifique se todos os dados foram inseridos corretamente.')
+        }
+
+        //validação cnpj
+        var barraCNPJ = cnpj.includes('/');
+        var tracoCNPJ = cnpj.includes('-');
+        var pontoCNPJ = cnpj.includes('.');
+
+        //validação email
+        var gmail = email.includes('@gmail.com')
+        var outlook = email.includes('@outlook.com')
+
+        if(barraCNPJ == true && tracoCNPJ == true && pontoCNPJ == true){
+          //pass
+        } else {
+          alert('CNPJ inválido. Cheque se o ".", "/" e o "-" foram inseridos corretamente')
+        }
+
+        if(gmail == true || outlook == true){
+          //pass
+        } else {
+          alert('Email inválido. São somente permitidos gmail ou outlook')
+        }
+    }
+</script>
