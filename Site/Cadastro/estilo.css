@@ -81,7 +81,6 @@ section > button{
     padding: 20px;
     align-items: center;
     align-self: center;
-    border: 2px solid #000000;
     height: calc(100vh - 100px); 
     /* centralizando card no meio da tela, precisa fazer o calc de acordo com o footer e header */
 }
@@ -124,7 +123,6 @@ section > button{
     border-radius: 20px;
     color: #282828;
     display: flex;
-    justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
     height: 450px;
@@ -132,7 +130,7 @@ section > button{
 }
 
 .card > .cadastro-right > h2{
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     padding-top: 20px;
 }
 
@@ -190,4 +188,9 @@ section > button{
     font-weight: 700;
     color: white;
     border-radius: 12px;
+}
+
+#div_mensagem {
+    font-size: 11px;
+    background-color: #000000;
 }

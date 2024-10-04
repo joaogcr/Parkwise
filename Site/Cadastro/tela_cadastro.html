@@ -14,6 +14,7 @@
       href="imagem/Logo_ParkWise_black.png"
       type="image/x-icon"
     />
+    <script src="script.js"></script>
   </head>
   <body>
     <div class="orange-line"></div>
@@ -48,11 +49,11 @@
           </div>
           <div class="campo">
             <h5>CNPJ</h5>
-            <input type="text" id="input_cnpj" placeholder="12.345678/0001-90"/>
+            <input type="text" id="input_cnpj" oninput="validacaoCnpj()" placeholder="12.345678/0001-90"/>
           </div>
           <div class="campo">
             <h5>E-mail</h5>
-            <input type="text" id="input_email" placeholder="exemplo@gmail.com"/>
+            <input type="text" id="input_email" oninput="validacaoEmail()" placeholder="exemplo@gmail.com"/>
           </div>
           <div class="campo">
             <h5>Telefone/Celular</h5>
@@ -60,7 +61,7 @@
           </div>
           <div class="campo">
             <h5>Senha</h5>
-            <input type="password" id="input_senha" placeholder="********"/>
+            <input type="password" id="input_senha" oninput="validacaoSenha()" placeholder="********"/>
           </div>
           <div class="campo">
             <h5>Logradouro (CEP)</h5>
@@ -68,9 +69,8 @@
           </div>
         </div>
 
-        <h6>
-          • A senha deve conter 8 caracteres 1 símbolo e 4 números <br>no mínimo
-        </h6>
+        <div id="div_mensagem"></div>
+
         <div class="contrato">
           <input type="checkbox" name="" id="" />
           <h6>Li e aceiro os termos e condições.</h6>
