@@ -1,8 +1,6 @@
 CREATE DATABASE ParkWiseScript;
 USE ParkWiseScript;
 
-DROP DATABASE ParkWiseScript;
-
 CREATE TABLE estacionamento(
 idEstacionamento int primary key auto_increment,
 nome varchar(45),
@@ -92,7 +90,8 @@ INSERT INTO fluxo (entrada, saida, fkSensor) VALUES
 	('2024-10-09 08:30:00','2024-10-09 16:00:00', 3),
 	('2024-10-10 11:10:00','2024-10-10 17:55:00', 6),
 	('2024-10-11 09:00:00','2024-10-11 18:30:00', 5);
-    
+
+-- gabi
 SELECT nomeUsuario as 'Nome do Usuário', 
 	   e.nome as 'Nome do Estacionamento', 
        e.capacidadeVagas as 'Total de Vagas'
@@ -100,7 +99,15 @@ SELECT nomeUsuario as 'Nome do Usuário',
     JOIN estacionamento as e
 		ON fkEstacionamento = idEstacionamento;
     
-    
+SELECT * FROM usuario;
+select * from suporte;
+select * from estacionamento;
+select * from sensor;
 
-
-
+-- nicoly
+SELECT u.nomeUsuario as 'Nome do usuario', sup.descricao as 'Descricao do chamado', 
+sup.dataSuporte as 'Data da criacao do chamado', e.nome as 'Nome do estacionamento', s.idSensor as 'Sensor do chamado'
+FROM usuario as u
+JOIN suporte as sup ON u.idUsuario = sup.fkUsuario
+JOIN estacionamento as e ON u.fkEstacionamento = e.idEstacionamento
+JOIN sensor as s ON e.idEstacionamento = s.fkEstacionamento;
