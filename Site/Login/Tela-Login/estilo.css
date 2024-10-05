@@ -63,7 +63,12 @@ section > .menu > ul > li > i{
         color: #F46200;
 }
 
-section > button{
+li > a {
+    color: white;
+    text-decoration: none;
+}
+
+section > a > button{
     background-color: #F46200;
     color: white;
     padding: 15px;
@@ -106,7 +111,7 @@ section > button{
     color: #F46200;
 }
 
-.card > .cadastro-left > button{
+.card > .cadastro-left > a> button{
     width: 100px;
     background-color: #F46200;
     border: none;
@@ -116,6 +121,10 @@ section > button{
     border-radius: 12px;
     display: flex;
     justify-content: space-around;
+}
+
+a{
+    text-decoration: none;
 }
 
 .card > .cadastro-right{

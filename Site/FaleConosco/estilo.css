@@ -66,7 +66,12 @@ section > .menu > ul > li > i {
     color: #F46200;
 }
 
-section > .login-button {
+li > a {
+    color: white;
+    text-decoration: none;
+}
+
+section > a > .login-button {
     background-color: #F46200;
     color: white;
     padding: 15px;
@@ -138,6 +143,9 @@ section > .login-button {
     margin-top: 40px; 
 }
 
+a{
+    text-decoration: none;
+}
 
 .right-section h2 {
     color: white;

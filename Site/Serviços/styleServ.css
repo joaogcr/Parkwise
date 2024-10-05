@@ -82,7 +82,7 @@ section>.menu>ul>li>i {
     color: #F46200;
 }
 
-section>button {
+section>a>button {
     background-color: #F46200;
     color: white;
     padding: 15px;

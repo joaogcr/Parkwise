@@ -46,7 +46,7 @@ a:hover{
     transition: 0.8s ease-in-out;
 }
 
-button:hover{
+a > button:hover{
     background-color: white;
     color:#F46200;
     transition: 0.8s ease-in-out;
@@ -106,7 +106,7 @@ section > .menu > ul > li > i{
         color: #F46200;
 }
 
-section > button{
+section > a > button{
     background-color: #F46200;
     color: white;
     padding: 15px;
