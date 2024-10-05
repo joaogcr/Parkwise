@@ -111,3 +111,13 @@ FROM usuario as u
 JOIN suporte as sup ON u.idUsuario = sup.fkUsuario
 JOIN estacionamento as e ON u.fkEstacionamento = e.idEstacionamento
 JOIN sensor as s ON e.idEstacionamento = s.fkEstacionamento;
+
+-- Miguel
+
+SELECT * FROM estacionamento join usuario on idEstacionamento = fkEstacionamento;
+
+SELECT e.idEstacionamento as 'ID Estacionamento', e.nome as 'Nome Estacionamento', e.telefone as 'Telefone',
+ e.capacidadeVagas as 'Capacidade', u.idUsuario as 'ID Usuario', u.email as 'E-MAIL', u.senha as 'SENHA',
+ u.nomeUsuario as 'Usuario'
+ FROM estacionamento as e join usuario as u on idEstacionamento = fkEstacionamento;
+
