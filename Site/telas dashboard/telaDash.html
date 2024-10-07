@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ParkWise - login</title>
+    <link rel="stylesheet" href="estiloDash.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="shortcut icon" href="imagem/Logo_ParkWise_black.png" type="image/x-icon" />
+</head>
+
+<body>
+    <div class="orange-line"></div>
+    <section>
+        <div class="logo">
+            <img src="../Site/Homepage/images/logo1.png" alt="" />
+            <h2>Park<span>Wise</span></h2>
+        </div>
+
+        <div class="menu">
+            <ul>git
+                <li><i class="fa-solid fa-file"></i><a href="../../Calculadora/calculadora.html">Simulador</a></li>
+                <li><i class="fa-solid fa-gear"></i><a href="../../Serviços/Serviços.html">Serviços</a></li>
+                <li><i class="fa-solid fa-headphones-simple"></i><a href="../FaleConosco/faleconosco.html">Fale
+                        Conosco</a></li>
+            </ul>
+        </div>
+        <a href="../../Cadastro/tela_cadastro.html"><button>Cadastre-se</button></a>
+    </section>
+
+    <div class="container">
+        <div class="escrita">
+            <p id="ola">Olá, (usuario)</p>
+            <br>
+            <p id="selecione-servico">Selecione o serviço que deseja visualizar</p>
+        </div>
+        <div class="box">
+            <div class="img-box">
+                <img src="../telas dashboard/imagens/image.png" alt="imagem">
+            </div>
+
+            <div onclick="dash()" class="barra">
+
+                <h3>DashBoard</h3>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+
+    function dash() {
+
+        window.location.href = "teste.html"
+    }
+
+</script>
