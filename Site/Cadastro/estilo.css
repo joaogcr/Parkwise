@@ -6,14 +6,28 @@
 
 }
 
-.orange-line{
-    background-color: #F46200;
-    padding: 10px;
-    margin-bottom: 20px;
+a{
+    color: white;
+    font-weight: 200;
+    text-decoration: none;
+    font-size: 20px;
 }
 
-body{
-    background-color: #282828;
+a:hover{
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+a > button:hover{
+    background-color: white;
+    color:#F46200;
+    transition: 0.8s ease-in-out;
+}
+
+.orange-line{
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 section{
@@ -64,11 +78,6 @@ section > .menu > ul > li > i{
         color: #F46200;
 }
 
-li > a {
-    color: white;
-    text-decoration: none;
-}
-
 section > a > button{
     background-color: #F46200;
     color: white;
@@ -79,6 +88,11 @@ section > a > button{
     font-size: 20px;
     align-items: center;
     border: none;
+    transition: 0.8s ease-in-out;
+}
+
+body{
+    background-color: #282828;
 }
 
 .card{

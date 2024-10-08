@@ -4,15 +4,28 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+a{
+    color: white;
+    font-weight: 200;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a:hover{
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+a > button:hover{
+    background-color: white;
+    color:#F46200;
+    transition: 0.8s ease-in-out;
+}
 
 .orange-line{
     background-color: #F46200;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 20px;
-}
-
-body{
-    background-color: #282828;
 }
 
 section{
@@ -25,7 +38,7 @@ section{
 section > .logo{
     display: flex;
     align-items: center;
-    gap: 10px   ;
+    gap: 10px;
 }
 
 section > .logo > h2 {
@@ -63,11 +76,6 @@ section > .menu > ul > li > i{
         color: #F46200;
 }
 
-li > a {
-    color: white;
-    text-decoration: none;
-}
-
 section > a > button{
     background-color: #F46200;
     color: white;
@@ -78,16 +86,20 @@ section > a > button{
     font-size: 20px;
     align-items: center;
     border: none;
+    transition: 0.8s ease-in-out;
+}
+
+body{
+    background-color: #282828;
 }
 
 .card{
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 95%;
     padding: 20px;
-    margin-top: 100px;
+    align-items: center;
+    align-self: center;
+    height: calc(100vh - 100px); 
 }
 
 .card > .cadastro-left{
@@ -140,19 +152,40 @@ a{
 }
 
 .card > .cadastro-right > h2{
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     padding-top: 20px;
 }
 
+.inputs{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.campo h5 {
+    font-weight: 600;
+    font-size: 17px;
+}
+
 .campo > input {
+    
     background-color: #282828;
     border: none;
     border-radius: 12px;
     padding: 15px;
     color: white;
-    height: 60px;
-    width: 400px;
-    margin: 2px;
+}
+
+.btn{
+    display: flex;
+    flex-direction: column;
 }
 
 .btn button{
@@ -163,8 +196,8 @@ a{
     font-weight: 700;
     color: white;
     border-radius: 12px;
-    margin-left: 150px;
     margin-top: 10px;
+    align-self: center;
 }
 
 .btnEsqueci{
@@ -176,3 +209,6 @@ a{
     margin: 10px;
 }
 
+::-webkit-input-placeholder {
+    color: white;
+}

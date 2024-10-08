@@ -38,14 +38,28 @@ body .container {
     padding: 20px;
     padding-top: 40px;
 }
+a{
+    color: white;
+    font-weight: 200;
+    text-decoration: none;
+    font-size: 20px;
+}
 
-.botao {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    padding: 10px;
-    padding-bottom: 40px;
+a:hover{
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+a > button:hover{
+    background-color: white;
+    color:#F46200;
+    transition: 0.8s ease-in-out;
+}
+
+.orange-line{
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 section{
@@ -58,7 +72,7 @@ section{
 section > .logo{
     display: flex;
     align-items: center;
-    gap: 10px   ;
+    gap: 10px;
 }
 
 section > .logo > h2 {
@@ -96,12 +110,7 @@ section > .menu > ul > li > i{
         color: #F46200;
 }
 
-li > a {
-    color: white;
-    text-decoration: none;
-}
-
-section > button{
+section > a > button{
     background-color: #F46200;
     color: white;
     padding: 15px;
@@ -110,7 +119,8 @@ section > button{
     height: 50px;
     font-size: 20px;
     align-items: center;
-    border: none;
+    border: none;
+    transition: 0.8s ease-in-out;
 }
 
 .container {

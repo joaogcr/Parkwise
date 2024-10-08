@@ -136,6 +136,10 @@ section > a > button{
     text-align: center;
 }
 
+.container-img > img{
+    width: 500px;
+}
+
 #titulo{
     color: white;
     font-weight: 600;
