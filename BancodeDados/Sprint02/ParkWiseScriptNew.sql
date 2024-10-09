@@ -42,11 +42,11 @@ fkEstacionamento int,
 
 CREATE TABLE fluxo(
 idFluxo int primary key auto_increment,
-entrada datetime,
-saida datetime, 
+statusVaga tinyint,
 fkSensor int,
 	constraint fkFluxoSensor foreign key (fkSensor)
-		references sensor(idSensor)
+		references sensor(idSensor),
+	constraint chkStatus check (statusVaga in(0,1))
 );
 
 INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro) VALUES
@@ -65,6 +65,7 @@ INSERT INTO usuario (email, senha, nomeUsuario, fkEstacionamento) VALUES
 	('pedro.souza202@email.com','5ouz@2024','Pedro Souza', 5), 
 	('juliana.santos303@email.com','Ju&liana03','Juliana Santos', 6);
     
+    
 INSERT INTO suporte (email, descricao, dataSuporte, fkUsuario) VALUES
 	('cliente1@example.com', 'Problema com o acesso ao estacionamento', '2024-09-05', 1),
     ('cliente2@example.com', 'Dificuldade em efetuar o pagamento', '2024-09-06', 2),
@@ -81,15 +82,15 @@ INSERT INTO sensor (localizacao, fkEstacionamento) VALUES
 	('300',5),
 	('180',6);
     
-INSERT INTO fluxo (entrada, saida, fkSensor) VALUES
-	('2024-10-04 09:15:00','2024-10-04 17:30:00', 1),
-	('2024-10-05 08:00:00','2024-10-05 16:45:00', 1),
-	('2024-10-06 10:20:00','2024-10-06 18:50:00', 2),
-	('2024-10-07 07:45:00','2024-10-07 14:30:00', 4),
-	('2024-10-08 13:00:00','2024-10-08 19:15:00', 3),
-	('2024-10-09 08:30:00','2024-10-09 16:00:00', 3),
-	('2024-10-10 11:10:00','2024-10-10 17:55:00', 6),
-	('2024-10-11 09:00:00','2024-10-11 18:30:00', 5);
+INSERT INTO fluxo (statusVaga, fkSensor) VALUES
+	(0, 1),
+	(0, 1),
+	(1, 2),
+	(0, 4),
+	(1, 3),
+	(0, 3),
+	(1, 6),
+	(1, 5);
 
 -- gabi
 SELECT nomeUsuario as 'Nome do Usuário', 
@@ -103,6 +104,7 @@ SELECT * FROM usuario;
 select * from suporte;
 select * from estacionamento;
 select * from sensor;
+SELECT * FROM fluxo;
 
 -- nicoly
 SELECT u.nomeUsuario as 'Nome do usuario', sup.descricao as 'Descricao do chamado', 
@@ -120,4 +122,16 @@ SELECT e.idEstacionamento as 'ID Estacionamento', e.nome as 'Nome Estacionamento
  e.capacidadeVagas as 'Capacidade', u.idUsuario as 'ID Usuario', u.email as 'E-MAIL', u.senha as 'SENHA',
  u.nomeUsuario as 'Usuario'
  FROM estacionamento as e join usuario as u on idEstacionamento = fkEstacionamento;
+ 
+ -- Gabi
+ SELECT e.nome as 'Nome do Estacionamento', 
+	    u.nomeUsuario as 'Nome do Usuário', 
+        u.email as 'Email do Usuário', 
+        u.senha as 'Senha do Usuário', 
+        ifnull(s.descricao, 'sem chamado') as 'Chamado feito pelo Usuário'
+	FROM estacionamento as e
+    JOIN usuario as u
+		ON fkEstacionamento = idEstacionamento
+	LEFT JOIN suporte as s
+		ON fkUsuario = idUsuario;
 
