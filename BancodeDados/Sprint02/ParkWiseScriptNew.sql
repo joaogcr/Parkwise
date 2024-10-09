@@ -135,3 +135,16 @@ SELECT e.idEstacionamento as 'ID Estacionamento', e.nome as 'Nome Estacionamento
 	LEFT JOIN suporte as s
 		ON fkUsuario = idUsuario;
 
+-- bruno 
+SELECT u.nomeUsuario AS 'Nome Cliente',
+		e.nome AS 'Estacionamento',
+CASE
+WHEN f.statusVaga = 0 THEN 'Vaga livre'
+ELSE 'Vaga Ocupada' 
+END AS 'Status da Vaga',
+		s.localizacao AS 'Local da vaga'
+FROM usuario AS u
+JOIN estacionamento AS e ON u.fkEstacionamento = e.idEstacionamento
+JOIN sensor AS s ON s.fkEstacionamento = e.idEstacionamento
+JOIN fluxo AS f ON f.fkSensor = s.idSensor;
+        
