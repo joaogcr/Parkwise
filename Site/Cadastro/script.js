@@ -5,9 +5,9 @@ function validacaoEmail () {
 
     var mensagem = ``;
     if(termina_gmail == false){
-        mensagem = `<spam style="color: red;">O E-mail preisa terminar em @gmail.com</spam> <br>`;
+        mensagem = `<spam style="color: red;">O E-mail precisa terminar em @gmail.com</spam> <br>`;
     }else{
-        mensagem = `<spam style="color: blue;">O E-mail preisa terminar em @gmail.com</spam> <br>`;
+        mensagem = `<spam style="color: blue;">O E-mail precisa terminar em @gmail.com</spam> <br>`;
     }
 
     div_mensagem.innerHTML = mensagem;
@@ -20,9 +20,9 @@ function validacaoCnpj () {
 
     var mensagem = ``;
     if(tem_0001 == false){
-        mensagem = `<spam style="color: red;">O CNPJ preisa conter /0001</spam> <br>`;
+        mensagem = `<spam style="color: red;">O CNPJ precisa conter /0001</spam> <br>`;
     }else{
-        mensagem = `<spam style="color: blue;">O CNPJ preisa conter /0001</spam> <br>`;
+        mensagem = `<spam style="color: blue;">O CNPJ precisa conter /0001</spam> <br>`;
     }
 
     div_mensagem.innerHTML = mensagem;
@@ -36,9 +36,9 @@ function validacaoSenha() {
     var tamanho_frase = frase_original.length;
 
     if(tamanho_frase >= 8){
-        mensagem += `<spam style="color: blue;">A senhaa deve conter no mínimo 8 caracteres</spam> <br>`;
+        mensagem += `<spam style="color: blue;">A senha deve conter no mínimo 8 caracteres</spam> <br>`;
     }else{
-        mensagem += `<spam style="color: red;">A senhaa deve conter no mínimo 8 caracteres</spam> <br>`;
+        mensagem += `<spam style="color: red;">A senha deve conter no mínimo 8 caracteres</spam> <br>`;
     }
     var frase_upper = frase_original.toUpperCase();
 

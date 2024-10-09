@@ -10,6 +10,22 @@ body {
 
 }
 
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #F0F5FD;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #fb8500;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #d36600
+}
+
 .orange-line{
     background-color: #F46200;
     padding: 20px;
@@ -175,7 +191,22 @@ button {
     height: 50px;
     font-size: 20px;
     align-items: center;
-    border: none;
+    border: none;
+    margin-top: 20px;
+}
+
+.botao1 {
+    margin-top: 30px;
+    background-color: #F46200;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+    text-align: center;
 }
 
 .containerresul {
@@ -303,7 +334,6 @@ button {
     width: 1000px;
     display: flex;
     justify-content: space-around;
-
 }
 
 .receitaVagas {

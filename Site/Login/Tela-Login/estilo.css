@@ -4,6 +4,23 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #F0F5FD;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #fb8500;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #d36600
+}
+
 a{
     color: white;
     font-weight: 200;

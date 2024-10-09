@@ -9,9 +9,9 @@ void loop() {
   int estadoSensor = digitalRead(PINO_SENSOR_TCRT5000);
 
   if(estadoSensor == LOW){
-    Serial.println("Objeto Detectado");
+    Serial.println("1");
   } else {
-    Serial.println("Nenhum Objeto Detectado");
+    Serial.println("0");
   }
 
   delay(1000);
