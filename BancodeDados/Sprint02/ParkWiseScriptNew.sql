@@ -147,4 +147,25 @@ FROM usuario AS u
 JOIN estacionamento AS e ON u.fkEstacionamento = e.idEstacionamento
 JOIN sensor AS s ON s.fkEstacionamento = e.idEstacionamento
 JOIN fluxo AS f ON f.fkSensor = s.idSensor;
+
+
+-- Ariel
+
+SELECT 
+    u.nomeUsuario AS 'Usuario',
+    u.email AS Email_Usuario,
+    e.nome AS 'Nome_Estacionamento',
+    e.cnpjEstacionamento AS CNPJ_Estacionamento,
+    s.localizacao AS Localizacao_Sensor,
+    f.statusVaga AS Status_Vaga
+FROM 
+    usuario u
+JOIN 
+    estacionamento e ON u.fkEstacionamento = e.idEstacionamento
+JOIN 
+    sensor s ON e.idEstacionamento = s.fkEstacionamento
+JOIN 
+    fluxo f ON s.idSensor = f.fkSensor
+ORDER BY 
+    u.nomeUsuario;
         
