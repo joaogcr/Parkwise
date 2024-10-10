@@ -168,4 +168,20 @@ JOIN
     fluxo f ON s.idSensor = f.fkSensor
 ORDER BY 
     u.nomeUsuario;
-	
+
+-- João 
+
+SELECT
+	e.nome AS 'Nome do Estacionamento',
+    concat(e.logradouro, ' ', e.numeroEnd, ' - ',e.bairro) AS 'Endereço',
+    e.capacidadeVagas AS 'Capacidade de Vagas',
+    s.idSensor AS 'Sensor Alocado',
+    CASE
+		WHEN f.statusVaga = 0 THEN 'Não'
+		WHEN f.statusVaga = 1 THEN 'Sim'
+        END AS 'A vaga está ocupada?'
+    FROM estacionamento AS e
+    JOIN sensor AS s
+    ON e.idEstacionamento = s.fkEstacionamento
+    JOIN fluxo AS f
+    ON s.idSensor = f.fkSensor;
