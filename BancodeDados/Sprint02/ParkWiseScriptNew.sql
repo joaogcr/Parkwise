@@ -168,4 +168,4 @@ JOIN
     fluxo f ON s.idSensor = f.fkSensor
 ORDER BY 
     u.nomeUsuario;
-        
+	
