@@ -166,6 +166,7 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     height: 450px;
     width: 500px;
 }
@@ -178,11 +179,8 @@ a{
 .card > .cadastro-right > .inputs{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-    "nome" "cnpj"
-    "email" "telefone";
     column-gap: 20px;
-    row-gap: 30px;
+    row-gap: 20px;
 }
 
 ::-webkit-input-placeholder {
@@ -229,9 +227,4 @@ a{
     font-weight: 700;
     color: white;
     border-radius: 12px;
-}
-
-#div_mensagem {
-    font-size: 11px;
-    background-color: #000000;
 }

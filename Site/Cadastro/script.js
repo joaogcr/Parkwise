@@ -10,7 +10,14 @@ function validacaoEmail () {
         mensagem = `<spam style="color: blue;">O E-mail precisa terminar em @gmail.com</spam> <br>`;
     }
 
-    div_mensagem.innerHTML = mensagem;
+    div_mensagem.innerHTML = `<div style="
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 15px;
+    background-color: #000000;
+    text-align: center;
+    height: 70px;">${mensagem}</div>`;
 }
 
 function validacaoCnpj () {
@@ -25,7 +32,14 @@ function validacaoCnpj () {
         mensagem = `<spam style="color: blue;">O CNPJ precisa conter /0001</spam> <br>`;
     }
 
-    div_mensagem.innerHTML = mensagem;
+    div_mensagem.innerHTML = `<div style="
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 15px;
+    background-color: #000000;
+    text-align: center;
+    height: 70px;">${mensagem}</div>`;
 }
 
 function validacaoSenha() {
@@ -74,5 +88,9 @@ function validacaoSenha() {
         mensagem += `<spam style="color: blue;">A senha precisa ter um NÚMERO</spam> <br>`;
     }
 
-    div_mensagem.innerHTML = `<h5> ${mensagem} </h5>`;
+    div_mensagem.innerHTML = `<div style="
+    font-size: 15px;
+    background-color: #000000;
+    text-align: center;
+    height: 70px;">${mensagem}</div>`;
 }
