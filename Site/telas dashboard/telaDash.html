@@ -30,30 +30,36 @@
         <a href="../Cadastro/tela_cadastro.html"><button>Cadastre-se</button></a>
     </section>
 
-
-    <div class="container">
-        <h1>Dashboard</h1>
-
+    
+    
+        <div class="container">
+            <h1>Estatísticas:</h1>
         <div class="title">
-            <div>
-                <h3>Taxa de ocupação semanal: 37,5% </h3>
+            <div class="divKPI">
+                <h1>37,5%</h3>
+                <h6>Taxa de ocupação semanal</h6>
             </div>
-            <div>
-                <h3>Pico de vagas ocupadas: 91 </h3>
+            <div class="divKPI">
+                <h1>91</h3>
+                <h6>Pico de vagas ocupadas</h6>
             </div>
-            <div>
-                <h3>Média da taxa de fluxo: 43,25% </h3>
+            <div class="divKPI">
+                <h1>43,25%</h3>
+                <h6>Média da taxa de fluxo</h6>
             </div>
-        </div>
-        <div>
-        <div style="position: relative; height:40vh; width:40vw">
-            <canvas id="myChart"></canvas>
+
         </div>
 
-        <div style="position: relative; height:40vh; width:40vw">
+        <div class="canvaDash">
+            <div style="position: relative; height:40vh; width:40vw" class="divCanvas">
+            <canvas id="myChart"></canvas>
+            </div>
+
+            <div style="position: relative; height:40vh; width:40vw" class="divCanvas">
             <canvas id="myChart2"></canvas>
+            </div>
         </div>
-    </div>
+
     </div>
 
 </body>

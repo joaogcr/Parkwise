@@ -34,6 +34,11 @@ button:hover {
     margin-bottom: 20px;
 }
 
+.divKPI{
+    display: flex;
+    flex-direction: column;
+}
+
 section {
     display: flex;
     justify-content: space-around;
@@ -96,7 +101,6 @@ section>a>button {
 }
 
 .container {
-
     display: flex;
     padding: 20px;
     width: 80%;
@@ -105,7 +109,6 @@ section>a>button {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-
 }
 
 .container h1 {
@@ -114,7 +117,7 @@ section>a>button {
 
 .container .title{
     width: 100%;
-    color: #F46200;
+    color: white;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -129,18 +132,28 @@ section>a>button {
 .title div h3 {
     display: flex;
     justify-content: space-around;
-    background-color: #000000;
     padding: 5px;
     border-radius:  12px;
 }
 
 canvas {
     transition: 0.3s ease;
+    background-color: black;
+    justify-content: space-between;
     border-radius: 20px;
-    box-shadow: 0 5px 5px 5px rgba(5, 5, 5, 5);
 }
 
 canvas:hover {
     transform: scale(1.05);
     transition: 0.3s ease;
 }
+
+.canvaDash{
+    display: flex;
+    flex-direction: row;
+}
+
+.divCanvas{
+    padding: 10px;
+}
+
