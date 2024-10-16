@@ -225,9 +225,9 @@
         div_lucroDiario.innerHTML = `R$${receita.toFixed(2)}`;
         div_lucroSemanal.innerHTML = `R$${(receita * 7).toFixed(2)}`;
         div_lucroMensal.innerHTML = `R$${(receita * 30).toFixed(2)}`;
-        div_potencialDiario.innerHTML = `R$${(receita + (lucroPotencial * 0.4)).toFixed(2)}`;
-        div_potencialSemanal.innerHTML = `R$${((receita * 7) + (lucroPotencial * 7 * 0.4)).toFixed(2)}`;
-        div_potencialMensal.innerHTML = `R$${((receita * 30) + (lucroPotencial * 30 * 0.4)).toFixed(2)}`;
+        div_potencialDiario.innerHTML = `R$${(receita + (lucroPotencial * 0.35)).toFixed(2)}`;
+        div_potencialSemanal.innerHTML = `R$${((receita * 7) + (lucroPotencial * 7 * 0.35)).toFixed(2)}`;
+        div_potencialMensal.innerHTML = `R$${((receita * 30) + (lucroPotencial * 30 * 0.35)).toFixed(2)}`;
         
     }
 </script>
