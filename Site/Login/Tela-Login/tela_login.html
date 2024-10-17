@@ -1,115 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ParkWise - Login</title>
-    <link rel="stylesheet" href="estilo.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
-    <link
-      rel="shortcut icon"
-      href="imagem/Logo_ParkWise_black.png"
-      type="image/x-icon"
-    />
-  </head>
-  <body>
-    <div class="orange-line"></div>
-    <section>
-      <div class="logo">
-        <img src="imagem/Logo_ParkWise.PNG" alt="" />
-        <h2>Park<span>Wise</span></h2>
-      </div>
 
-      <div class="menu">
-        <ul>
-          <li><i class="fa-solid fa-file"></i><a href="../../Calculadora/calculadora.html">Simulador</a></li>
-          <li><i class="fa-solid fa-gear"></i><a href="../../Serviços/Serviços.html">Serviços</a></li>
-          <li><i class="fa-solid fa-headphones-simple"></i><a href="../../FaleConosco/faleconosco.html">Fale Conosco</a></li>
-      </ul>
-      </div>
-      <a href="../../Cadastro/tela_cadastro.html"><button>Cadastre-se</button></a>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ParkWise - Login</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="shortcut icon" href="imagem/Logo_ParkWise_black.png" type="image/x-icon" />
+</head>
 
-    <div class="card">
-
-      <div class="cadastro-left">
-        <h1><span style="color: #f46200">Efetue seu </span><br />Login</h1>
-        <h3>Insira os dados solicitados ao lado</h3>
-        <a href="../../Homepage/index.html"><button><i class="fa-solid fa-right-from-bracket"></i>Home</button></a>
-      </div>
-
-      <div class="cadastro-right">
-
-        <h2>Insira seus dados</h2>
-
-        <div class="inputs">
-          <div class="campo">
-
-            <h5>CNPJ</h5>
-            <input type="text" id="input_cnpj" placeholder="12.345678/0001-90"/>
-
-            </div>
-            <div class="campo">
-            <h5>E-mail</h5>
-            <input type="text" id="input_email" placeholder="exemplo@gmail.com"/>
-            </div>
-
-            <div class="campo">
-            <h5>Senha</h5>
-            <input type="password" id="input_senha" placeholder="********"/>
-            </div>
-
-            <div class="btn">
-            <button onclick="validacao()">Entrar</button>
-            <br>
-            <a class="btnEsqueci">Esqueci minha senha</a>
-
-          </div>
-        </div>
-          
-      </div>
-
-      </div>
+<body>
+  <div class="orange-line"></div>
+  <section>
+    <div class="logo">
+      <img src="imagem/Logo_ParkWise.PNG" alt="" />
+      <h2>Park<span>Wise</span></h2>
     </div>
+
+    <div class="menu">
+      <ul>
+        <li><i class="fa-solid fa-file"></i><a href="../../Calculadora/calculadora.html">Simulador</a></li>
+        <li><i class="fa-solid fa-gear"></i><a href="../../Serviços/Serviços.html">Serviços</a></li>
+        <li><i class="fa-solid fa-headphones-simple"></i><a href="../../FaleConosco/faleconosco.html">Fale Conosco</a>
+        </li>
+      </ul>
+    </div>
+    <a href="../../Cadastro/tela_cadastro.html"><button>Cadastre-se</button></a>
+  </section>
+
+  <div class="card">
+
+    <div class="cadastro-left">
+      <h1><span style="color: #f46200">Efetue seu </span><br />Login</h1>
+      <h3>Insira os dados solicitados ao lado</h3>
+      <a href="../../Homepage/index.html"><button><i class="fa-solid fa-right-from-bracket"></i>Home</button></a>
+    </div>
+
+    <div class="cadastro-right">
+
+      <h2>Insira seus dados</h2>
+
+      <div class="inputs">
+        <div class="campo">
+
+          <h5>CNPJ</h5>
+          <input type="text" id="input_cnpj" placeholder="12.345678/0001-90" />
+
+        </div>
+        <div class="campo">
+          <h5>E-mail</h5>
+          <input type="text" id="input_email" placeholder="exemplo@gmail.com" />
+        </div>
+
+        <div class="campo">
+          <h5>Senha</h5>
+          <input type="password" id="input_senha" placeholder="********" />
+        </div>
+
+        <div class="btn">
+          <button onclick="validacao(); passdash()">Entrar</button>
+          <br>
+          <a class="btnEsqueci">Esqueci minha senha</a>
+
+        </div>
+      </div>
+
+    </div>
+
   </div>
-  </body>
+  </div>
+  </div>
+</body>
+
 </html>
 
 <script>
-    function validacao(){
-        var cnpj = input_cnpj.value;
-        var email = input_email.value;
-        var senha = input_senha.value;
+  function validacao() {
+    var cnpj = input_cnpj.value;
+    var email = input_email.value;
+    var senha = input_senha.value;
 
-        // exemplo usuário 1
-        if(cnpj == '12.345.678/0001-90' && email == 'joao.silva123@gmail.com' && senha == 'Abc@1234'){
-          alert(`Seu usuário foi logado com sucesso!`)
-        } else {
-          alert('Senha/Email/CNPJ inválidos, ou usuário inexistente. Verifique se todos os dados foram inseridos corretamente.')
-        }
-
-        //validação cnpj
-        var barraCNPJ = cnpj.includes('/');
-        var tracoCNPJ = cnpj.includes('-');
-        var pontoCNPJ = cnpj.includes('.');
-
-        //validação email
-        var gmail = email.includes('@gmail.com')
-        var outlook = email.includes('@outlook.com')
-
-        if(barraCNPJ == true && tracoCNPJ == true && pontoCNPJ == true){
-          //pass
-        } else {
-          alert('CNPJ inválido. Cheque se o ".", "/" e o "-" foram inseridos corretamente')
-        }
-
-        if(gmail == true || outlook == true){
-          //pass
-        } else {
-          alert('Email inválido. São somente permitidos gmail ou outlook')
-        }
+    // exemplo usuário 1
+    if (cnpj == '12.345.678/0001-90' && email == 'joao.silva123@gmail.com' && senha == 'Abc@1234') {
+      alert(`Seu usuário foi logado com sucesso!`)
+    } else {
+      alert('Senha/Email/CNPJ inválidos, ou usuário inexistente. Verifique se todos os dados foram inseridos corretamente.')
     }
+
+    //validação cnpj
+    var barraCNPJ = cnpj.includes('/');
+    var tracoCNPJ = cnpj.includes('-');
+    var pontoCNPJ = cnpj.includes('.');
+
+    //validação email
+    var gmail = email.includes('@gmail.com')
+    var outlook = email.includes('@outlook.com')
+
+    if (barraCNPJ == true && tracoCNPJ == true && pontoCNPJ == true) {
+      //pass
+    } else {
+      alert('CNPJ inválido. Cheque se o ".", "/" e o "-" foram inseridos corretamente')
+    }
+
+    if (gmail == true || outlook == true) {
+      //pass
+    } else {
+      alert('Email inválido. São somente permitidos gmail ou outlook')
+    }
+  }
+
+  function passdash() {
+
+    window.location.href = 'telaDash.html';
+
+
+  }
 </script>
