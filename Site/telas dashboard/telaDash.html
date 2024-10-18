@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8" />
@@ -23,40 +23,41 @@
             <ul>
                 <li><i class="fa-solid fa-file"></i><a href="../../Calculadora/calculadora.html">Simulador</a></li>
                 <li><i class="fa-solid fa-gear"></i><a href="../../Serviços/Serviços.html">Serviços</a></li>
-                <li><i class="fa-solid fa-headphones-simple"></i><a href="../FaleConosco/faleconosco.html">Fale
-                        Conosco</a></li>
+                <li><i class="fa-solid fa-headphones-simple"></i><a href="../FaleConosco/faleconosco.html">Fale Conosco</a><li>
             </ul>
         </div>
         <a href="../Cadastro/tela_cadastro.html"><button>Cadastre-se</button></a>
     </section>
 
-    
-    
-        <div class="container">
-            <h1>Estatísticas:</h1>
-        <div class="title">
-            <div class="divKPI">
+    <div class="container">
+
+        <h1>Estatísticas</h1>
+
+        <div class="kpis">
+
+            <div class="divKPI1">
+                <h3>Taxa de ocupação semanal</h3>
                 <h1>37,5%</h3>
-                <h6>Taxa de ocupação semanal</h6>
             </div>
-            <div class="divKPI">
+
+            <div class="divKPI2">
+                <h3>Pico de vagas ocupadas</h3>
                 <h1>91</h3>
-                <h6>Pico de vagas ocupadas</h6>
             </div>
-            <div class="divKPI">
+
+            <div class="divKPI3">
+                <h3>Média da taxa de fluxo</h3>
                 <h1>43,25%</h3>
-                <h6>Média da taxa de fluxo</h6>
             </div>
 
         </div>
 
         <div class="canvaDash">
-            <div style="position: relative; height:40vh; width:40vw" class="divCanvas">
-            <canvas id="myChart"></canvas>
+            <div style="height: 40vh; width: 40vw;" class="divCanvas">
+                <canvas id="myChart"></canvas>
             </div>
-
-            <div style="position: relative; height:40vh; width:40vw" class="divCanvas">
-            <canvas id="myChart2"></canvas>
+            <div style="height:40vh; width: 40% class=" divCanvas">
+                <canvas id="myChart2"></canvas>
             </div>
         </div>
 
@@ -65,7 +66,7 @@
 </body>
 
 <script>
-    
+
     const labels = [
         'Semana 1',
         'Semana 2',
@@ -92,9 +93,6 @@
         options: {}
     };
 
-</script>
-
-<script>
     const labels2 = [
         '08/10/24',
         '09/10/24',
@@ -107,7 +105,7 @@
         datasets: [{
             label: 'Vagas ocupadas',
             backgroundColor: 'white',
-            borderColor: 'white',
+            borderColor: '#f5f5f5',
             data: [60, 80, 91, 30, 145],
         },
 
@@ -127,19 +125,15 @@
         options: {}
     };
 
-</script>
-
-<script>
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
-</script>
 
-<script>
     const myChart2 = new Chart(
         document.getElementById('myChart2'),
         config2
     );
 </script>
+
 </html>

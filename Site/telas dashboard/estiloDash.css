@@ -111,16 +111,52 @@ section>a>button {
     flex-direction: column;
 }
 
-.container h1 {
+.container h1{
     color: #F46200;
 }
 
-.container .title{
-    width: 100%;
-    color: white;
+.container .kpis{
+    width: 100%;   
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+.divKPI1{
+    background-color: #161616;
+    color: white;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    height: 15vh;
+}
+
+.divKPI2{
+    background-color: #161616;
+    width: 30%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    height: 15vh;
+}
+
+.divKPI3{
+    background-color: #161616;
+    width: 30%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    height: 15vh;
+}
+
+.container .kpis h1 {
+    color: #F46200;
 }
 
 .container div{
@@ -129,18 +165,10 @@ section>a>button {
     text-align: center;
 }
 
-.title div h3 {
-    display: flex;
-    justify-content: space-around;
-    padding: 5px;
-    border-radius:  12px;
-}
-
 canvas {
     transition: 0.3s ease;
-    background-color: black;
-    justify-content: space-between;
-    border-radius: 20px;
+    background-color: #161616;
+    border-radius: 15px;
 }
 
 canvas:hover {
@@ -151,9 +179,16 @@ canvas:hover {
 .canvaDash{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .divCanvas{
-    padding: 10px;
+    height: 40vh;
+    width: 100%;
+}
+
+#myChart, #myChart2{
+    height: 40vh;
+    width: 40vw;
 }
 
