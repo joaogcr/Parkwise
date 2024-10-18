@@ -1,0 +1,81 @@
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkWise - Serviços</title>
+    <link rel="stylesheet" href="estilohub.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="imagens/Logo_ParkWise_black.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="orange-line"></div>
+    <section>
+        <div class="logo">
+            <img src="../Serviços/imagens/image.png" alt="">
+            <h2>Park<span>Wise</span></h2>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><i class="fa-solid fa-file"></i><a href="../Calculadora/calculadora.html">Simulador</a></li>
+                <li><i class="fa-solid fa-gear"></i><a href="../Serviços/Serviços.html">Serviços</a></li>
+                <li><i class="fa-solid fa-headphones-simple"></i><a href="../FaleConosco/faleconosco.html">Fale
+                        Conosco</a></li>
+            </ul>
+        </div>
+        <a href="../Cadastro/tela_cadastro.html"><button>Cadastre-se</button></a>
+    </section>
+
+    <div class="boxes">
+
+        <div class="box">
+            <div class="img-box">
+                <img src="../Serviços/imagens/banco de dados.png" alt="">
+            </div>
+            <div onclick="cadastrar()" class="barra">
+                <p>Cadastrar</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="img-box">
+                <img src="../telas dashboard/imagens/image.png" alt="">
+            </div>
+            <div onclick="irDash()" class="barra">
+                <p>DashBoard</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="voltar">
+
+        <a href="../Homepage/index.html"><button>Home</button></a>
+
+    </div>
+
+
+
+
+</body>
+<script>
+
+    function irDash() {
+
+        window.location.href = 'telaDash.html';
+
+    }
+
+    function cadastrar() {
+
+        window.location.href = 'tela_cadastro.html';
+
+    }
+
+
+</script>
