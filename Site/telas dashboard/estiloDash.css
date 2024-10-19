@@ -178,17 +178,13 @@ canvas:hover {
 
 .canvaDash{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .divCanvas{
     height: 40vh;
     width: 100%;
-}
-
-#myChart, #myChart2{
-    height: 40vh;
-    width: 40vw;
+    display: flex;
+    justify-content: center;
 }
 
