@@ -212,13 +212,6 @@ a{
     font-size: 10px;
 }
 
-.card >.cadastro-right > .contrato {
-    display: flex;
-    gap: 10px;
-    color: white;
-    font-size: 15px;
-}
-
 .card > .cadastro-right > .btn > button{
     width: 100px;
     background-color: #000000;
