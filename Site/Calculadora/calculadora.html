@@ -195,7 +195,7 @@
         var receita = vagasOcupadas * valorParaCadaCarro * 8; // receita do estacionamento gerado por cada vaga
 
         var manutencao = preco * 30 / 100; // manutenção dos sensores é 30% do preço para cada carro
-        var lucroPotencial = vagasLivres * manutencao * 24; //prejuízo para cada vaga livre no estacionamento 
+        var lucroPotencial = ((capacidade * valorParaCadaCarro) - (vagasOcupadas * valorParaCadaCarro)) * 8; //prejuízo para cada vaga livre no estacionamento 
 
         var lucro = receita - lucroPotencial;
         var lucroPotencialSemanal = lucroPotencial * 7; // lucro semanal(constante)
@@ -225,9 +225,9 @@
         div_lucroDiario.innerHTML = `R$${receita.toFixed(2)}`;
         div_lucroSemanal.innerHTML = `R$${(receita * 7).toFixed(2)}`;
         div_lucroMensal.innerHTML = `R$${(receita * 30).toFixed(2)}`;
-        div_potencialDiario.innerHTML = `R$${(receita + (lucroPotencial * 0.35)).toFixed(2)}`;
-        div_potencialSemanal.innerHTML = `R$${((receita * 7) + (lucroPotencial * 7 * 0.35)).toFixed(2)}`;
-        div_potencialMensal.innerHTML = `R$${((receita * 30) + (lucroPotencial * 30 * 0.35)).toFixed(2)}`;
+        div_potencialDiario.innerHTML = `R$${(receita + (receita * 0.35)).toFixed(2)}`;
+        div_potencialSemanal.innerHTML = `R$${((receita * 7) + (receita * 7 * 0.35)).toFixed(2)}`;
+        div_potencialMensal.innerHTML = `R$${((receita * 30) + (receita * 30 * 0.35)).toFixed(2)}`;
         
     }
 </script>
