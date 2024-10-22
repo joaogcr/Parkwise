@@ -260,6 +260,7 @@ button {
 
 .containerresul span {
     color: white;
+    width: 130px;
 }
 
 .branco {
@@ -309,7 +310,6 @@ button {
 }
 
 #div_vagasLivres {
-    margin-left: 47px;
     color: rgb(21, 255, 0);
     font-weight: 600;
 }
@@ -320,7 +320,6 @@ button {
 }
 
 #div_receitaAtual {
-    margin-left: 95px;
     color: #F46200;
     font-weight: 600;
 }
