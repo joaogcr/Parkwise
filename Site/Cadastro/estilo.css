@@ -172,8 +172,7 @@ a{
 }
 
 .card > .cadastro-right > h2{
-    padding-bottom: 30px;
-    padding-top: 20px;
+    font-size: 35px;
 }
 
 .card > .cadastro-right > .inputs{
@@ -220,4 +219,12 @@ a{
     font-weight: 700;
     color: white;
     border-radius: 12px;
+}
+
+.card > .cadastro-right > .btn{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

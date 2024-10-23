@@ -85,6 +85,11 @@ section > .logo > img {
     top: 10px;
 }
 
+section > .logo  {
+    display: flex;
+    align-items: center;
+}
+
 section > .menu {
     background-color: #000000;
     border-radius: 20px;

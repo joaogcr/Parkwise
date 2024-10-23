@@ -8,11 +8,7 @@
 
     <link rel="stylesheet" href="../Calculadora/stylecalc.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <link
-    rel="shortcut icon"
-    href="imagem/Logo_ParkWise_black.png"
-    type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="imagem/Logo_ParkWise_black.png" type="image/x-icon" />
 </head>
 
 <body>
@@ -28,7 +24,8 @@
             <ul>
                 <li><i class="fa-solid fa-file"></i><a href="../Calculadora/calculadora.html">Simulador</a></li>
                 <li><i class="fa-solid fa-gear"></i><a href="../Serviços/Serviços.html">Serviços</a></li>
-                <li><i class="fa-solid fa-headphones-simple"></i><a href="../FaleConosco/faleconosco.html">Fale Conosco</a></li>
+                <li><i class="fa-solid fa-headphones-simple"></i><a href="../FaleConosco/faleconosco.html">Fale
+                        Conosco</a></li>
             </ul>
         </div>
         <a href="../Login/tela_login.html"><button>Login</button></a>
@@ -201,23 +198,6 @@
         var lucroPotencialSemanal = lucroPotencial * 7; // lucro semanal(constante)
         var lucroPotencialMensal = lucroPotencial * 30; // lucro mensal(constante)
 
-        // div_mensagem.innerHTML =
-        //     `
-        // <br><br>
-        // O Estacionamento tem capacidade total de ${capacidade} vagas, cobrando R$${preco} por hora e com adicional de R$${precoAdicional} por hora <br>
-        // <p style = "color:green;"><b>Vagas Ocupadas: ${vagasOcupadas} </b></p>
-        // <p style = "color:green;"><b>Receita Diária: R$${receita}</b></p>
-        // <p style = "color:green;"><b>Receita Semanal: R$${receita * 7}</b></p>
-        // <p style = "color:green;"><b>Receita Mensal: R$${receita * 30}</b></p>
-        // <p style = "color:red;"><b>Vagas Livres: ${vagasLivres} </b></p>
-        // <p style = "color:red;"><b>Receita Potencial Diária: R$${lucroPotencial}</b></p>
-        // <h4>Utilizando a solução da ParkWise, sua nova simulação ficará assim:</h4>
-        // Nova Receita Diária:  <b>R$${receita + (lucroPotencial * 0.4)}</b> <br><br>  
-        // Nova Receita Semanal: <b>R$${(receita * 7) + (lucroPotencial * 7 * 0.4)}</b> <br><br>
-        // Nova Receita Mensal:  <b>R$${(receita * 30) + (lucroPotencial * 30 * 0.4)}</b> <br><br>
-        // <br>
-        // `
-
         div_vagasOcupadas.innerHTML = `${vagasOcupadas}`;
         div_vagasLivres.innerHTML = `${vagasLivres}`;
         div_receitaAtual.innerHTML = `R$${receita.toFixed(2)}`;
@@ -228,6 +208,6 @@
         div_potencialDiario.innerHTML = `R$${(receita + (receita * 0.35)).toFixed(2)}`;
         div_potencialSemanal.innerHTML = `R$${((receita * 7) + (receita * 7 * 0.35)).toFixed(2)}`;
         div_potencialMensal.innerHTML = `R$${((receita * 30) + (receita * 30 * 0.35)).toFixed(2)}`;
-        
+
     }
 </script>

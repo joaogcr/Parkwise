@@ -58,12 +58,10 @@
           <input type="password" id="input_senha" placeholder="********" />
         </div>
 
-        <div class="btn">
-          <button onclick="validacao(); passdash()">Entrar</button>
-          <br>
-          
-
-        </div>
+      </div>
+      <div class="btn">
+        <button onclick="validacao(); passdash()">Entrar</button>
+        <br>
       </div>
 
     </div>
@@ -82,7 +80,7 @@
     var senha = input_senha.value;
 
     // exemplo usuário 1
-    if (cnpj == '12.345.678/0001-90' && email == 'joao.silva123@gmail.com' && senha == 'Abc@1234') {
+    if (cnpj == '12.345.678/0001-90' && email == 'admin@gmail.com' && senha == 'Admin@1234') {
       alert(`Seu usuário foi logado com sucesso!`)
     } else {
       alert('Senha/Email/CNPJ inválidos, ou usuário inexistente. Verifique se todos os dados foram inseridos corretamente.')
@@ -112,8 +110,12 @@
 
   function passdash() {
 
-    window.location.href = 'hub.html';
-
+    if (cnpj == '12.345.678/0001-90' && email == 'admin@gmail.com' && senha == 'Admin@1234') {
+      window.location.href = 'hub.html';
+    }
+    else {
+      return;
+    }
 
   }
 </script>
