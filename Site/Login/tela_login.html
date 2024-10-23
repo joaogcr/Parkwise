@@ -82,6 +82,7 @@
     // exemplo usuário 1
     if (cnpj == '12.345.678/0001-90' && email == 'admin@gmail.com' && senha == 'Admin@1234') {
       alert(`Seu usuário foi logado com sucesso!`)
+      window.location.href = '../Login/hub.html';
     } else {
       alert('Senha/Email/CNPJ inválidos, ou usuário inexistente. Verifique se todos os dados foram inseridos corretamente.')
     }
@@ -99,6 +100,7 @@
       //pass
     } else {
       alert('CNPJ inválido. Cheque se o ".", "/" e o "-" foram inseridos corretamente')
+
     }
 
     if (gmail == true || outlook == true) {
@@ -108,14 +110,4 @@
     }
   }
 
-  function passdash() {
-
-    if (cnpj == '12.345.678/0001-90' && email == 'admin@gmail.com' && senha == 'Admin@1234') {
-      window.location.href = 'hub.html';
-    }
-    else {
-      return;
-    }
-
-  }
 </script>
