@@ -130,7 +130,7 @@ section > a > button {
   justify-content: space-between;
 }
 
-.box p{
+.box p {
   font-weight: bold;
 }
 
@@ -145,6 +145,7 @@ section > a > button {
   align-items: center;
   font-size: 30px;
   color: #f0f5fd;
+  cursor: pointer;
 }
 
 .voltar {
