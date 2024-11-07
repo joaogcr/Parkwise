@@ -1,0 +1,67 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkWise - Fale Conosco</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="img/ParkWise.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="orange-line"></div>
+
+
+    <section>
+        <div class="logo">
+            <img src="img/ParkWise (1).png" alt="">
+            <h2>Park<span>Wise</span></h2>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><i class="fa-solid fa-file"></i><a href="../Calculadora/calculadora.html">Simulador</a></li>
+                <li><i class="fa-solid fa-gear"></i><a href="../Serviços/Serviços.html">Serviços</a></li>
+                <li><i class="fa-solid fa-headphones-simple"></i><a href="../FaleConosco/faleconosco.html">Fale
+                        Conosco</a></li>
+            </ul>
+        </div>
+        <a href="../Login/tela_login.html"><button class="login-button">Login</button></a>
+    </section>
+
+    <section class="container">
+
+        <div class="left-section">
+            <h1><span class="fale">Fale</span> <span class="conosco">Conosco</span></h1>
+            <h3>Envie sua dúvida:</h3>
+            <a href="../Homepage/index.html"><button><i class="fa-solid fa-right-from-bracket"></i>Home</button></a>
+        </div>
+
+
+        <div class="right-section">
+            <h2>Insira seus dados:</h2>
+            <form action="#" method="post">
+                <div class="campo">
+                    <h5>E-mail:</h5>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+                <div class="campo">
+                    <h5>Telefone:</h5>
+                    <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" required>
+                </div>
+                <div class="campo">
+                    <h5>Descrição:</h5>
+                    <textarea id="message" name="message" rows="4" placeholder="Descreva o motivo do contato"
+                        required></textarea>
+                </div>
+                <div class="campo">
+                    <button type="submit" class="send-button">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+</body>
+
+</html>
