@@ -129,7 +129,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    height: 450px;
+    height: 76vh;
     width: 500px;
 }
 
@@ -167,8 +167,9 @@ a{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 450px;
+    height: 75vh;
     width: 500px;
+    padding: 20px;
 }
 
 .card > .cadastro-right > h2{

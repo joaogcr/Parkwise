@@ -5,9 +5,9 @@ function validacaoEmail() {
 
   var mensagem = ``;
   if (termina_gmail == false) {
-    mensagem = `<spam style="color: red;">O E-mail precisa terminar em @gmail.com</spam> <br>`;
+    mensagem = `<span style="color: white;">O E-mail precisa terminar em @gmail.com</span> <br>`;
   } else {
-    mensagem = `<spam style="color: blue;">O E-mail precisa terminar em @gmail.com</spam> <br>`;
+    mensagem = ``;
   }
 
   div_mensagem.innerHTML = `<div style="
@@ -15,7 +15,6 @@ function validacaoEmail() {
     justify-content: center; 
     align-items: center; 
     font-size: 15px;
-    background-color: #000000;
     text-align: center;
     height: 70px;">${mensagem}</div>`;
 }
@@ -27,9 +26,9 @@ function validacaoCnpj() {
 
   var mensagem = ``;
   if (tem_0001 == false) {
-    mensagem = `<spam style="color: red;">O CNPJ precisa conter /0001</spam> <br>`;
+    mensagem = `<span style="color: white;">O CNPJ precisa conter /0001</span> <br>`;
   } else {
-    mensagem = `<spam style="color: blue;">O CNPJ precisa conter /0001</spam> <br>`;
+    mensagem = ``;
   }
 
   div_mensagem.innerHTML = `<div style="
@@ -37,7 +36,6 @@ function validacaoCnpj() {
     justify-content: center; 
     align-items: center; 
     font-size: 15px;
-    background-color: #000000;
     text-align: center;
     height: 70px;">${mensagem}</div>`;
 }
@@ -50,9 +48,9 @@ function validacaoSenha() {
   var tamanho_frase = frase_original.length;
 
   if (tamanho_frase >= 8) {
-    mensagem += `<spam style="color: blue;">A senha deve conter no mínimo 8 caracteres</spam> <br>`;
+    mensagem += ``;
   } else {
-    mensagem += `<spam style="color: red;">A senha deve conter no mínimo 8 caracteres</spam> <br>`;
+    mensagem += `<span style="color: white;">A senha deve conter no mínimo 8 caracteres</span> <br>`;
   }
   var frase_upper = frase_original.toUpperCase();
 
@@ -62,15 +60,15 @@ function validacaoSenha() {
   var maisculo = frase_original != frase_upper;
 
   if (minusculo == true) {
-    mensagem += `<spam style="color: blue;">A senha precisa ter letra MAIÚSCULA</spam> <br>`;
+    mensagem += ``;
   } else {
-    mensagem += `<spam style="color: red;">A senha precisa ter letra MAIÚSCULA</spam> <br>`;
+    mensagem += `<span style="color: white;">A senha precisa ter letra MAIÚSCULA</span> <br>`;
   }
 
   if (maisculo == true) {
-    mensagem += `<spam style="color: blue;">A senha precisa ter letra MINÚSCULA</spam> <br>`;
+    mensagem += ``;
   } else {
-    mensagem += `<spam style="color: red;">A senha precisa ter letra MINÚSCULA</spam> <br>`;
+    mensagem += `<span style="color: white;">A senha precisa ter letra MINÚSCULA</span> <br>`;
   }
 
   var frase_numero = false;
@@ -92,14 +90,13 @@ function validacaoSenha() {
   }
 
   if (frase_numero == false) {
-    mensagem += `<spam style="color: red;">A senha precisa ter um NÚMERO</spam> <br>`;
+    mensagem += `<span style="color: white;">A senha precisa ter um NÚMERO</span> <br>`;
   } else {
-    mensagem += `<spam style="color: blue;">A senha precisa ter um NÚMERO</spam> <br>`;
+    mensagem += ``;
   }
 
   div_mensagem.innerHTML = `<div style="
     font-size: 15px;
-    background-color: #000000;
     text-align: center;
     height: 70px;">${mensagem}</div>`;
 }
