@@ -71,6 +71,13 @@ function validacaoSenha() {
     mensagem += `<span style="color: white;">A senha precisa ter letra MINÚSCULA</span> <br>`;
   }
 
+  if(frase_original == "") {
+    div_mensagem.style.display = "none"
+  }
+  
+  else {
+    div_mensagem.style.display = "flex"
+
   var frase_numero = false;
   for (var i = 0; i < tamanho_frase; i++) {
     if (
@@ -99,6 +106,7 @@ function validacaoSenha() {
     font-size: 15px;
     text-align: center;
     height: 70px;">${mensagem}</div>`;
+}
 }
 
 function cadastrar() {
