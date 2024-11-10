@@ -1,19 +1,19 @@
-CREATE DATABASE parkwisePI;
 use parkwisePI;
+
 CREATE TABLE estacionamento(
 idEstacionamento int primary key auto_increment,
 nome varchar(45),
-telefone char(15),
+telefone varchar(45),
 capacidadeVagas int,
 cnpjEstacionamento char(18),
 logradouro varchar(45),
-numeroEnd char(4),
+numeroEnd varchar(45),
 bairro varchar(45)
 );
 
 CREATE TABLE usuario(
 idUsuario int primary key auto_increment,
-email varchar(100),
+email varchar(255),
 senha varchar(45),
 nomeUsuario varchar(45),
 fkEstacionamento int,
