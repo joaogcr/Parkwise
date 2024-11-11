@@ -3,17 +3,17 @@ use parkwisePI;
 CREATE TABLE estacionamento(
 idEstacionamento int primary key auto_increment,
 nome varchar(45),
-telefone varchar(45),
+telefone char(15),
 capacidadeVagas int,
 cnpjEstacionamento char(18),
 logradouro varchar(45),
-numeroEnd varchar(45),
+numeroEnd char(4),
 bairro varchar(45)
 );
 
 CREATE TABLE usuario(
 idUsuario int primary key auto_increment,
-email varchar(255),
+email varchar(100),
 senha varchar(45),
 nomeUsuario varchar(45),
 fkEstacionamento int,
@@ -22,7 +22,7 @@ constraint fkUsuarioEstacionamento foreign key (fkEstacionamento) references est
 
 CREATE TABLE suporte(
 idSuporte int primary key auto_increment,
-email varchar(255),
+email varchar(100),
 descricao varchar(300),
 dataSuporte date,
 fkUsuario int,
