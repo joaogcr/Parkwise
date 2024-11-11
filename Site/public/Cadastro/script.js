@@ -1,109 +1,99 @@
-// function validacaoEmail() {
-//   var frase_original = input_email.value;
+function validarEmail() {
+  var frase_original = input_email.value;
+  div_mensagem.innerHTML = "";
 
-//   var termina_gmail = frase_original.endsWith("@gmail.com");
+  // valida se tem .com ou .br
+  var finalEmailCom = frase_original.endsWith(".com");
+  var finalEmailBr = frase_original.endsWith(".br");
 
-//   var mensagem = ``;
-//   if (termina_gmail == false) {
-//     mensagem = `<spam style="color: red;">O E-mail precisa terminar em @gmail.com</spam> <br>`;
-//   } else {
-//     mensagem = `<spam style="color: blue;">O E-mail precisa terminar em @gmail.com</spam> <br>`;
-//   }
+  if (!finalEmailCom && !finalEmailBr) {
+    div_mensagem.innerHTML += `O e-mail não é válido. Deve terminar com '.com' ou '.br'. <br>`;
+  }
 
-//   div_mensagem.innerHTML = `<div style="
-//     display: flex; 
-//     justify-content: center; 
-//     align-items: center; 
-//     font-size: 15px;
-//     background-color: #000000;
-//     text-align: center;
-//     height: 70px;">${mensagem}</div>`;
-// }
+  // valida se tem arroba
+  var arroba = frase_original.includes("@");
 
-// function validacaoCnpj() {
-//   var frase_original = input_cnpj.value;
+  if (!arroba) {
+    div_mensagem.innerHTML += `O e-mail não é válido. Deve conter '@'. <br>`;
+  }
+}
 
-//   var tem_0001 = frase_original.includes("/0001");
+function validacaoCnpj() {
+  var frase_original = input_cnpj.value;
 
-//   var mensagem = ``;
-//   if (tem_0001 == false) {
-//     mensagem = `<spam style="color: red;">O CNPJ precisa conter /0001</spam> <br>`;
-//   } else {
-//     mensagem = `<spam style="color: blue;">O CNPJ precisa conter /0001</spam> <br>`;
-//   }
+  var tem_0001 = frase_original.includes("/0001");
 
-//   div_mensagem.innerHTML = `<div style="
-//     display: flex; 
-//     justify-content: center; 
-//     align-items: center; 
-//     font-size: 15px;
-//     background-color: #000000;
-//     text-align: center;
-//     height: 70px;">${mensagem}</div>`;
-// }
+  var mensagem = ``;
+  if (tem_0001 == false) {
+    mensagem = `O CNPJ precisa conter /0001 <br>`;
+  }
 
-// function validacaoSenha() {
-//   var frase_original = input_senha.value;
+  div_mensagem.innerHTML = mensagem;
+}
 
-//   var mensagem = ``;
+function validarSenha() {
+  var senha = input_senha.value;
+  mensagemErroSenha.innerHTML = ``;
 
-//   var tamanho_frase = frase_original.length;
+  var caracteresEspeciais = "!@#$%&?";
+  var tamanhoSenha = senha.length;
+  var temCaractereEspecial = false;
+  var mensagensErro = [];
 
-//   if (tamanho_frase >= 8) {
-//     mensagem += `<spam style="color: blue;">A senha deve conter no mínimo 8 caracteres</spam> <br>`;
-//   } else {
-//     mensagem += `<spam style="color: red;">A senha deve conter no mínimo 8 caracteres</spam> <br>`;
-//   }
-//   var frase_upper = frase_original.toUpperCase();
+  //validando tamanho da senha
+  if (tamanhoSenha < 8) {
+    mensagensErro.push(`A senha precisa ter oito caracteres.`);
+  }
 
-//   var frase_lower = frase_original.toLowerCase();
+  if (tamanhoSenha > 30) {
+    mensagensErro.push(`A senha precisa ter no máximo trinta caracteres.`);
+  }
 
-//   var minusculo = frase_original != frase_lower;
-//   var maisculo = frase_original != frase_upper;
+  //validando caractere especial
+  for (var i = 0; i < tamanhoSenha; i++) {
+    if (caracteresEspeciais.includes(senha[i])) {
+      temCaractereEspecial = true;
+    }
+  }
 
-//   if (minusculo == true) {
-//     mensagem += `<spam style="color: blue;">A senha precisa ter letra MAIÚSCULA</spam> <br>`;
-//   } else {
-//     mensagem += `<spam style="color: red;">A senha precisa ter letra MAIÚSCULA</spam> <br>`;
-//   }
+  if (!temCaractereEspecial) {
+    mensagensErro.push(
+      `A senha precisa conter ao menos um caractere especial.`
+    );
+  }
 
-//   if (maisculo == true) {
-//     mensagem += `<spam style="color: blue;">A senha precisa ter letra MINÚSCULA</spam> <br>`;
-//   } else {
-//     mensagem += `<spam style="color: red;">A senha precisa ter letra MINÚSCULA</spam> <br>`;
-//   }
+  // criando array com letras e spread operator
+  const minusculas = [..."abcdefghijklmnopqrstuvwxyz"];
+  const maiusculas = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 
-//   var frase_numero = false;
-//   for (var i = 0; i < tamanho_frase; i++) {
-//     if (
-//       frase_original[i] == 0 ||
-//       frase_original[i] == 1 ||
-//       frase_original[i] == 2 ||
-//       frase_original[i] == 3 ||
-//       frase_original[i] == 4 ||
-//       frase_original[i] == 5 ||
-//       frase_original[i] == 6 ||
-//       frase_original[i] == 7 ||
-//       frase_original[i] == 8 ||
-//       frase_original[i] == 9
-//     ) {
-//       frase_numero = true;
-//     }
-//   }
+  // verifica com o some se passa em pelo menos uma das letras dentro do array
+  // o "letra" eh o nome do elemento do array
 
-//   if (frase_numero == false) {
-//     mensagem += `<spam style="color: red;">A senha precisa ter um NÚMERO</spam> <br>`;
-//   } else {
-//     mensagem += `<spam style="color: blue;">A senha precisa ter um NÚMERO</spam> <br>`;
-//   }
+  var temMinuscula = minusculas.some((letra) => senha.includes(letra));
+  var temMaiuscula = maiusculas.some((letra) => senha.includes(letra));
 
-//   div_mensagem.innerHTML = `<div style="
-//     font-size: 15px;
-//     background-color: #000000;
-//     text-align: center;
-//     height: 70px;">${mensagem}</div>`;
-// }
+  if (!temMinuscula) {
+    mensagensErro.push("A senha precisa conter ao menos uma letra minúscula.");
+  }
 
+  if (!temMaiuscula) {
+    mensagensErro.push("A senha precisa conter ao menos uma letra maiúscula.");
+  }
+
+  const numeros = [..."01234567889"];
+
+  var temNumero = numeros.some((numero) => senha.includes(numero));
+
+  if (!temNumero) {
+    mensagensErro.push("A senha preciso conter ao menos um número.");
+  }
+
+  // trazendo todas as mensagens q tao dentro do array e dando join com o br para quebrar linha
+  document.getElementById("div_mensagem").innerHTML =
+    mensagensErro.join("<br>");
+}
+
+// front api
 function cadastrar() {
   var nomeVar = input_nome.value;
   var cnpjVar = input_cnpj.value;
@@ -122,7 +112,7 @@ function cadastrar() {
       cnpjServer: cnpjVar,
       telefoneServer: telefoneVar,
       logradouroServer: logradouroVar,
-      vagasServer: vagasVar
+      vagasServer: vagasVar,
     }),
   })
     .then((resposta) => {
@@ -130,7 +120,9 @@ function cadastrar() {
         alert("Cadastro realizado com sucesso!");
         window.location.href = "../Login/tela_login.html"; // Redireciona para a página de login
       } else {
-        return resposta.text().then(text => { throw new Error(text) });
+        return resposta.text().then((text) => {
+          throw new Error(text);
+        });
       }
     })
     .catch((erro) => {
@@ -138,4 +130,3 @@ function cadastrar() {
       alert("Erro ao realizar o cadastro: " + erro.message);
     });
 }
-
