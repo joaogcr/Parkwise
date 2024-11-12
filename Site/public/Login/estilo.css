@@ -127,8 +127,8 @@ body{
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    height: 450px;
-    width: 500px;
+    height: 500px;
+    width: 600px;
 }
 
 .card > .cadastro-left > h1{
@@ -164,8 +164,8 @@ a{
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
-    height: 450px;
-    width: 500px;
+    height: 500px;
+    width: 600px;
 }
 
 .card > .cadastro-right > h2{

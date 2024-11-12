@@ -57,6 +57,8 @@ function cadastrar(req, res) {
     var vagas = req.body.vagasServer;
     var cnpj = req.body.cnpjServer;
     var logradouro = req.body.logradouroServer;
+    var numeroEND = req.body.numeroENDServer;
+    var bairro = req.body.bairroServer;
     // var email = req.body.emailServer;
     // var senha = req.body.senhaServer;
     // var estacionamento = req.body.estacionamentoServer;
@@ -80,13 +82,17 @@ function cadastrar(req, res) {
     } else if (vagas == undefined) {
         res.status(400).send("Vagas está undefined!");
     } else if (cnpj == undefined) {
-        res.status(400).send("CNPJ está undefined!");}
-        else if (logradouro == undefined) {
+        res.status(400).send("CNPJ está undefined!");
+    }else if (logradouro == undefined) {
             res.status(400).send("Logradouro está undefined!");
+    }else if(numeroEND == undefined){
+        res.status(400).send("Endereco está undefined!");
+    }else if(bairro == undefined){
+        res.status(400).send("Bairro está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, telefone, vagas, cnpj, logradouro)
+        usuarioModel.cadastrar(nome, telefone, vagas, cnpj, logradouro, numeroEND, bairro)
             .then(
                 function (resultado) {
                     res.json(resultado);

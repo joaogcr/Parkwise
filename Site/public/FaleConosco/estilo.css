@@ -128,8 +128,8 @@ body{
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    height: 450px;
-    width: 500px; 
+    height: 500px;
+    width: 600px;
 }
 
 .right-section {
@@ -139,8 +139,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 450px;
-    width: 500px;
+    height: 500px;
+    width: 600px;
 }
 
 .left-section h1 {
