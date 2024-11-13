@@ -16,7 +16,7 @@ function cadastrar(nome, telefone, vagas, cnpj, logradouro, numeroEND, bairro, e
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEND, bairro) VALUES ('${nome}', '${telefone}', '${vagas}', '${cnpj}', '${logradouro}', '${numeroEND}', '${bairro}', '${email}', '${senha}');
+        INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEND, bairro, email, senha) VALUES ('${nome}', '${telefone}', '${vagas}', '${cnpj}', '${logradouro}', '${numeroEND}', '${bairro}', '${email}', '${senha}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
