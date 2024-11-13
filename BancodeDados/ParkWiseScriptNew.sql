@@ -9,7 +9,9 @@ capacidadeVagas int,
 cnpjEstacionamento char(18),
 logradouro varchar(45),
 numeroEnd char(4),
-bairro varchar(45)
+bairro varchar(45),
+email varchar(100),
+senha varchar(50)
 );
 
 CREATE TABLE usuario(

@@ -95,13 +95,15 @@ function validarSenha() {
 
 // front api
 function cadastrar() {
-  var nomeVar = input_estacionamento.value;
+  var estacionamentoVar = input_estacionamento.value;
   var cnpjVar = input_cnpj.value;
   var telefoneVar = input_telefone.value;
   var logradouroVar = input_logradouro.value;
   var vagasVar = Number(input_vaga.value);
   var numeroENDVar = input_endereco.value;
   var bairroVar = input_bairro.value;
+  var emailVar = input_email.value;
+  var senhaVar = input_senha.value;
 
   // Enviando o valor da nova input
   fetch("/usuarios/cadastrar", {
@@ -115,8 +117,10 @@ function cadastrar() {
       telefoneServer: telefoneVar,
       logradouroServer: logradouroVar,
       vagasServer: vagasVar,
-      numeroENDServer : numeroENDVar,
-      bairroServer : bairroVar
+      numeroENDServer: numeroENDVar,
+      bairroServer: bairroVar,
+      emailServer: emailVar,
+      senhaServer: senhaVar
     }),
   })
     .then((resposta) => {
