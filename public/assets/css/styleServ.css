@@ -197,11 +197,13 @@ section>a>button {
     border: #000000 1px solid;
     border-radius: 20px;
     background-color: #000000;
+    width: 100%;
     height: 40%;
     padding: 10px;
     /* aling-self é utilizado para alinhar verticalmente */
     align-self: self-end;
     flex-direction: column;
+    justify-content: center; 
     align-items: center;
 }
 
