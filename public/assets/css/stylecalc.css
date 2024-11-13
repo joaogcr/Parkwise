@@ -1,0 +1,370 @@
+body {
+    background-color: #282828;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #F0F5FD;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #fb8500;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #d36600
+}
+
+.orange-line{
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.footer{
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+body{
+    background-color: #282828;
+}
+
+body .container {
+    flex-direction: column;
+}
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    padding-top: 40px;
+}
+a{
+    color: white;
+    font-weight: 200;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a:hover{
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+a > button:hover{
+    background-color: white;
+    color:#F46200;
+    transition: 0.8s ease-in-out;
+}
+
+.orange-line{
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: center;
+}
+
+section > .logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section > .logo > h2 {
+    font-size: 30px;
+}
+
+section > .logo > h2 > span{
+    color: #F46200;
+}
+
+section > .logo > img {
+    width: 60px;
+    position: relative;
+    top: 10px;
+}
+
+section > .menu {
+    background-color: #000000;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 60px;
+    justify-content: space-around;
+}
+
+section > .menu > ul {
+    display: flex;
+    list-style: none;
+    gap: 100px;
+}
+
+section > .menu > ul > li > i{
+        margin-right: 15px;
+        color: #F46200;
+}
+
+section > a > button{
+    background-color: #F46200;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+    transition: 0.8s ease-in-out;
+}
+
+.container {
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    padding: 40px;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+h1 {
+    color: #F46200;
+    font-size: 25px;
+}
+
+.titulo1 span {
+    color: white;
+    font-size: 40px;
+}
+
+h3 {
+    color: white;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+input {
+    background-color: #F46200;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 450px;
+    color: #000000;
+    font-weight: 600;
+    text-align: center;
+}
+
+input::placeholder {
+    color: #000000;
+    font-weight: 600;
+}
+
+button {
+    background-color: #F46200;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+    margin-top: 20px;
+}
+
+.botao1 {
+    margin-top: 30px;
+    background-color: #F46200;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+    text-align: center;
+}
+
+.containerresul {
+    background-color: #000000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 1200px;
+    padding: 40px;
+    border-radius: 20px;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.containerresul2 {
+    background-color: #F46200;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 1200px;
+    padding: 40px;
+    border-radius: 20px;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.mensagem {
+    color: #000000;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.vagas {
+    padding: 20px;
+    width: 500px;
+    display: flex;
+}
+
+.receita {
+    padding: 20px;
+    width: 500px;
+    display: flex;
+}
+
+.alinhar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.containerresul span {
+    color: white;
+    width: 130px;
+}
+
+.branco {
+    background-color: white;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    padding: 12px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.laranja {
+    background-color: #F46200;
+    color: white;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    padding: 12px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.preto {
+    background-color: #000;
+    color: white;
+    width: 200px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    padding: 12px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#div_vagasLivres {
+    color: rgb(21, 255, 0);
+    font-weight: 600;
+}
+
+#div_vagasOcupadas {
+    color: #F46200;
+    font-weight: 600;
+}
+
+#div_receitaAtual {
+    color: #F46200;
+    font-weight: 600;
+}
+
+#div_receitaPotencial {
+    color: rgb(21, 255, 0);
+    font-weight: 600;
+}
+
+.lucro {
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.receitaVagas {
+    display: flex;
+}
+
+.alinhar {
+    display: none;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    margin-bottom: 10px;
+}
+
+.lucroDiario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lucroSemanal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lucroMensal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

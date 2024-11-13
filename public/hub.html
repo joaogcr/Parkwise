@@ -1,0 +1,81 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkWise - Hub</title>
+    <link rel="stylesheet" href="./assets/css/estilohub.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="./assets/images/Logo_ParkWise_black.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="orange-line"></div>
+        <section>
+            <div class="logo">
+                <img src="./assets/images/Logo_ParkWise.PNG" alt="">
+                <h2>Park<span>Wise</span></h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><i class="fa-solid fa-file"></i><a href="./calculadora.html">Simulador</a></li>
+                    <li><i class="fa-solid fa-gear"></i><a href="./Serviços.html">Serviços</a></li>
+                    <li><i class="fa-solid fa-headphones-simple"></i><a href="./faleconosco.html">Fale
+                            Conosco</a></li>
+                </ul>
+            </div>
+            <a href="./tela_login.html"><button>Login</button></a>
+        </section>
+    </header>
+
+    <div class="boxes">
+
+        <div class="box">
+            <div class="img-box">
+                <img src="./assets/images/hub (1).png" alt="">
+            </div>
+            <div onclick="cadastrar()" class="barra">
+                <p>Cadastro de usuários</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="img-box">
+                <img src="./assets/images/hub (2).png" alt="">
+            </div>
+            <div onclick="irDash()" class="barra">
+                <p>DashBoard</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="voltar">
+
+        <a href="./index.html"><button>Home</button></a>
+
+    </div>
+
+
+
+
+</body>
+<script>
+
+    function irDash() {
+
+        window.location.href = 'telaDash.html';
+
+    }
+
+    function cadastrar() {
+
+        window.location.href = '';
+
+    }
+
+
+</script>

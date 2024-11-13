@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body {
+    background-color: #282828;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+a:hover {
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+button:hover {
+    background-color: white;
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+.orange-line {
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.divKPI{
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: center;
+}
+
+section>.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section>.logo>h2 {
+    font-size: 30px;
+}
+
+section>.logo>h2>span {
+    color: #F46200;
+}
+
+section>.logo>img {
+    width: 60px;
+    position: relative;
+    top: 10px;
+}
+
+section>.menu {
+    background-color: #000000;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 60px;
+    justify-content: space-around;
+}
+
+section>.menu>ul {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+}
+
+section>.menu>ul>li>i {
+    margin-right: 15px;
+    color: #F46200;
+}
+
+section>a>button {
+    background-color: #F46200;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 220px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+    transition: 0.8s ease-in-out;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    height: calc(100vh - 120px); 
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container h1{
+    color: #F46200;
+}
+
+.container .kpis{
+    width: 100%;   
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.divKPI1{
+    background-color: #161616;
+    color: white;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    height: 15vh;
+}
+
+.divKPI2{
+    background-color: #161616;
+    width: 30%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    height: 15vh;
+}
+
+.divKPI3{
+    background-color: #161616;
+    width: 30%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    height: 15vh;
+}
+
+.container .kpis h1 {
+    color: #F46200;
+}
+
+.container div{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+canvas {
+    transition: 0.3s ease;
+    background-color: #161616;
+    border-radius: 15px;
+}
+
+canvas:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease;
+}
+
+.canvaDash{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.divCanvas{
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+

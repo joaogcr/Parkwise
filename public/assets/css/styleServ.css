@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body {
+    background-color: #282828;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #F0F5FD;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #fb8500;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #d36600
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+a:hover {
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+button:hover {
+    background-color: white;
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+.orange-line {
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+section {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: center;
+}
+
+section>.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section>.logo>h2 {
+    font-size: 30px;
+}
+
+section>.logo>h2>span {
+    color: #F46200;
+}
+
+section>.logo>img {
+    width: 60px;
+    position: relative;
+    top: 10px;
+}
+
+section>.menu {
+    background-color: #000000;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 60px;
+    justify-content: space-around;
+}
+
+section>.menu>ul {
+    display: flex;
+    list-style: none;
+    gap: 100px;
+}
+
+section>.menu>ul>li>i {
+    margin-right: 15px;
+    color: #F46200;
+}
+
+section>a>button {
+    background-color: #F46200;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+    transition: 0.8s ease-in-out;
+}
+
+.tittle {
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    padding-top: 90px;
+}
+
+#titulo-Branco {
+    color: white;
+}
+
+#titulo-Laranja {
+    color: #F46200;
+}
+
+.box {
+    height: 75%;
+}
+
+.box2 {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.Botao-Home {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+#botaoHome {
+    color: white;
+    background-color: #F46200;
+    border-radius: 15px;
+    border: 2px solid black;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.diagrama {
+
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(231, 220, 220);
+    border-radius: 20px;
+    width: 90%;
+    height: 80%;
+    padding: 40px;
+    box-shadow: 10px 6px 1px #F46200;
+}
+
+.bloco {
+
+    display: flex;
+    background-color: #F46200;
+    border-radius: 20px;
+    width: 60%;
+    height: 100%;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
+    transition: 0.5s;
+
+}
+
+.bloco:hover{
+    height: 100%;
+    width: 80%;
+}
+
+.barra {
+
+    display: flex;
+    border: #000000 1px solid;
+    border-radius: 20px;
+    background-color: #000000;
+    height: 40%;
+    padding: 10px;
+    /* aling-self é utilizado para alinhar verticalmente */
+    align-self: self-end;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-barra {
+    color: white;
+}
+
+.seta {
+    align-self: center;
+}
+
+.seta img {
+    width: 40px;
+}
+
+#frase-Sensor {
+
+    color: #F46200;
+}
+
+#frase-Armazenamento {
+
+    color: #F46200;
+
+}
+
+#frase-Usuario {
+
+    color: #F46200;
+}
+
+#frase-DashBoard {
+
+    color: #F46200;
+}
+
+#frase-Passos {
+
+    color: #F46200;
+}
+
+.img-bloco {
+    padding: 25px;
+    text-align: center;
+    width: 100%;
+}
+
+.img-bloco img {
+    width: 60%;
+}

@@ -1,0 +1,263 @@
+/* conversao css */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body{
+    background-color: #282828;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #F0F5FD;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #fb8500;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #d36600
+}
+
+/* menu */
+
+a{
+    color: white;
+    font-weight: 200;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a:hover{
+    color: #F46200;
+    transition: 0.8s ease-in-out;
+}
+
+a > button:hover{
+    background-color: white;
+    color:#F46200;
+    transition: 0.8s ease-in-out;
+}
+
+.orange-line{
+    background-color: #F46200;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: center;
+}
+
+section > .logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section > .logo > h2 {
+    font-size: 30px;
+}
+
+section > .logo > h2 > span{
+    color: #F46200;
+}
+
+section > .logo > img {
+    width: 60px;
+    position: relative;
+    top: 10px;
+}
+
+section > .logo  {
+    display: flex;
+    align-items: center;
+}
+
+section > .menu {
+    background-color: #000000;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 60px;
+    justify-content: space-around;
+}
+
+section > .menu > ul {
+    display: flex;
+    list-style: none;
+    gap: 100px;
+}
+
+section > .menu > ul > li > i{
+    margin-right: 15px;
+    color: #F46200;
+}
+
+section > a > button{
+    background-color: #F46200;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+    transition: 0.8s ease-in-out;
+}
+
+/* parte 1 homepage */
+
+.container-home{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.container-informacoes{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.container-img > img{
+    width: 500px;
+}
+
+#titulo{
+    color: white;
+    font-weight: 600;
+    font-size: 150px;
+}
+
+#tituloLaranja{
+    color: #F46200;
+    font-weight: 700;
+    font-size: 150px;
+}
+
+#subtitulo{
+    color: white;
+    font-weight: 700;
+    font-size: 40px;
+    padding-bottom: 25px;
+}
+
+#slogan{
+    color: #F46200;
+    font-weight: 600;
+    font-size: 20;
+}
+
+#botaoSimulador{
+    color: white;
+    background-color: #F46200;
+    border-radius: 15px;
+    border: 2px solid black;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* parte preta  */
+
+.container-sobre{
+    background-color: #000000;
+    border-top: 8px solid #F46200;
+    border-bottom: 20px solid #F46200;
+    border-radius: 15px;
+    margin-top: 50px;
+    height: 400px;
+}
+
+#subtitulo2{
+    color:#F46200;
+    font-weight: 700;
+    font-size: 50px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+#paragrafo1{
+    color: white;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin: 50px;
+}
+
+#paragrafo2{
+    color: #F46200;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin: 50px;
+}
+
+.orange-line-2{
+    background-color: #F46200;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+/* footer */
+
+footer{
+    background-color: #282828;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+#paragrafo-footer{
+    color: #9b9b9b;
+    font-size: 20px;
+}
+
+.imgfooter{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.imgfooter > h2 {
+    font-size: 30px;
+    color: white;
+}
+
+.imgfooter > h2 > span{
+    color: #F46200;
+}
+
+.imgfooter > img {
+    width: 60px;
+}

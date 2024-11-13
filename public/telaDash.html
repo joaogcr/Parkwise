@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ParkWise - Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/estiloDash.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="shortcut icon" href="./assets/images/Logo_ParkWise_black.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="orange-line"></div>
+        <section>
+            <div class="logo">
+                <img src="./assets/images/Logo_ParkWise.PNG" alt="">
+                <h2>Park<span>Wise</span></h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><i class="fa-solid fa-file"></i><a href="./calculadora.html">Simulador</a></li>
+                    <li><i class="fa-solid fa-gear"></i><a href="./Serviços.html">Serviços</a></li>
+                    <li><i class="fa-solid fa-headphones-simple"></i><a href="./faleconosco.html">Fale
+                            Conosco</a></li>
+                </ul>
+            </div>
+            <a href="./tela_login.html"><button>Login</button></a>
+        </section>
+    </header>
+
+    <div class="container">
+
+        <h1>Estatísticas</h1>
+
+        <div class="kpis">
+
+            <div class="divKPI1">
+                <h3>Taxa de ocupação semanal</h3>
+                <h1>37,5%</h3>
+            </div>
+
+            <div class="divKPI2">
+                <h3>Pico de vagas ocupadas</h3>
+                <h1>91</h3>
+            </div>
+
+            <div class="divKPI3">
+                <h3>Média da taxa de fluxo</h3>
+                <h1>43,25%</h3>
+            </div>
+
+        </div>
+
+        <div class="canvaDash">
+            <div style="height: 40vh; width: 40vw;" class="divCanvas">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div style="height:40vh; width: 40vw;" class="divCanvas">
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="./assets/js/dash.js"></script>
+
+</html>

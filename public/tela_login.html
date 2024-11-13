@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ParkWise - Login</title>
+  <link rel="stylesheet" href="./assets/css/estilologin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="shortcut icon" href="./assets/images/Logo_ParkWise_black.png" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="orange-line"></div>
+    <section>
+      <div class="logo">
+        <img src="./assets/images/Logo_ParkWise.PNG" alt="">
+        <h2>Park<span>Wise</span></h2>
+      </div>
+
+      <div class="menu">
+        <ul>
+          <li><i class="fa-solid fa-file"></i><a href="./calculadora.html">Simulador</a></li>
+          <li><i class="fa-solid fa-gear"></i><a href="./Serviços.html">Serviços</a></li>
+          <li><i class="fa-solid fa-headphones-simple"></i><a href="./faleconosco.html">Fale
+              Conosco</a></li>
+        </ul>
+      </div>
+      <a href="./tela_login.html"><button>Login</button></a>
+    </section>
+  </header>
+
+  <div class="card">
+
+    <div class="cadastro-left">
+      <h1><span style="color: #f46200">Efetue seu </span><br />Login</h1>
+      <h3>Insira os dados solicitados ao lado</h3>
+      <a href="./index.html"><button><i class="fa-solid fa-right-from-bracket"></i>Home</button></a>
+    </div>
+
+    <div class="cadastro-right">
+
+      <h2>Insira seus dados</h2>
+
+      <div class="inputs">
+        <div class="campo">
+
+          <h5>CNPJ</h5>
+          <input type="text" id="input_cnpj" placeholder="12.345678/0001-90" />
+
+        </div>
+        <div class="campo">
+          <h5>E-mail</h5>
+          <input type="text" id="input_email" placeholder="exemplo@gmail.com" />
+        </div>
+
+        <div class="campo">
+          <h5>Senha</h5>
+          <input type="password" id="input_senha" placeholder="********" />
+        </div>
+
+      </div>
+      <div class="btn">
+        <button onclick="validacao(); passdash()">Entrar</button>
+        <br>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+  </div>
+</body>
+
+<script src="./assets/js/login.js"></script>
+
+</html>
