@@ -112,7 +112,7 @@ function cadastrar() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      nomeServer: nomeVar,
+      estacionamentoServer: estacionamentoVar,
       cnpjServer: cnpjVar,
       telefoneServer: telefoneVar,
       logradouroServer: logradouroVar,
@@ -126,7 +126,7 @@ function cadastrar() {
     .then((resposta) => {
       if (resposta.ok) {
         alert("Cadastro realizado com sucesso!");
-        window.location.href = "../Login/tela_login.html"; // Redireciona para a página de login
+        window.location.href = "../tela_login.html"; // Redireciona para a página de login
       } else {
         return resposta.text().then((text) => {
           throw new Error(text);
