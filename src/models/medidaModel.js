@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscar_medidas_sensor(idAquario, limite_linhas) {
 
     var instrucaoSql = `SELECT 
         dht11_temperatura as temperatura, 
@@ -30,6 +30,6 @@ function buscarMedidasEmTempoReal(idAquario) {
 }
 
 module.exports = {
-    buscarUltimasMedidas,
+    buscar_medidas_sensor,
     buscarMedidasEmTempoReal
 }
