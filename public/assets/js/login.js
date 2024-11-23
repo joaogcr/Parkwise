@@ -33,3 +33,60 @@ function validacao() {
       alert('Email inválido. São somente permitidos gmail ou outlook')
     }
   }
+
+  function passdash() {
+
+    var email_login = input_email.value;
+    var senha_login = input_senha.value;
+    var cnpj_login = input_cnpj.value;
+
+    if (email_login == "" || senha_login == "") {
+
+      alert('Preencha todos os campo!');
+
+            return false;
+        }else{
+
+        console.log("FORM LOGIN: ", email_login);
+        console.log("FORM SENHA: ", senha_login);
+        console.log("FORM CNPJ: ", cnpj_login);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer_login: email_login,
+                senhaServer_login: senha_login,
+                cnpjServer_login: cnpj_login
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    window.location = "./hub.html";
+                });
+
+            } else {
+
+              console.log(resposta);
+
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+        
+        }
+
+  }
