@@ -156,35 +156,51 @@ SELECT
     ON s.idSensor = f.fkSensor;
     
     
-    -- Quantidade de vagas ocupadas no momento
-    SELECT count(fkSensor) FROM fluxo where statusVaga = 1;
+-- quantidade de vagas ocupadas no momento
+SELECT count(fkSensor) 
+FROM fluxo 
+where statusVaga = 1;
     
 INSERT INTO fluxo (statusVaga, fkSensor, dataHora) VALUES 
 (1, 1, '2024-11-16 08:30:00'),
 (0, 2, '2024-11-16 08:45:00'),
 (1, 3, '2024-11-16 09:00:00');
    
-   
--- total de ocipações e desocupações
+-- total de ocupações e desocupações
 SELECT 
-    COUNT(CASE WHEN statusVaga = 1 THEN 1 END) as total_ocupacoes,
-    COUNT(CASE WHEN statusVaga = 0 THEN 1 END) as total_desocupacoes
+    COUNT(CASE 
+    WHEN statusVaga = 1 THEN 1 
+    END) as total_ocupacoes,
+    COUNT(CASE 
+    WHEN statusVaga = 0 THEN 1 
+    END) as total_desocupacoes
 FROM fluxo;
 
--- Vagas disponiveis e não disponiveis
+-- vagas disponiveis e nao disponiveis
 SELECT 
-    COUNT(CASE WHEN f.statusVaga = 1 THEN 1 END) as vagas_ocupadas,
+    COUNT(
+    CASE 
+    WHEN f.statusVaga = 1 THEN 1 
+    END) as vagas_ocupadas,
     e.capacidadeVagas as total_vagas,
-    (e.capacidadeVagas - COUNT(CASE WHEN f.statusVaga = 1 THEN 1 END)) as vagas_disponiveis
+    (e.capacidadeVagas - COUNT(
+    CASE 
+    WHEN f.statusVaga = 1 THEN 1 
+    END)) as vagas_disponiveis
 FROM estacionamento e
-LEFT JOIN sensor s ON s.fkEstacionamento = e.idEstacionamento
-LEFT JOIN fluxo f ON f.fkSensor = s.idSensor
+LEFT JOIN sensor as s 
+ON s.fkEstacionamento = e.idEstacionamento
+LEFT JOIN fluxo as f 
+ON f.fkSensor = s.idSensor
 GROUP BY e.idEstacionamento, e.nome, e.capacidadeVagas;
 
--- Fluxo Semanal
+-- fluxo semanal
 SELECT 
     WEEK(dataHora) as semana,
-    (COUNT(CASE WHEN statusVaga = 1 THEN 1 END) * 100.0) / COUNT(*) as taxa_ocupacao_percentual
+    (COUNT(
+    CASE
+    WHEN statusVaga = 1 THEN 1
+    END) * 100.0) / COUNT(*) as taxa_ocupacao_percentual
 FROM fluxo
 GROUP BY WEEK(dataHora)
 ORDER BY semana DESC;
@@ -199,9 +215,13 @@ GROUP BY DATE(dataHora)
 ORDER BY total_ocupadas DESC
 LIMIT 1;
 
--- Pico de vagas na semana atual
+-- pico de vagas na semana atual
 SELECT 
-    COUNT(CASE WHEN statusVaga = 1 THEN 1 END) as pico_vagas_ocupadas
+    COUNT(
+    CASE 
+    WHEN statusVaga = 1 THEN 1
+    END) 
+    as pico_vagas_ocupadas
 FROM fluxo
 WHERE WEEK(dataHora) = WEEK(CURRENT_DATE())
 GROUP BY DATE(dataHora)

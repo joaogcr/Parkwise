@@ -1,54 +1,56 @@
-CREATE DATABASE ParkWiseScript;
-USE ParkWiseScript;
-
 CREATE TABLE estacionamento(
-idEstacionamento int primary key auto_increment,
-nome varchar(45),
-telefone char(15),
-capacidadeVagas int,
-cnpjEstacionamento char(18),
-logradouro varchar(45),
-numeroEnd char(4),
-bairro varchar(45),
-email varchar(100),
-senha varchar(50)
+	idEstacionamento int primary key auto_increment,
+	nome varchar(45),
+	telefone char(15),
+	capacidadeVagas int,
+	cnpjEstacionamento char(18),
+	logradouro varchar(45),
+	numeroEnd char(4),
+	bairro varchar(45),
+	email varchar(100),
+	senha varchar(50)
 );
 
-CREATE TABLE usuario(
-idUsuario int primary key auto_increment,
-email varchar(100),
-senha varchar(45),
-nomeUsuario varchar(45),
-fkEstacionamento int,
+CREATE TABLE funcionario(
+	idUsuario int primary key auto_increment,
+	nomeFuncionario varchar(45),
+	email varchar(100),
+	senha varchar(45),
+	funcao varchar(45),
+	fkEstacionamento int,
 	constraint fkUsuarioEstacionamento foreign key (fkEstacionamento)
-		references estacionamento(idEstacionamento)
+	references estacionamento(idEstacionamento)
 );
 
 CREATE TABLE suporte(
-idSuporte int primary key auto_increment,
-email varchar(100),
-descricao varchar(300),
-dataSuporte date,
-fkUsuario int,
+	idSuporte int primary key auto_increment,
+	email varchar(100),
+	descricao varchar(300),
+	dataSuporte date,
+	fkUsuario int,
 	constraint fkSuporteUsuario foreign key (fkUsuario)
-		references usuario(idUsuario)
+	references usuario(idUsuario)
 );
 
 CREATE TABLE sensor(
-idSensor int primary key auto_increment,
-localizacao int,
-fkEstacionamento int,
+	idSensor int primary key auto_increment,
+	localizacao int,
+	fkEstacionamento int,
 	constraint fkSensorEstacionamento foreign key (fkEstacionamento)
-		references estacionamento(idEstacionamento)
+	references estacionamento(idEstacionamento)
 );
 
 CREATE TABLE fluxo(
-idFluxo int primary key auto_increment,
-statusVaga tinyint,
-fkSensor int,
-	constraint fkFluxoSensor foreign key (fkSensor)
-		references sensor(idSensor),
+	idFluxo int primary key auto_increment,
+	entrada datetime,
+	statusVaga tinyint,
 	constraint chkStatus check (statusVaga in(0,1))
+);
+
+create table vaga(
+	fkSensor int,
+	fkFluxo int,
+	primary key (fkSensor, fkFluxo)
 );
 
 INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro) VALUES
@@ -66,7 +68,6 @@ INSERT INTO usuario (email, senha, nomeUsuario, fkEstacionamento) VALUES
 	('ana.costa101@email.com','C0sta!2023','Ana Costa', 4), 
 	('pedro.souza202@email.com','5ouz@2024','Pedro Souza', 5), 
 	('juliana.santos303@email.com','Ju&liana03','Juliana Santos', 6);
-    
     
 INSERT INTO suporte (email, descricao, dataSuporte, fkUsuario) VALUES
 	('cliente1@example.com', 'Problema com o acesso ao estacionamento', '2024-09-05', 1),

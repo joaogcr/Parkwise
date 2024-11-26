@@ -1,47 +1,59 @@
-use parkwisePI;
+CREATE DATABASE ParkWiseScript;
+USE ParkWiseScript;
 
 CREATE TABLE estacionamento(
-idEstacionamento int primary key auto_increment,
-nome varchar(45),
-telefone char(15),
-capacidadeVagas int,
-cnpjEstacionamento char(18),
-logradouro varchar(45),
-numeroEnd char(4),
-bairro varchar(45)
+	idEstacionamento int primary key auto_increment,
+	nome varchar(45),
+	telefone char(15),
+	capacidadeVagas int,
+	cnpjEstacionamento char(18),
+	logradouro varchar(45),
+	numeroEnd char(4),
+	bairro varchar(45),
+	email varchar(100),
+	senha varchar(50)
 );
 
-CREATE TABLE usuario(
-idUsuario int primary key auto_increment,
-email varchar(100),
-senha varchar(45),
-nomeUsuario varchar(45),
-fkEstacionamento int,
-constraint fkUsuarioEstacionamento foreign key (fkEstacionamento) references estacionamento(idEstacionamento)
+CREATE TABLE funcionario(
+	idUsuario int primary key auto_increment,
+	nomeFuncionario varchar(45),
+	email varchar(100),
+	senha varchar(45),
+	funcao varchar(45),
+	fkEstacionamento int,
+	constraint fkUsuarioEstacionamento foreign key (fkEstacionamento)
+	references estacionamento(idEstacionamento)
 );
 
 CREATE TABLE suporte(
-idSuporte int primary key auto_increment,
-email varchar(100),
-descricao varchar(300),
-dataSuporte date,
-fkUsuario int,
-constraint fkSuporteUsuario foreign key (fkUsuario) references usuario(idUsuario)
+	idSuporte int primary key auto_increment,
+	email varchar(100),
+	descricao varchar(300),
+	dataSuporte date,
+	fkUsuario int,
+	constraint fkSuporteUsuario foreign key (fkUsuario)
+	references usuario(idUsuario)
 );
 
 CREATE TABLE sensor(
-idSensor int primary key auto_increment,
-localizacao int,
-fkEstacionamento int,
-constraint fkSensorEstacionamento foreign key (fkEstacionamento) references estacionamento(idEstacionamento)
+	idSensor int primary key auto_increment,
+	localizacao int,
+	fkEstacionamento int,
+	constraint fkSensorEstacionamento foreign key (fkEstacionamento)
+	references estacionamento(idEstacionamento)
 );
 
 CREATE TABLE fluxo(
-idFluxo int primary key auto_increment,
-statusVaga tinyint,
-fkSensor int,
-constraint fkFluxoSensor foreign key (fkSensor) references sensor(idSensor),
-constraint chkStatus check (statusVaga in(0,1))
+	idFluxo int primary key auto_increment,
+	entrada datetime,
+	statusVaga tinyint,
+	constraint chkStatus check (statusVaga in(0,1))
+);
+
+create table vaga(
+	fkSensor int,
+	fkFluxo int,
+	primary key (fkSensor, fkFluxo)
 );
 
 INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro) VALUES
