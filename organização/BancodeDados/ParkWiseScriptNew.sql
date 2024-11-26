@@ -1,3 +1,6 @@
+CREATE DATABASE ParkWiseScript;
+USE ParkWiseScript;
+
 CREATE TABLE estacionamento(
 	idEstacionamento int primary key auto_increment,
 	nome varchar(45),
@@ -12,7 +15,7 @@ CREATE TABLE estacionamento(
 );
 
 CREATE TABLE funcionario(
-	idUsuario int primary key auto_increment,
+	idFuncionario int primary key auto_increment,
 	nomeFuncionario varchar(45),
 	email varchar(100),
 	senha varchar(45),
@@ -27,9 +30,9 @@ CREATE TABLE suporte(
 	email varchar(100),
 	descricao varchar(300),
 	dataSuporte date,
-	fkUsuario int,
-	constraint fkSuporteUsuario foreign key (fkUsuario)
-	references usuario(idUsuario)
+	fkFuncionario int,
+	constraint fkSuporteFuncionario foreign key (fkFuncionario)
+	references funcionario(idFuncionario)
 );
 
 CREATE TABLE sensor(
