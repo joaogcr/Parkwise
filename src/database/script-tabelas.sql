@@ -144,6 +144,11 @@ INSERT INTO fluxo (statusVaga, fkSensor, dataHora) VALUES
 (0, 2, '2024-11-16 08:45:00'),
 (1, 3, '2024-11-16 09:00:00');
    
+   
+   CREATE VIEW  VagasOcupadaseDesocupadas as select 
+   COUNT(CASE WHEN statusVaga = 1 THEN 1 END) as 'Vagas Ocupadas', COUNT(CASE WHEN statusVaga = 0 THEN 0 END) as 'Vagas desocupadas' FROM fluxo;
+   
+   
 -- total de ocupações
 
 SELECT COUNT(statusVaga) FROM fluxo WHERE statusVaga = 1;
@@ -153,12 +158,7 @@ SELECT COUNT(statusVaga) FROM fluxo WHERE statusVaga = 1;
 SELECT COUNT(statusVaga) FROM fluxo WHERE statusVaga = 0;
 
 -- pico de vagas na semana atual
-SELECT 
-    COUNT(
-    CASE 
-    WHEN statusVaga = 1 THEN 1
-    END) 
-    as pico_vagas_ocupadas
+SELECT COUNT(CASE WHEN statusVaga = 1 THEN 1 END) as pico_vagas_ocupadas
 FROM fluxo
 WHERE WEEK(dataHora) = WEEK(CURRENT_DATE())
 GROUP BY DATE(dataHora)
