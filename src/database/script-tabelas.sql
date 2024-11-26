@@ -1,82 +1,60 @@
-use parkwisePI;
 CREATE DATABASE parkwisePI;
+USE parkwisePI;
 
 CREATE TABLE estacionamento(
-idEstacionamento int primary key auto_increment,
-nome varchar(45),
-telefone char(15),
-capacidadeVagas int,
-cnpjEstacionamento char(18),
-logradouro varchar(45),
-numeroEnd char(4),
-bairro varchar(45)
+	idEstacionamento int primary key auto_increment,
+	nome varchar(45),
+	telefone char(15),
+	capacidadeVagas int,
+	cnpjEstacionamento char(18),
+	logradouro varchar(45),
+	numeroEnd char(4),
+	bairro varchar(45),
+	email varchar(100),
+	senha varchar(50)
 );
 
-CREATE TABLE usuario(
-idUsuario int primary key auto_increment,
-email varchar(100),
-senha varchar(45),
-nomeUsuario varchar(45),
-fkEstacionamento int,
-constraint fkUsuarioEstacionamento foreign key (fkEstacionamento) references estacionamento(idEstacionamento)
+CREATE TABLE funcionario(
+	idFuncionario int primary key auto_increment,
+	nomeFuncionario varchar(45),
+	email varchar(100),
+	senha varchar(45),
+	funcao varchar(45),
+	fkEstacionamento int,
+	constraint fkUsuarioEstacionamento foreign key (fkEstacionamento)
+	references estacionamento(idEstacionamento)
 );
 
 CREATE TABLE suporte(
-idSuporte int primary key auto_increment,
-email varchar(100),
-descricao varchar(300),
-dataSuporte date,
-fkUsuario int,
-constraint fkSuporteUsuario foreign key (fkUsuario) references usuario(idUsuario)
+	idSuporte int primary key auto_increment,
+	email varchar(100),
+	descricao varchar(300),
+	dataSuporte date,
+	fkFuncionario int,
+	constraint fkSuporteFuncionario foreign key (fkFuncionario)
+	references funcionario(idFuncionario)
 );
 
 CREATE TABLE sensor(
-idSensor int primary key auto_increment,
-localizacao int,
-fkEstacionamento int,
-constraint fkSensorEstacionamento foreign key (fkEstacionamento) references estacionamento(idEstacionamento)
+	idSensor int primary key auto_increment,
+	localizacao int,
+	fkEstacionamento int,
+	constraint fkSensorEstacionamento foreign key (fkEstacionamento)
+	references estacionamento(idEstacionamento)
 );
 
 CREATE TABLE fluxo(
-idFluxo int primary key auto_increment,
-statusVaga tinyint,
-fkSensor int,
-dataHora datetime,
-constraint fkFluxoSensor foreign key (fkSensor) references sensor(idSensor),
-constraint chkStatus check (statusVaga in(0,1))
+	idFluxo int primary key auto_increment,
+	dataAtual datetime default current_timestamp(),
+	statusVaga tinyint,
+	constraint chkStatus check (statusVaga in(0,1))
 );
 
-INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro) VALUES
-	('Estacionamento Central Park','11912345678',200,'12.345.678/0001-90','Rua das Flores','150','Centro'),
-	('Estacionamento Fácil Parking','21923456789',150,'23.456.789/0001-80','Avenida Rio Branco','220','Copacabana'),
-	('Estacionamento Rápido','31934567890',120,'34.567.890/0001-70','Rua João Pinheiro','300','Lourdes'),
-	('Estacionamento Segurança Total','41945678901',250,'45.678.901/0001-60','Avenida Paraná','180','Batel'),
-	('Estacionamento VIP','51956789012',300,'56.789.012/0001-50','Rua dos Andradas','75','Moinhos de Vento'),
-	('Estacionamento Econômico','71967890123',180,'67.890.123/0001-40','Avenida Sete de Setembro','400','Comércio');
-    
-INSERT INTO usuario (email, senha, nomeUsuario, fkEstacionamento) VALUES
-	('joao.silva123@email.com','Abc@1234','João Silva', 1), 
-	('maria.oliveira456@email.com','Olh*4567','Maria Oliveira', 2), 
-	('carlos.pereira789@email.com','P&asw0rd9','Carlos Pereira', 3), 
-	('ana.costa101@email.com','C0sta!2023','Ana Costa', 4), 
-	('pedro.souza202@email.com','5ouz@2024','Pedro Souza', 5), 
-	('juliana.santos303@email.com','Ju&liana03','Juliana Santos', 6);
-    
-INSERT INTO suporte (email, descricao, dataSuporte, fkUsuario) VALUES
-	('cliente1@example.com', 'Problema com o acesso ao estacionamento', '2024-09-05', 1),
-    ('cliente2@example.com', 'Dificuldade em efetuar o pagamento', '2024-09-06', 2),
-    ('cliente3@example.com', 'Vaga indisponível', '2024-09-07', 3),
-    ('cliente4@example.com', 'Falha no sensor de entrada', '2024-09-08', 4),
-    ('cliente5@example.com', 'Problema na saída', '2024-09-09', 5),
-    ('cliente6@example.com', 'Problema na organização das entradas e das saídas', '2024-09-10', 6);
-    
-INSERT INTO sensor (localizacao, fkEstacionamento) VALUES
-	('100',1),
-	('101',2),
-	('102',3),
-	('103',4),
-	('104',5),
-	('105',6);
+create table vaga(
+	fkSensor int,
+	fkFluxo int,
+	primary key (fkSensor, fkFluxo)
+);
 
 -- Nicoly
 SELECT u.nomeUsuario as 'Nome do usuario', sup.descricao as 'Descricao do chamado', 
@@ -166,54 +144,13 @@ INSERT INTO fluxo (statusVaga, fkSensor, dataHora) VALUES
 (0, 2, '2024-11-16 08:45:00'),
 (1, 3, '2024-11-16 09:00:00');
    
--- total de ocupações e desocupações
-SELECT 
-    COUNT(CASE 
-    WHEN statusVaga = 1 THEN 1 
-    END) as total_ocupacoes,
-    COUNT(CASE 
-    WHEN statusVaga = 0 THEN 1 
-    END) as total_desocupacoes
-FROM fluxo;
+-- total de ocupações
 
--- vagas disponiveis e nao disponiveis
-SELECT 
-    COUNT(
-    CASE 
-    WHEN f.statusVaga = 1 THEN 1 
-    END) as vagas_ocupadas,
-    e.capacidadeVagas as total_vagas,
-    (e.capacidadeVagas - COUNT(
-    CASE 
-    WHEN f.statusVaga = 1 THEN 1 
-    END)) as vagas_disponiveis
-FROM estacionamento e
-LEFT JOIN sensor as s 
-ON s.fkEstacionamento = e.idEstacionamento
-LEFT JOIN fluxo as f 
-ON f.fkSensor = s.idSensor
-GROUP BY e.idEstacionamento, e.nome, e.capacidadeVagas;
+SELECT COUNT(statusVaga) FROM fluxo WHERE statusVaga = 1;
 
--- fluxo semanal
-SELECT 
-    WEEK(dataHora) as semana,
-    (COUNT(
-    CASE
-    WHEN statusVaga = 1 THEN 1
-    END) * 100.0) / COUNT(*) as taxa_ocupacao_percentual
-FROM fluxo
-GROUP BY WEEK(dataHora)
-ORDER BY semana DESC;
+ -- desocupações
 
--- pico de vagas
-SELECT 
-    DATE(dataHora) as dia,
-    COUNT(*) as total_ocupadas
-FROM fluxo
-WHERE statusVaga = 1
-GROUP BY DATE(dataHora)
-ORDER BY total_ocupadas DESC
-LIMIT 1;
+SELECT COUNT(statusVaga) FROM fluxo WHERE statusVaga = 0;
 
 -- pico de vagas na semana atual
 SELECT 
