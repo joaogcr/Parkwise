@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,74 +9,74 @@
     <link rel="shortcut icon" href="./assets/images/Logo_ParkWise_black.png" type="image/x-icon">
     <title>Cadastro de Funcionário</title>
 </head>
+
 <body>
     <header>
-    <div class="orange-line"></div>
-    <section>
-        <div class="logo">
-        <img src="./assets/images/Logo_ParkWise.PNG" alt="">
-        <h2>Park<span>Wise</span></h2>
-    </div>
+        <div class="orange-line"></div>
+        <section>
+            <div class="logo">
+                <img src="./assets/images/Logo_ParkWise.PNG" alt="">
+                <h2>Park<span>Wise</span></h2>
+            </div>
 
-    <div class="menu">
-        <ul>
-            <li><i class="fa-solid fa-file"></i><a href="./calculadora.html">Simulador</a></li>
-            <li><i class="fa-solid fa-gear"></i><a href="./Serviços.html">Serviços</a></li>
-            <li><i class="fa-solid fa-headphones-simple"></i><a href="./faleconosco.html">Fale
-                    Conosco</a></li>
-        </ul>
-    </div>
-    <a href="./tela_login.html"><button>Login</button></a>
-</section>
-</header>
-        
+            <div class="menu">
+                <ul>
+                    <li><i class="fa-solid fa-file"></i><a href="./calculadora.html">Simulador</a></li>
+                    <li><i class="fa-solid fa-gear"></i><a href="./Serviços.html">Serviços</a></li>
+                    <li><i class="fa-solid fa-headphones-simple"></i><a href="./faleconosco.html">Fale
+                            Conosco</a></li>
+                </ul>
+            </div>
+            <a href="./tela_login.html"><button>Login</button></a>
+        </section>
+    </header>
+
 
     <div class="card">
-    <div class="cadastro-left">
-      <h1>Cadastro<br>De<br><span style="color: #f46200">Funcionários</span></h1>
-      <h3>Insira os dados solicitados ao lado</h3>
-      <a href="./index.html"><button><i class="fa-solid fa-right-from-bracket"></i>Home</button></a>
-    </div>
+        <div class="cadastro-left">
+            <h1>Cadastro<br>De<br><span style="color: #f46200">Funcionários</span></h1>
+            <h3>Insira os dados solicitados ao lado</h3>
+            <a href="./index.html"><button><i class="fa-solid fa-right-from-bracket"></i>Home</button></a>
+        </div>
 
-    <div class="cadastro-funcionario">
-        <h2>Criar Conta de Funcionário"</h2>
-        <div class="inputs">
-        <div class="campo">
-        <label for="nome">Nome do Funcionário:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
-        </div>
-        <div class="campo">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        </div>
-        <div class="campo">
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required><br><br>
-        </div>
-        <div class="campo">
-        <label for="funcao">Função:</label>
-        <input type="text" id="funcao" name="funcao" required><br><br>
-        </div>
-        <label for="estacionamento">Estacionamento:</label>
-        <select id="estacionamento" name="fkEstacionamento" required>
-           
-            <option value="1">Estacionamento 1</option>
-            <option value="2">Estacionamento 2</option>
-            <option value="3">Estacionamento 3</option>
-            <option value="4">Estacionamento 4</option>
-            <option value="5">Estacionamento 5</option>
-        </select><br><br>
-    </div>
-    <div class="btn">
-        <button onclick="cadastrar()">Cadastrar</button>
-      </div>
+        <div class="cadastro-funcionario">
+            <h2>Criar Conta de Funcionário</h2>
+            <div class="inputs">
+                
+                <div class="campo">
+                    <label for="nome">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="Digite o CNPJ" required><br><br>
+                </div>
 
-        <div id="div_mensagem"></div>
+                <div class="campo">
+                    <label for="nome">Nome do Funcionário:</label>
+                    <input type="text" id="nome" name="nome" placeholder= "Digite o nome do funcionário"><br><br>
+                </div>
+
+                <div class="campo">
+                    <label for="funcao">Função:</label>
+                    <input type="text" id="funcao" name="funcao" placeholder="Digite a funcao do funcionário" required><br><br>
+                </div>
+
+                <div class="campo">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Digite o e-mail para cadastro" required><br><br>
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite a senha para cadastro" required><br><br>
+                </div>
+
+            </div>
+            <div class="btn">
+                <button onclick="cadastrar()">Cadastrar</button>
+            </div>
+
+            <div id="div_mensagem"></div>
 
 </body>
 
 <script src="./assets/js/cadastro-func.js"></script>
 
 </html>
-
-
