@@ -151,3 +151,33 @@ function cadastrar() {
       alert("Erro ao realizar o cadastro: " + erro.message);
     });
 }
+
+function buscarCep() {
+  var cep = input_cep.value;
+
+  var url = `https://viacep.com.br/ws/${cep}/json`;
+
+  var json;
+  if(cep.length < 8 || isNaN(Number(cep))){
+      return;
+  }else{
+
+      fetch(url)
+          .then(function (resposta){
+              
+              console.log(resposta);
+              resposta.json()
+          .then(function (respostaJson)
+          {
+              json = respostaJson;
+              console.log(json.logradouro);
+              console.log(json.bairro);
+              console.log(respostaJson);
+
+              input_logradouro.value = json.logradouro;
+              input_bairro.value = json.bairro;
+          })
+      })
+
+  }
+}
