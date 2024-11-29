@@ -14,11 +14,10 @@ const HABILITAR_OPERACAO_INSERIR = true;
 const serial = async (
     valoresSensorDigital
 ) => {
-
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
         {
-            host: 'localhost',
+            host: '10.18.6.89',
             user: 'ParkWise',
             password: 'Urubu@100',
             database: 'parkwisePI',
@@ -41,6 +40,9 @@ const serial = async (
         }
     );
 
+    // variável para armazenar o último valor do sensor
+    let ultimoValorSensor = null;
+
     // evento quando a porta serial é aberta
     arduino.on('open', () => {
         console.log(`A leitura do arduino foi iniciada na porta ${portaArduino.path} utilizando Baud Rate de ${SERIAL_BAUD_RATE}`);
@@ -52,21 +54,24 @@ const serial = async (
         const valores = data.split(';');
         const sensorDigital = parseInt(valores[0]);
 
-        // armazena os valores dos sensores nos arrays correspondentes
-        valoresSensorDigital.push(sensorDigital);
+        // verifica se o valor do sensor foi alterado
+        if (sensorDigital !== ultimoValorSensor) {
+            // armazena os valores dos sensores nos arrays correspondentes
+            valoresSensorDigital.push(sensorDigital);
 
-        // insere os dados no banco de dados (se habilitado)
-        if (HABILITAR_OPERACAO_INSERIR) {
+            // atualiza o último valor do sensor
+            ultimoValorSensor = sensorDigital;
 
-            // este insert irá inserir os dados na tabela "medida"
-            await poolBancoDados.execute(
-                'INSERT INTO fluxo (statusVaga) VALUES (?)',
-                [sensorDigital]
-            );
-            console.log("valores inseridos no banco: " + sensorDigital);
-
+            // insere os dados no banco de dados (se habilitado)
+            if (HABILITAR_OPERACAO_INSERIR) {
+                // este insert irá inserir os dados na tabela "medida"
+                await poolBancoDados.execute(
+                    'INSERT INTO fluxo (statusVaga, dataAtual) VALUES (?, CURRENT_TIMESTAMP)',
+                    [sensorDigital]
+                );
+                console.log("valores inseridos no banco: " + sensorDigital);
+            }
         }
-
     });
 
     // evento para lidar com erros na comunicação serial
@@ -94,9 +99,6 @@ const servidor = (
     });
 
     // define os endpoints da API para cada tipo de sensor
-    // app.get('/sensores/analogico', (_, response) => {
-    //     return response.json(valoresSensorAnalogico);
-    // });
     app.get('/sensores/digital', (_, response) => {
         return response.json(valoresSensorDigital);
     });
