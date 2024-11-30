@@ -33,10 +33,10 @@ function exibirPicos(req, res) {
 }
 
 // mudar nome das funcoes e dos modelos
-function aaaaaaaaaaaaaa(req, res) {
+function grafico_vagas_dia(req, res) {
     console.log(`Recuperando distribuição de usuários por álbum`);
 
-    medidaModel.aaaaaaaaaaaaaa().then(function (resultado) {
+    medidaModel.grafico_vagas_dia().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -51,5 +51,6 @@ function aaaaaaaaaaaaaa(req, res) {
 
 module.exports = {
     exibirVagas,
-    exibirPicos
+    exibirPicos,
+    grafico_vagas_dia
 }

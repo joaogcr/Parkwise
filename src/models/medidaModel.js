@@ -24,11 +24,12 @@ function exibirPicos() {
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-} 
+}
 
 // funcao do grafico
-function aaaaaaaaaaaa() {
+function grafico_vagas_dia() {
     var instrucaoSql = `
+    SELECT * FROM VagasOcupadaseDesocupadas;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -36,6 +37,7 @@ function aaaaaaaaaaaa() {
 
 module.exports = {
     exibirVagas,
-    exibirPicos
+    exibirPicos,
+    grafico_vagas_dia
 };
 

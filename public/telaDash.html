@@ -39,15 +39,15 @@
         <div class="kpis">
             <div class="divKPI1">
                 <h3 id="titulo"> Vagas não ocupadas: </p>
-                <p id="kpi1"> </p>
+                    <p id="kpi1"> </p>
             </div>
             <div class="divKPI2">
                 <h3 id="titulo"> Vagas Ocupadas: </p>
-                <p id="kpi2"> </p>
+                    <p id="kpi2"> </p>
             </div>
             <div class="divKPI3">
                 <h3 id="titulo"> Pico de vagas ocupadas na semana: </p>
-                <p id="kpi3"> </p>
+                    <p id="kpi3"> </p>
             </div>
         </div>
 
@@ -70,8 +70,8 @@
     // sempre que a pagina der load ele vai retornar as duas funcoes atualizadas
     window.onload = function () {
         exibirVagas();
-        exibirGrafico();
         exibirPicos();
+        grafico_vagas_dia();
     };
 
     function exibirVagas() {
@@ -109,7 +109,6 @@
             .then(data => {
                 if (data && data.length > 0) {
                     const kpiData = data[0];
-                    console.log("vai se fude")
                     console.log(data[0])
                     document.getElementById('kpi3').innerText = kpiData.pico_vagas;
                 }
@@ -119,9 +118,77 @@
             });
     }
 
-    function exibirGrafico(){
-        // colocar a funcao do grafico aqui pls
+    var lista_vagas_ocupadas = [];
+    var lista_vagas_desocupadas = [];
+    var dias = [];
+
+    function grafico_vagas_dia() {
+        // Fazer a requisição para o endpoint
+        fetch('/medidas/grafico_vagas_dia')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.error('Erro ao obter KPIs');
+                }
+            })
+            .then(data => {
+                console.log(data)
+                for (var i = 0; i < data.length; i++) {
+                    lista_vagas_ocupadas.push(data[i].Vagas_Ocupadas);
+                    lista_vagas_desocupadas.push(data[i].Vagas_Desocupadas);
+                    dias.push(data[i].Dias_da_entrada);
+                }
+                const myChart2 = new Chart(
+                    document.getElementById('myChart2'),
+                    {
+                        type: 'line',
+                        data: {
+                            labels: dias,
+                            datasets: [
+                                {
+                                    label: 'Vagas ocupadas',
+                                    backgroundColor: 'white',
+                                    borderColor: '#f5f5f5',
+                                    data: lista_vagas_ocupadas
+                                },
+                                {
+                                    label: 'Vagas livres',
+                                    backgroundColor: '#F46200',
+                                    borderColor: '#F46200',
+                                    data: lista_vagas_desocupadas
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Data'
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Número de Vagas'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                );
+            })
+            .catch(error => {
+                console.error('Erro ao obter KPIs:', error);
+            });
+            console.log(lista_vagas_desocupadas)
+            console.log(lista_vagas_ocupadas)
+            console.log(dias)
     }
+
+
 
 </script>
 
