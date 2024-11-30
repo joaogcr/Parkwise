@@ -52,7 +52,7 @@ app.use("/empresas", empresasRouter);
 // criando rota do Bob IA
 app.use("/bobIA", bobiaRouter)
 
-app.listen(PORTA_APP, PORTA_SERVIDOR, function () {
+app.listen(PORTA_APP, function () {
     console.log(`
         ___              __     _      __ _         
         / _ \ ___ _ ____ / /__  | | /| / /(_)___ ___ 

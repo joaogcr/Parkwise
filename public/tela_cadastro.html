@@ -38,48 +38,64 @@
       <h3>Insira os dados solicitados ao lado</h3>
       <a href="./index.html"><button><i class="fa-solid fa-right-from-bracket"></i>Home</button></a>
     </div>
+    <!-- Card Erro -->
+    <div class="card_erro" id="cardErro">
+      <img src="./assets/images/Logo_ParkWise_black.png" alt="">
+      <span id="mensagem_erro"></span>
+    </div>
+    <!-- Card Erro -->
     <div class="cadastro-right">
       <h2>Crie sua conta</h2>
       <div class="inputs">
         <div class="campo">
           <h5>Nome Estacionamento</h5>
-          <input type="text" id="input_estacionamento" placeholder="Park" />
+          <input type="text" id="input_estacionamento"  oninput="verify('nome')"/>
+          <div id="div_verifyEstacionamento"></div>
         </div>
         <div class="campo">
           <h5>Telefone/Celular</h5>
-          <input type="text" id="input_telefone" placeholder="(12)34567-8910" />
+          <input type="text" id="input_telefone" OnKeyPress="formatar('(##) #####-#####',this)" oninput="verify('telefone')" maxlength="15"/>
+          <div id="div_verifyTelefone"></div>
         </div>
         <div class="campo">
           <h5>Capacidade de Vaga</h5>
-          <input type="number" id="input_vaga" placeholder="300" />
+          <input type="number" id="input_vaga"  oninput="verify('vaga')"/>
+          <div id="div_verifyVaga"></div>
         </div>
         <div class="campo">
           <h5>CNPJ</h5>
-          <input type="text" id="input_cnpj" placeholder="12.345678/0001-90" />
+          <input type="text" id="input_cnpj" OnKeyPress="formatarCnpj()" oninput="verify('cnpj')" maxlength="17"/>
+          <div id="div_verifyCnpj"></div>
         </div>
         <div class="campo">
           <h5>CEP</h5>
           <input type="text" id="input_cep" placeholder="Apenas Números" maxlength="8" oninput="buscarCep()"/>
+          <div>(opcional)</div>
         </div>
         <div class="campo">
           <h5>Logradouro (Rua)</h5>
-          <input type="text" id="input_logradouro" placeholder="Rua" />
+          <input type="text" id="input_logradouro" oninput="verify('logradouro')"/>
+          <div id="div_verifyLogradouro"></div>
         </div>
         <div class="campo">
           <h5>Número Endereço</h5>
-          <input type="text" id="input_endereco" placeholder="4" />
+          <input type="text" id="input_endereco" oninput="verify('endereco')"/>
+          <div id="div_verifyEndereco"></div>
         </div>
         <div class="campo">
           <h5>Bairro</h5>
-          <input type="text" id="input_bairro" placeholder="Haddock" />
+          <input type="text" id="input_bairro" oninput="verify('bairro')"/>
+          <div id="div_verifyBairro"></div>
         </div>
         <div class="campo">
           <h5>E-mail</h5>
-          <input type="text" id="input_email" placeholder="exemplo@gmail.com" />
+          <input type="text" id="input_email" oninput="verify('email')"/>
+          <div id="div_verifyEmail"></div>
         </div>
         <div class="campo">
           <h5>Senha</h5>
-          <input type="password" id="input_senha" placeholder="********" />
+          <input type="password" id="input_senha" oninput="verify('senha')"/>
+          <div id="div_verifySenha"></div>
         </div>
 
       </div>
