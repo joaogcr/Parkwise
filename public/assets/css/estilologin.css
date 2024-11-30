@@ -156,6 +156,28 @@ a{
     text-decoration: none;
 }
 
+.card_erro {
+    display: none;
+    background-color: white;
+    color: black;
+    width: 150px;
+    position: fixed;
+    border-radius: 20px;
+    border: solid 2px black;
+    padding: 10px;
+    text-align: center;
+}
+  
+.card_erro #mensagem_erro{
+    font-weight: 500;
+    font-size: 15px;
+    display: flex;
+}
+
+.card_erro img {
+    width: 100px;
+}
+
 .card > .cadastro-right{
     background-color: #F46200;
     border-radius: 20px;

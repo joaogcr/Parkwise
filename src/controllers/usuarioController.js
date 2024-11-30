@@ -4,15 +4,14 @@ var aquarioModel = require("../models/aquarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer_login;
     var senha = req.body.senhaServer_login;
-    var cnpj = req.body.cnpjServer_login;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
+        res.status(400).send("Sua senha está undefined!");
     } else {
 
-        usuarioModel.autenticar(email, senha, cnpj)
+        usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);

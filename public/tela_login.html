@@ -38,31 +38,31 @@
       <h3>Insira os dados solicitados ao lado</h3>
       <a href="./index.html"><button><i class="fa-solid fa-right-from-bracket"></i>Home</button></a>
     </div>
-
+    <!-- Card Erro -->
+    <div class="card_erro" id="cardErro">
+      <img src="./assets/images/Logo_ParkWise_black.png" alt="">
+      <span id="mensagem_erro"></span>
+    </div>
+    <!-- Card Erro -->
     <div class="cadastro-right">
 
       <h2>Insira seus dados</h2>
 
       <div class="inputs">
-        <div class="campo">
 
-          <h5>CNPJ</h5>
-          <input type="text" id="input_cnpj" placeholder="12.345678/0001-90" />
-
-        </div>
         <div class="campo">
           <h5>E-mail</h5>
-          <input type="text" id="input_email" placeholder="exemplo@gmail.com" />
+          <input type="text" id="input_email" />
         </div>
 
         <div class="campo">
           <h5>Senha</h5>
-          <input type="password" id="input_senha" placeholder="********" />
+          <input type="password" id="input_senha" />
         </div>
 
       </div>
       <div class="btn">
-        <button onclick="validacao(); passdash()">Entrar</button>
+        <button onclick="passdash()">Entrar</button>
         <br>
       </div>
 
