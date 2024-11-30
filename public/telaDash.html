@@ -34,25 +34,21 @@
 
     <div class="container">
 
-        <h1>Estatísticas</h1>
+        <h1>Dashboard</h1>
 
         <div class="kpis">
-
             <div class="divKPI1">
-                <h3>Vagas Ocupadas</h3>
-                <h1>37</h3>
+                <h3 id="titulo"> Vagas não ocupadas: </p>
+                <p id="kpi1"> </p>
             </div>
-
             <div class="divKPI2">
-                <h3>Pico de vagas ocupadas</h3>
-                <h1>91</h3>
+                <h3 id="titulo"> Vagas Ocupadas: </p>
+                <p id="kpi2"> </p>
             </div>
-
             <div class="divKPI3">
-                <h3>Vagas não ocupadas</h3>
-                <h1>43</h3>
+                <h3 id="titulo"> Pico de vagas ocupadas na semana: </p>
+                <p id="kpi3"> </p>
             </div>
-
         </div>
 
         <div class="canvaDash">
@@ -69,5 +65,64 @@
 </body>
 
 <script src="./assets/js/dash.js"></script>
+
+<script>
+    // sempre que a pagina der load ele vai retornar as duas funcoes atualizadas
+    window.onload = function () {
+        exibirVagas();
+        exibirGrafico();
+        exibirPicos();
+    };
+
+    function exibirVagas() {
+        fetch('/medidas/vagas')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.error('Erro ao obter KPIs');
+                }
+            })
+            // data sai do resultado da funcao response.json
+            .then(data => {
+                if (data && data.length > 0) {
+                    const kpiData = data[0];
+                    document.getElementById('kpi1').innerText = kpiData.vagas_desocupadas;
+                    document.getElementById('kpi2').innerText = kpiData.vagas_ocupadas;
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao obter KPIs:', error);
+            });
+    }
+
+    function exibirPicos() {
+        fetch('/medidas/picos')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.error('Erro ao obter KPIs');
+                }
+            })
+            // data sai do resultado da funcao response.json
+            .then(data => {
+                if (data && data.length > 0) {
+                    const kpiData = data[0];
+                    console.log("vai se fude")
+                    console.log(data[0])
+                    document.getElementById('kpi3').innerText = kpiData.pico_vagas;
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao obter KPIs:', error);
+            });
+    }
+
+    function exibirGrafico(){
+        // colocar a funcao do grafico aqui pls
+    }
+
+</script>
 
 </html>

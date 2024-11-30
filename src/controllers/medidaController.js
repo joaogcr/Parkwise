@@ -1,14 +1,9 @@
 var medidaModel = require("../models/medidaModel");
 
-function buscarUltimasMedidas(req, res) {
+function exibirVagas(req, res) {
+    console.log(`Recuperando KPIs gerais`);
 
-    const limite_linhas = 7;
-
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
+    medidaModel.exibirVagas().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -16,19 +11,15 @@ function buscarUltimasMedidas(req, res) {
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        console.log("Houve um erro ao buscar as KPIs.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }
 
+function exibirPicos(req, res) {
+    console.log(`Recuperando KPIs gerais`);
 
-function buscarMedidasEmTempoReal(req, res) {
-
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando medidas em tempo real`);
-
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
+    medidaModel.exibirPicos().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -36,13 +27,29 @@ function buscarMedidasEmTempoReal(req, res) {
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        console.log("Houve um erro ao buscar as KPIs.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+// mudar nome das funcoes e dos modelos
+function aaaaaaaaaaaaaa(req, res) {
+    console.log(`Recuperando distribuição de usuários por álbum`);
+
+    medidaModel.aaaaaaaaaaaaaa().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar usuários por álbum.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-
+    exibirVagas,
+    exibirPicos
 }

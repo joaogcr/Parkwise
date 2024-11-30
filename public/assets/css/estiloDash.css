@@ -113,6 +113,8 @@ section>a>button {
 
 .container h1{
     color: #F46200;
+    font-size: 50px;
+    margin-bottom: 0;
 }
 
 .container .kpis{
@@ -131,6 +133,12 @@ section>a>button {
     justify-content: center;
     border-radius: 15px;
     height: 15vh;
+    transition: 0.3s ease;
+}
+
+.divKPI1:hover{
+    transform: scale(1.05);
+    transition: 0.3s ease;
 }
 
 .divKPI2{
@@ -142,6 +150,12 @@ section>a>button {
     justify-content: center;
     border-radius: 15px;
     height: 15vh;
+    transition: 0.3s ease;
+}
+
+.divKPI2:hover{
+    transform: scale(1.05);
+    transition: 0.3s ease;
 }
 
 .divKPI3{
@@ -153,10 +167,22 @@ section>a>button {
     justify-content: center;
     border-radius: 15px;
     height: 15vh;
+    transition: 0.3s ease;
 }
 
-.container .kpis h1 {
+.divKPI3:hover{
+    transform: scale(1.05);
+    transition: 0.3s ease;
+}
+
+#titulo {
+    color: #fdfdfd;
+    font-size: 25px;
+}
+
+.kpis p {
     color: #F46200;
+    font-size: 40px;
 }
 
 .container div{

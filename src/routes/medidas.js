@@ -3,12 +3,18 @@ var router = express.Router();
 
 var medidaController = require("../controllers/medidaController");
 
-router.get("/ultimas/:idAquario", function (req, res) {
-    medidaController.buscarUltimasMedidas(req, res);
+// kpis de vagas
+router.get("/vagas", function (req, res) {
+    medidaController.exibirVagas(req, res);
+});
+// kpis do pico
+router.get("/picos", function (req, res) {
+    medidaController.exibirPicos(req, res);
 });
 
-router.get("/tempo-real/:idAquario", function (req, res) {
-    medidaController.buscarMedidasEmTempoReal(req, res);
-})
+// mudar nome da rota para o grafico
+router.get("/aaaaaaaaaaaa", function (req, res) {
+    medidaController.aaaaaaaaaa (req, res);
+});
 
 module.exports = router;
