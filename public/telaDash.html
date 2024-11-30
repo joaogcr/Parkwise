@@ -72,6 +72,7 @@
         exibirVagas();
         exibirPicos();
         grafico_vagas_dia();
+        grafico_vagas_semana();
     };
 
     function exibirVagas() {
@@ -187,6 +188,60 @@
             console.log(lista_vagas_ocupadas)
             console.log(dias)
     }
+
+
+    function grafico_vagas_semana() {
+    // Recupera o idEstacionamento armazenado, por exemplo, via sessionStorage
+    const idEstacionamento = Number(sessionStorage.ID_ESTACIONAMENTO);
+    console.log(idEstacionamento)
+
+    if (!idEstacionamento) {
+        console.error('ID do estacionamento não encontrado!');
+        return;
+    }
+    
+    fetch(`/medidas/grafico_vagas_semana/${idEstacionamento}`)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.error('Erro ao obter dados para o gráfico');
+            }
+        })
+        .then(data => {
+            if (data && data.length > 0) {
+                // Aqui você pode adicionar o código para criar o gráfico com Chart.js
+                const labels = data.map(item => item.semana); // Exemplo de como obter as semanas
+                const ocupadas = data.map(item => item.vagas_ocupadas); // Exemplo de como obter as vagas ocupadas
+
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const chart = new Chart(ctx, {
+                    type: 'bar', // Tipo de gráfico
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Vagas Ocupadas',
+                            data: ocupadas,
+                            backgroundColor: '#d36600',
+                            borderColor: '#d36600',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao obter dados para o gráfico:', error);
+        });
+}
 
 
 
