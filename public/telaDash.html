@@ -60,17 +60,6 @@
             </div>
         </div>
 
-        <div id="container" style="width:30%; background-color: aqua; margin-top: 10%;">
-            <center>
-                <h1>BobIA</h1>
-                <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
-                <br><br>
-                <button onclick="gerarResposta()">Gerar Resposta</button>
-                <h3>Resposta da IA:</h3>
-                <div id="resposta"></div>
-            </center>
-        </div>
-
     </div>
 
 </body>
@@ -87,7 +76,8 @@
     };
 
     function exibirVagas() {
-        fetch('/medidas/vagas')
+        const idEstacionamento = Number(sessionStorage.ID_ESTACIONAMENTO);
+        fetch(`/medidas/vagas/${idEstacionamento}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -109,7 +99,8 @@
     }
 
     function exibirPicos() {
-        fetch('/medidas/picos')
+        const idEstacionamento = Number(sessionStorage.ID_ESTACIONAMENTO);
+        fetch(`/medidas/picos/${idEstacionamento}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -129,147 +120,134 @@
                 console.error('Erro ao obter KPIs:', error);
             });
     }
-
-    var lista_vagas_ocupadas = [];
-    var lista_vagas_desocupadas = [];
-    var dias = [];
-
     function grafico_vagas_dia() {
-        // Fazer a requisição para o endpoint
-        fetch('/medidas/grafico_vagas_dia')
+        const idEstacionamento = Number(sessionStorage.ID_ESTACIONAMENTO);
+
+        if (!idEstacionamento) {
+            console.error('ID do estacionamento não encontrado!');
+            return;
+        }
+
+        fetch(`/medidas/grafico_vagas_semana/${idEstacionamento}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    console.error('Erro ao obter KPIs');
+                    throw new Error('Erro ao obter dados do gráfico.');
                 }
             })
             .then(data => {
-                console.log(data)
-                for (var i = 0; i < data.length; i++) {
-                    lista_vagas_ocupadas.push(data[i].Vagas_Ocupadas);
-                    lista_vagas_desocupadas.push(data[i].Vagas_Desocupadas);
-                    dias.push(data[i].Dias_da_entrada);
-                }
-                const myChart2 = new Chart(
-                    document.getElementById('myChart2'),
-                    {
-                        type: 'line',
-                        data: {
-                            labels: dias,
-                            datasets: [
-                                {
-                                    label: 'Vagas ocupadas',
-                                    backgroundColor: 'white',
-                                    borderColor: '#f5f5f5',
-                                    data: lista_vagas_ocupadas
-                                },
-                                {
-                                    label: 'Vagas livres',
-                                    backgroundColor: '#F46200',
-                                    borderColor: '#F46200',
-                                    data: lista_vagas_desocupadas
-                                }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            scales: {
-                                x: {
-                                    title: {
-                                        display: true,
-                                        text: 'Data'
-                                    }
-                                },
-                                y: {
-                                    title: {
-                                        display: true,
-                                        text: 'Número de Vagas'
-                                    }
-                                }
-                            }
-                        }
-                    }
-                );
-            })
-            .catch(error => {
-                console.error('Erro ao obter KPIs:', error);
-            });
-            console.log(lista_vagas_desocupadas)
-            console.log(lista_vagas_ocupadas)
-            console.log(dias)
-    }
+                // Usando map para criar as listas
+                const lista_vagas_ocupadas = data.map(item => item.vagas_ocupadas);
+                const lista_vagas_desocupadas = data.map(item => item.vagas_desocupadas);
+                const dias = data.map(item => item.dia);
 
-
-    function grafico_vagas_semana() {
-    // Recupera o idEstacionamento armazenado, por exemplo, via sessionStorage
-    const idEstacionamento = Number(sessionStorage.ID_ESTACIONAMENTO);
-    console.log(idEstacionamento)
-
-    if (!idEstacionamento) {
-        console.error('ID do estacionamento não encontrado!');
-        return;
-    }
-    
-    fetch(`/medidas/grafico_vagas_semana/${idEstacionamento}`)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.error('Erro ao obter dados para o gráfico');
-            }
-        })
-        .then(data => {
-            if (data && data.length > 0) {
-                // Aqui você pode adicionar o código para criar o gráfico com Chart.js
-                const labels = data.map(item => item.semana); // Exemplo de como obter as semanas
-                const ocupadas = data.map(item => item.vagas_ocupadas); // Exemplo de como obter as vagas ocupadas
-
-                const ctx = document.getElementById('myChart').getContext('2d');
-                const chart = new Chart(ctx, {
-                    type: 'bar', // Tipo de gráfico
+                // Criar o gráfico
+                const ctx = document.getElementById('myChart2').getContext('2d');
+                myChart2 = new Chart(ctx, {
+                    type: 'line',
                     data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Vagas Ocupadas',
-                            data: ocupadas,
-                            backgroundColor: '#d36600',
-                            borderColor: '#d36600',
-                            borderWidth: 1
-                        }]
+                        labels: dias,
+                        datasets: [
+                            {
+                                label: 'Vagas ocupadas',
+                                backgroundColor: '#d36600',
+                                borderColor: '#d36600',
+                                data: lista_vagas_ocupadas,
+                                fill: false,
+                                tension: 0.1
+                            },
+                            {
+                                label: 'Vagas livres',
+                                backgroundColor: 'white',
+                                borderColor: 'white',
+                                data: lista_vagas_desocupadas,
+                                fill: false,
+                                tension: 0.1
+                            }
+                        ]
                     },
                     options: {
                         responsive: true,
                         scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Dias'
+                                }
+                            },
                             y: {
+                                title: {
+                                    display: true,
+                                    text: 'Quantidade de Vagas'
+                                },
                                 beginAtZero: true
                             }
                         }
                     }
                 });
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao obter dados para o gráfico:', error);
-        });
-}
-
-async function gerarResposta() {
-        const pergunta = document.getElementById('pergunta').value;
-
-        const response = await fetch('http://localhost:3333/perguntar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ pergunta })
-        });
-
-        const data = await response.json();
-
-        resposta.style.display = 'block';
-        document.getElementById('resposta').innerText = data.resultado;
+            })
+            .catch(error => {
+                console.error('Erro ao obter dados do gráfico:', error);
+            });
     }
+
+
+
+    function grafico_vagas_semana() {
+        // Recupera o idEstacionamento armazenado
+        const idEstacionamento = Number(sessionStorage.ID_ESTACIONAMENTO);
+        console.log(idEstacionamento)
+
+        if (!idEstacionamento) {
+            console.error('ID do estacionamento não encontrado!');
+            return;
+        }
+
+        fetch(`/medidas/grafico_vagas_semana/${idEstacionamento}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.error('Erro ao obter dados para o gráfico');
+                }
+            })
+            .then(data => {
+                if (data && data.length > 0) {
+
+                    const labels = data.map(item => item.semana);
+                    const ocupadas = data.map(item => item.vagas_ocupadas);
+
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const chart = new Chart(ctx, {
+                        type: 'bar', // Tipo de gráfico
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Vagas Ocupadas',
+                                data: ocupadas,
+                                backgroundColor: '#d36600',
+                                borderColor: '#d36600',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao obter dados para o gráfico:', error);
+            });
+    }
+
+
 
 </script>
 
