@@ -1,9 +1,10 @@
 var medidaModel = require("../models/medidaModel");
 
 function exibirVagas(req, res) {
+    var idEstacionamento = req.params.idEstacionamento;
     console.log(`Recuperando KPIs gerais`);
 
-    medidaModel.exibirVagas().then(function (resultado) {
+    medidaModel.exibirVagas(idEstacionamento).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -17,9 +18,10 @@ function exibirVagas(req, res) {
 }
 
 function exibirPicos(req, res) {
+    var idEstacionamento = req.params.idEstacionamento;
     console.log(`Recuperando KPIs gerais`);
 
-    medidaModel.exibirPicos().then(function (resultado) {
+    medidaModel.exibirPicos(idEstacionamento).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -34,9 +36,10 @@ function exibirPicos(req, res) {
 
 // mudar nome das funcoes e dos modelos
 function grafico_vagas_dia(req, res) {
-    console.log(`Recuperando distribuição de usuários por álbum`);
+    var idEstacionamento = req.params.idEstacionamento; // Recupera o parâmetro da URL
+    console.log(`Recuperando dados para o estacionamento com ID: ${idEstacionamento}`);
 
-    medidaModel.grafico_vagas_dia().then(function (resultado) {
+    medidaModel.grafico_vagas_dia(idEstacionamento).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
