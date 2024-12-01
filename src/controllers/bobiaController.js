@@ -1,4 +1,6 @@
-var bobia = require("../routes/bobia");
+
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const chatIA = new GoogleGenerativeAI(process.env.MINHA_CHAVE);
 
 async function gerarResposta(mensagem) {
     // obtendo o modelo de IA
@@ -8,7 +10,7 @@ async function gerarResposta(mensagem) {
         // gerando conteúdo com base na pergunta
         const resultado = await modeloIA.generateContent(`Em um paragráfo responda: ${mensagem}`);
         const resposta = await resultado.response.text();
-        
+
         console.log(resposta);
 
         return resposta;
@@ -19,6 +21,5 @@ async function gerarResposta(mensagem) {
 }
 
 module.exports = {
-    gerarResposta,
-    bobia
-  };
+    gerarResposta
+};

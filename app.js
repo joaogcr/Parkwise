@@ -48,9 +48,8 @@ app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
+app.use("/bobia", bobiaRouter);
 
-// criando rota do Bob IA
-app.use("/bobIA", bobiaRouter)
 
 app.listen(PORTA_APP, function () {
     console.log(`
@@ -66,18 +65,42 @@ app.listen(PORTA_APP, function () {
     \tSe .:producao:. você está se conectando ao banco remoto. \n\n
     \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`);
 
-    console.info(`A API BobIA iniciada, acesse http://localhost:${PORTA_SERVIDOR}`);
 });
 
-// rota para receber perguntas e gerar respost
 app.post("/perguntar", async (req, res) => {
     const pergunta = req.body.pergunta;
 
+    var perguntaFormat = `USUARIO: ${pergunta}`
+    conversa.push(perguntaFormat)
+
     try {
-        const resultado = await gerarResposta(pergunta);
+        const resultado = await gerarResposta(conversa);
+        var mandarResult = resultado;
+        var resultadoFormat = `IA: ${resultado}`
+        conversa.push(resultadoFormat)
         res.json( { resultado } );
+        console.log(conversa)
     } catch (error) {
         res.status(500).json({ error: 'Erro interno do servidor' });
     }
 
 });
+
+// função para gerar respostas usando o gemini
+async function gerarResposta(mensagem) {
+    // obtendo o modelo de IA
+    const modeloIA = chatIA.getGenerativeModel({ model: "gemini-pro" });
+
+    try {
+        // gerando conteúdo com base na pergunta
+        const resultado = await modeloIA.generateContent(`${mensagem}`);
+        const resposta = await resultado.response.text();
+        
+        console.log(resposta);
+
+        return resposta;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
