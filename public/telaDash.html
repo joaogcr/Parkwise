@@ -120,6 +120,8 @@
                 console.error('Erro ao obter KPIs:', error);
             });
     }
+
+
     function grafico_vagas_dia() {
         const idEstacionamento = Number(sessionStorage.ID_ESTACIONAMENTO);
 
@@ -128,7 +130,7 @@
             return;
         }
 
-        fetch(`/medidas/grafico_vagas_semana/${idEstacionamento}`)
+        fetch(`/medidas/grafico_vagas_dia/${idEstacionamento}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -218,36 +220,36 @@
                     const labels = data.map(item => item.semana);
                     const ocupadas = data.map(item => item.vagas_ocupadas);
 
-                const ctx = document.getElementById('myChart').getContext('2d');
-                const chart = new Chart(ctx, {
-                    type: 'bar', // Tipo de gráfico
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Vagas Ocupadas',
-                            data: ocupadas,
-                            backgroundColor: '#d36600',
-                            borderColor: '#d36600',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const chart = new Chart(ctx, {
+                        type: 'bar', // Tipo de gráfico
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Vagas Ocupadas',
+                                data: ocupadas,
+                                backgroundColor: '#d36600',
+                                borderColor: '#d36600',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
                             }
                         }
-                    }
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao obter dados para o gráfico:', error);
-        });
-}
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao obter dados para o gráfico:', error);
+            });
+    }
 
-async function gerarResposta() {
+    async function gerarResposta() {
         const pergunta = document.getElementById('pergunta').value;
 
         const response = await fetch('http://localhost:3333/perguntar', {

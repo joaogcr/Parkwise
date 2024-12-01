@@ -17,16 +17,12 @@ function exibirVagas(idEstacionamento) {
 
 function exibirPicos(idEstacionamento) {
     var instrucaoSql = `
-    SELECT MAX(vagas_ocupadas) AS pico_vagas
+SELECT MAX(vagas_ocupadas) AS pico_vagas
     FROM (
         SELECT 
             WEEK(entrada) AS semana,
             COUNT(CASE WHEN statusVaga = 1 THEN 1 END) AS vagas_ocupadas
-        FROM fluxo as f
-        JOIN vaga as v ON f.idFluxo = v.fkFluxo 
-        JOIN sensor as s ON s.idSensor = v.fkSensor
-        JOIN estacionamento as e ON e.idEstacionamento = s.fkEstacionamento 
-        WHERE e.idEstacionamento = ${idEstacionamento}
+        FROM fluxo
         GROUP BY WEEK(entrada)
     ) AS vagas_ocupadas;
     `;
