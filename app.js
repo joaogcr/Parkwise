@@ -1,5 +1,3 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai")
-
 // var ambiente_processo = 'producao';
 var ambiente_processo = 'desenvolvimento';
 
@@ -15,8 +13,6 @@ var path = require("path");
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
 
-// porta do bobIA
-const PORTA_SERVIDOR = process.env.PORTA;
 
 var app = express();
 
@@ -26,9 +22,6 @@ var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var aquariosRouter = require("./src/routes/aquarios");
 var empresasRouter = require("./src/routes/empresas");
-var bobiaRouter = require("./src/routes/bobia");
-
-const chatIA = new GoogleGenerativeAI(process.env.MINHA_CHAVE);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -48,7 +41,6 @@ app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
-app.use("/bobia", bobiaRouter);
 
 
 app.listen(PORTA_APP, function () {
@@ -66,41 +58,3 @@ app.listen(PORTA_APP, function () {
     \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`);
 
 });
-
-app.post("/perguntar", async (req, res) => {
-    const pergunta = req.body.pergunta;
-
-    var perguntaFormat = `USUARIO: ${pergunta}`
-    conversa.push(perguntaFormat)
-
-    try {
-        const resultado = await gerarResposta(conversa);
-        var mandarResult = resultado;
-        var resultadoFormat = `IA: ${resultado}`
-        conversa.push(resultadoFormat)
-        res.json( { resultado } );
-        console.log(conversa)
-    } catch (error) {
-        res.status(500).json({ error: 'Erro interno do servidor' });
-    }
-
-});
-
-// função para gerar respostas usando o gemini
-async function gerarResposta(mensagem) {
-    // obtendo o modelo de IA
-    const modeloIA = chatIA.getGenerativeModel({ model: "gemini-pro" });
-
-    try {
-        // gerando conteúdo com base na pergunta
-        const resultado = await modeloIA.generateContent(`${mensagem}`);
-        const resposta = await resultado.response.text();
-        
-        console.log(resposta);
-
-        return resposta;
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
