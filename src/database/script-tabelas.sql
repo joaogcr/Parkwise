@@ -255,3 +255,30 @@ select * from estacionamento;
 
 update estacionamento set email = "teste@gmail.com" where idEstacionamento = 1;
 update estacionamento set senha = "12345678!" where idEstacionamento = 1;
+
+UPDATE estacionamento
+SET email = 'estacionamento_facil_parking@exemplo.com', 
+    senha = 'Estac@namento123'
+WHERE idEstacionamento = 2;
+
+UPDATE estacionamento 
+SET email = 'estacionamento_rapido@exemplo.com',
+    senha = 'Estac@namento123'
+WHERE idEstacionamento = 3;
+
+UPDATE estacionamento
+SET email = 'estacionamento_seguranca_total@exemplo.com',
+    senha = 'Estac@namento123' 
+WHERE idEstacionamento = 4;
+
+UPDATE estacionamento
+SET email = 'estacionamento_vip@exemplo.com',
+    senha = 'Estac@namento123'
+WHERE idEstacionamento = 5; 
+
+UPDATE estacionamento
+SET email = 'estacionamento_economico@exemplo.com',
+    senha = 'Estac@namento123'
+WHERE idEstacionamento = 6;
+
+
