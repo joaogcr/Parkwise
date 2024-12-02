@@ -77,7 +77,7 @@ if (mensagem !== '') {
     var senhaVar = input_senha.value;
     var funcaoVar = input_funcao.value;
 
-    fetch("/funcionarios/cadastrarFuncionario", {
+    fetch("/funcionario/cadastrarFuncionario", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
