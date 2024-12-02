@@ -17,7 +17,7 @@ const serial = async (
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
         {
-            host: '10.18.6.89',
+            host: '127.0.0.1',
             user: 'ParkWise',
             password: 'Urubu@100',
             database: 'parkwisePI',
@@ -64,13 +64,22 @@ const serial = async (
 
             // insere os dados no banco de dados (se habilitado)
             if (HABILITAR_OPERACAO_INSERIR) {
-                // este insert irá inserir os dados na tabela "medida"
-                await poolBancoDados.execute(
-                    'INSERT INTO fluxo (statusVaga, dataAtual) VALUES (?, CURRENT_TIMESTAMP)',
+                const [resultadoFluxo] = await poolBancoDados.execute(
+                    'INSERT INTO fluxo (statusVaga, entrada) VALUES (?, CURRENT_TIMESTAMP)',
                     [sensorDigital]
                 );
-                console.log("valores inseridos no banco: " + sensorDigital);
+            
+                // pegando o ID gerado automaticamente (LAST_INSERT_ID)
+                const idFluxoInserido = resultadoFluxo.insertId;
+            
+                await poolBancoDados.execute(
+                    'INSERT INTO vaga (fkSensor, fkFluxo) VALUES (1, ?)',
+                    [idFluxoInserido]
+                );
+            
+                console.log("Valores inseridos no banco: " + sensorDigital);
             }
+            
         }
     });
 

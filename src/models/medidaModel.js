@@ -44,7 +44,7 @@ SELECT MAX(vagas_ocupadas) AS pico_vagas
 function grafico_vagas_dia(idEstacionamento) {
     var instrucaoSql = `
         SELECT 
-            DAY(f.entrada) AS dia,
+            CONCAT (DAY(f.entrada),'/', MONTH(f.entrada)) AS dia,
             COUNT(CASE WHEN f.statusVaga = 1 THEN 1 END) AS vagas_ocupadas,
             COUNT(CASE WHEN f.statusVaga = 0 THEN 1 END) AS vagas_desocupadas
         FROM fluxo AS f
@@ -52,6 +52,8 @@ function grafico_vagas_dia(idEstacionamento) {
         JOIN sensor AS s ON v.fkSensor = s.idSensor
         JOIN estacionamento AS e ON s.fkEstacionamento = e.idEstacionamento
         WHERE e.idEstacionamento = ${idEstacionamento}
+        AND
+        f.entrada >= CURDATE() - INTERVAL 7 DAY
         GROUP BY dia
         ORDER BY dia DESC LIMIT 7;
     `;
@@ -79,7 +81,7 @@ function grafico_vagas_semana(idEstacionamento) {
         WHERE 
             e.idEstacionamento = ${idEstacionamento}
             AND 
-            f.entrada >= CURDATE() - INTERVAL 30 DAY  -- Considera os últimos 30 dias
+            f.entrada >= CURDATE() - INTERVAL 27 DAY  -- Considera os últimos 27 dias
         GROUP BY 
             e.idEstacionamento, 
             CONCAT('Semana ', FLOOR(DATEDIFF(CURDATE(), f.entrada) / 7) + 1)
