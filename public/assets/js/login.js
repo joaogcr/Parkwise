@@ -1,26 +1,3 @@
-// function validacao() {
-
-//     var email = input_email.value;
-//     var senha = input_senha.value;
-
-//     // exemplo usuário 1
-//     if (email == 'admin@gmail.com' && senha == 'Admin@1234') {
-//       alert(`Seu usuário foi logado com sucesso!`)
-//       window.location.href = '../Login/hub.html';
-//     } else {
-//       alert('Senha/Email/CNPJ inválidos, ou usuário inexistente. Verifique se todos os dados foram inseridos corretamente.')
-//     }
-
-//     //validação email
-//     var gmail = email.includes('@gmail.com')
-//     var outlook = email.includes('@outlook.com')
-
-//     if (gmail == true || outlook == true) {
-//       //pass
-//     } else {
-//       alert('Email inválido. São somente permitidos gmail ou outlook')
-//     }
-//   }
 
   function passdash() {
 
