@@ -1,4 +1,3 @@
-module.exports = router;
 
 // Model (funcionarioModel.js)
 var database = require("../database/config")
