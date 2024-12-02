@@ -35,8 +35,11 @@ SELECT
     END AS dia_da_semana,
     COUNT(*) AS total_carros_estacionados
 FROM fluxo as f
-
-WHERE statusVaga = 1	
+JOIN vaga as v ON v.fkFluxo = f.idFluxo
+JOIN sensor as s ON s.idSensor = v.fkSensor
+JOIN estacionamento as e ON s.fkEstacionamento = e.idEstacionamento
+WHERE statusVaga = 1
+AND e.idEstacionamento = ${idEstacionamento}
 GROUP BY dia_da_semana
 ORDER BY total_carros_estacionados DESC
 LIMIT 1;
