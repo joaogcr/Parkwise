@@ -28,7 +28,7 @@
                             Conosco</a></li>
                 </ul>
             </div>
-            <a href="./tela_login.html"><button>Login</button></a>
+            <button onclick="limparSessao()">Logout</button>
         </section>
     </header>
 
@@ -112,7 +112,6 @@
             .then(data => {
                 if (data && data.length > 0) {
                     const kpiData = data[0];
-                    console.log(data[0])
                     document.getElementById('kpi3').innerText = kpiData.pico_vagas;
                 }
             })
@@ -202,8 +201,6 @@
             });
     }
 
-
-
     var semana = [];
     var vagas_Ocupadas_Semana = [];
 
@@ -261,24 +258,6 @@
                 console.error('Erro ao obter dados para o gráfico:', error);
             });
     }
-
-    async function gerarResposta() {
-        const pergunta = document.getElementById('pergunta').value;
-
-        const response = await fetch('http://localhost:3333/perguntar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ pergunta })
-        });
-
-        const data = await response.json();
-
-        resposta.style.display = 'block';
-        document.getElementById('resposta').innerText = data.resultado;
-    }
-
 </script>
 
 </html>

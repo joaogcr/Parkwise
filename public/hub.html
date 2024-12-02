@@ -26,7 +26,7 @@
                             Conosco</a></li>
                 </ul>
             </div>
-            <a href="./tela_login.html"><button>Login</button></a>
+            <button onclick="limparSessao()">Logout</button>
         </section>
     </header>
 
@@ -76,6 +76,10 @@
         window.location.href = 'cadastro-func.html';
 
     }
-
+    function limparSessao() {
+        sessionStorage.clear();
+        alert('Voce foi deslogado com sucesso!')
+        window.location.href = '../public/index.html';
+    }
 
 </script>

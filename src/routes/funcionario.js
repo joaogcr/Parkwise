@@ -11,4 +11,3 @@ router.post("/autenticarFuncionario", function (req, res) {
 });
 
 module.exports = router;
-

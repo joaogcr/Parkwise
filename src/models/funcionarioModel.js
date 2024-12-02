@@ -6,7 +6,7 @@ function autenticarFuncionario(email, senha) {
     console.log("ACESSEI O FUNCIONARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function autenticarFuncionario(): ", email, senha)
     
     var instrucaoSql = `
-        SELECT idFuncionario, nomeFuncionario, email, funcao, fkEstacionamento 
+        SELECT email, funcao, fkEstacionamento 
         FROM funcionario 
         WHERE email = '${email}' AND senha = '${senha}';
     `;

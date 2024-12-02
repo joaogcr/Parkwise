@@ -38,6 +38,46 @@ function autenticar(req, res) {
 
 }
 
+function autenticar(req, res) {
+    var email = req.body.emailServer_login;
+    var senha = req.body.senhaServer_login;
+
+    console.log("Tentativa de login recebida:");
+    console.log("Email:", email);
+    console.log("Senha:", senha);
+
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+
+        usuarioModel.autenticar(email, senha)
+        .then(
+            function (resultadoAutenticar) {
+                console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+
+                if (resultadoAutenticar.length == 1) {
+                    const usuario = resultadoAutenticar[0];
+                    console.log("Usuário autenticado com sucesso:", usuario);
+                    res.status(200).json(usuario);
+                } else if (resultadoAutenticar.length == 0) {
+                    res.status(403).send("Email e/ou senha inválido(s)");
+                } else {
+                    res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                }
+            }
+        )        .catch(function (erro) {
+            console.error("Erro completo de autenticação:", erro);
+            res.status(500).json({
+                mensagem: "Erro de autenticação",
+                erro: erro.sqlMessage || erro.toString()
+            });
+        });
+}
+}
+
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.estacionamentoServer;
