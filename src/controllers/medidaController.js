@@ -22,6 +22,7 @@ function exibirPicos(req, res) {
     console.log(`Recuperando KPIs gerais`);
 
     medidaModel.exibirPicos(idEstacionamento).then(function (resultado) {
+        console.log(resultado)
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
