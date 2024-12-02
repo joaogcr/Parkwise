@@ -121,6 +121,9 @@
             });
     }
 
+    var vagas_desocupadas = [];
+    var vagas_ocupadas = [];
+    var dia = [];
 
     function grafico_vagas_dia() {
         const idEstacionamento = Number(sessionStorage.ID_ESTACIONAMENTO);
@@ -139,23 +142,27 @@
                 }
             })
             .then(data => {
-                // Usando map para criar as listas
-                const lista_vagas_ocupadas = data.map(item => item.vagas_ocupadas);
-                const lista_vagas_desocupadas = data.map(item => item.vagas_desocupadas);
-                const dias = data.map(item => item.dia);
+                if (data && data.length > 0) {
+                    // processa os dados e plota o grafico
+                    
+                    for (var i = 0; i < data.length; i++) {
+                        vagas_desocupadas.push(data[i].vagas_desocupadas);
+                        vagas_ocupadas.push(data[i].vagas_ocupadas);
+                        dia.push(data[i].dia);
+                    }
 
                 // Criar o gráfico
                 const ctx = document.getElementById('myChart2').getContext('2d');
                 myChart2 = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: dias,
+                        labels: dia,
                         datasets: [
                             {
                                 label: 'Vagas ocupadas',
                                 backgroundColor: '#d36600',
                                 borderColor: '#d36600',
-                                data: lista_vagas_ocupadas,
+                                data: vagas_ocupadas,
                                 fill: false,
                                 tension: 0.1
                             },
@@ -163,7 +170,7 @@
                                 label: 'Vagas livres',
                                 backgroundColor: 'white',
                                 borderColor: 'white',
-                                data: lista_vagas_desocupadas,
+                                data: vagas_desocupadas,
                                 fill: false,
                                 tension: 0.1
                             }
@@ -188,13 +195,17 @@
                         }
                     }
                 });
-            })
+            }
+        })
             .catch(error => {
                 console.error('Erro ao obter dados do gráfico:', error);
             });
     }
 
 
+
+    var semana = [];
+    var vagas_Ocupadas_Semana = [];
 
     function grafico_vagas_semana() {
         // Recupera o idEstacionamento armazenado
@@ -216,18 +227,20 @@
             })
             .then(data => {
                 if (data && data.length > 0) {
-
-                    const labels = data.map(item => item.semana);
-                    const ocupadas = data.map(item => item.vagas_ocupadas);
+                    
+                    for (var i = 0; i < data.length; i++) {
+                        semana.push(data[i].semana);
+                        vagas_Ocupadas_Semana.push(data[i].vagas_ocupadas);
+                    }
 
                     const ctx = document.getElementById('myChart').getContext('2d');
                     const chart = new Chart(ctx, {
                         type: 'bar', // Tipo de gráfico
                         data: {
-                            labels: labels,
+                            labels: semana,
                             datasets: [{
                                 label: 'Vagas Ocupadas',
-                                data: ocupadas,
+                                data: vagas_Ocupadas_Semana,
                                 backgroundColor: '#d36600',
                                 borderColor: '#d36600',
                                 borderWidth: 1

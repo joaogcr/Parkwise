@@ -20,10 +20,14 @@ function exibirPicos(idEstacionamento) {
 SELECT MAX(vagas_ocupadas) AS pico_vagas
     FROM (
         SELECT 
-            WEEK(entrada) AS semana,
-            COUNT(CASE WHEN statusVaga = 1 THEN 1 END) AS vagas_ocupadas
-        FROM fluxo
-        GROUP BY WEEK(entrada)
+            WEEK(f.entrada) AS semana,
+            COUNT(CASE WHEN f.statusVaga = 1 THEN 1 END) AS vagas_ocupadas
+        FROM fluxo as f
+        JOIN vaga AS v ON f.idFluxo = v.fkFluxo
+     JOIN sensor AS s ON v.fkSensor = s.idSensor
+     JOIN estacionamento AS e ON s.fkEstacionamento = e.idEstacionamento
+     WHERE e.idEstacionamento = ${idEstacionamento}
+    GROUP BY WEEK(f.entrada)
     ) AS vagas_ocupadas;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -34,7 +38,7 @@ SELECT MAX(vagas_ocupadas) AS pico_vagas
 function grafico_vagas_dia(idEstacionamento) {
     var instrucaoSql = `
         SELECT 
-            DATE(f.entrada) AS dia,
+            DAY(f.entrada) AS dia,
             COUNT(CASE WHEN f.statusVaga = 1 THEN 1 END) AS vagas_ocupadas,
             COUNT(CASE WHEN f.statusVaga = 0 THEN 1 END) AS vagas_desocupadas
         FROM fluxo AS f
