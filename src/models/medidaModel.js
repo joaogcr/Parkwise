@@ -2,14 +2,20 @@ var database = require("../database/config");
 
 function exibirVagas(idEstacionamento) {
     var instrucaoSql = `
-    SELECT
-        SUM(CASE WHEN statusVaga = 1 THEN 1 ELSE 0 END) AS vagas_ocupadas,
-        SUM(CASE WHEN statusVaga = 0 THEN 1 ELSE 0 END) AS vagas_desocupadas
-    FROM fluxo as f
-    JOIN vaga as v ON f.idFluxo = v.fkFluxo 
-    JOIN sensor as s ON s.idSensor = v.fkSensor
-    JOIN estacionamento as e ON e.idEstacionamento = s.fkEstacionamento 
-    WHERE e.idEstacionamento = ${idEstacionamento}; 
+    SELECT 
+        SUM(CASE WHEN f.statusVaga = 1 THEN 1 ELSE 0 END) AS vagas_ocupadas,
+        SUM(CASE WHEN f.statusVaga = 0 THEN 1 ELSE 0 END) AS vagas_desocupadas
+    FROM (
+        SELECT 
+            v.fkSensor, 
+            MAX(f.idFluxo) AS ultimoFluxo
+        FROM vaga AS v
+        JOIN fluxo AS f ON v.fkFluxo = f.idFluxo
+        JOIN sensor AS s ON v.fkSensor = s.idSensor
+        WHERE s.fkEstacionamento = ${idEstacionamento}
+        GROUP BY v.fkSensor
+    ) AS ultimos_fluxos
+    JOIN fluxo AS f ON f.idFluxo = ultimos_fluxos.ultimoFluxo;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql, [idEstacionamento]);
