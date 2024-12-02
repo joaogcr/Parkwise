@@ -23,18 +23,23 @@ function exibirVagas(idEstacionamento) {
 
 function exibirPicos(idEstacionamento) {
     var instrucaoSql = `
-SELECT MAX(vagas_ocupadas) AS pico_vagas
-    FROM (
-        SELECT 
-            WEEK(f.entrada) AS semana,
-            COUNT(CASE WHEN f.statusVaga = 1 THEN 1 END) AS vagas_ocupadas
-        FROM fluxo as f
-        JOIN vaga AS v ON f.idFluxo = v.fkFluxo
-     JOIN sensor AS s ON v.fkSensor = s.idSensor
-     JOIN estacionamento AS e ON s.fkEstacionamento = e.idEstacionamento
-     WHERE e.idEstacionamento = ${idEstacionamento}
-    GROUP BY WEEK(f.entrada)
-    ) AS vagas_ocupadas;
+SELECT 
+    CASE 
+        WHEN DAYOFWEEK(entrada) = 1 THEN 'Domingo'
+        WHEN DAYOFWEEK(entrada) = 2 THEN 'Segunda-feira'
+        WHEN DAYOFWEEK(entrada) = 3 THEN 'Terça-feira'
+        WHEN DAYOFWEEK(entrada) = 4 THEN 'Quarta-feira'
+        WHEN DAYOFWEEK(entrada) = 5 THEN 'Quinta-feira'
+        WHEN DAYOFWEEK(entrada) = 6 THEN 'Sexta-feira'
+        WHEN DAYOFWEEK(entrada) = 7 THEN 'Sábado'
+    END AS dia_da_semana,
+    COUNT(*) AS total_carros_estacionados
+FROM fluxo as f
+
+WHERE statusVaga = 1	
+GROUP BY dia_da_semana
+ORDER BY total_carros_estacionados DESC
+LIMIT 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql, [idEstacionamento]);
