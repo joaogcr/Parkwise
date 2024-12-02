@@ -213,3 +213,48 @@ canvas:hover {
     display: flex;
     justify-content: center;
 }
+
+.bobIAcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bobIABOX{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    align-items: center;
+    justify-content: center;
+    background-color: #63B1BC;
+    margin: 30px;
+    border-radius: 10px;
+}
+
+.bobIABOX textarea{
+    width: 400px;
+    height: 200px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.bobIABOX button{
+    background-color: #ED145B;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    border: none;
+    transition: 0.8s ease-in-out;
+}
+
+.respostaBox{
+    background-color: white;
+    width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -1,22 +1,17 @@
 // var ambiente_processo = 'producao';
 var ambiente_processo = 'desenvolvimento';
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const express = require("express");
-const path = require("path");
-
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 // Acima, temos o uso do operador ternário para definir o caminho do arquivo .env
 // A sintaxe do operador ternário é: condição ? valor_se_verdadeiro : valor_se_falso
 
 require("dotenv").config({ path: caminho_env });
 
+var express = require("express");
 var cors = require("cors");
+var path = require("path");
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
-
-// configurando o gemini (IA)
-const chatIA = new GoogleGenerativeAI(process.env.MINHA_CHAVE);
 
 
 var app = express();
@@ -48,38 +43,6 @@ app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
 app.use("/funcionario", funcionarioRouter);
-
-
-app.post("/perguntar", async (req, res) => {
-    const pergunta = req.body.pergunta;
-
-    try {
-        const resultado = await gerarResposta(pergunta);
-        res.json( { resultado } );
-    } catch (error) {
-        res.status(500).json({ error: 'Erro interno do servidor' });
-    }
-
-});
-
-// função para gerar respostas usando o gemini
-async function gerarResposta(mensagem) {
-    // obtendo o modelo de IA
-    const modeloIA = chatIA.getGenerativeModel({ model: "gemini-pro" });
-
-    try {
-        // gerando conteúdo com base na pergunta
-        const resultado = await modeloIA.generateContent(`Em um paragráfo responda: ${mensagem}`);
-        const resposta = await resultado.response.text();
-        
-        console.log(resposta);
-
-        return resposta;
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
 
 
 app.listen(PORTA_APP, function () {
