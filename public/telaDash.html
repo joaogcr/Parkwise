@@ -282,6 +282,12 @@
                 console.error('Erro ao obter dados para o gráfico:', error);
             });
     }
+
+    function limparSessao() {
+        sessionStorage.clear();
+        alert('Voce foi deslogado com sucesso!');
+        window.location.href = './index.html';
+    }
 </script>
 
 </html>
