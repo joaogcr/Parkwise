@@ -22,13 +22,12 @@
 
             <div class="menu">
                 <ul>
-                    <li><i class="fa-solid fa-file"></i><a href="./calculadora.html">Simulador</a></li>
-                    <li><i class="fa-solid fa-gear"></i><a href="./Serviços.html">Serviços</a></li>
+                    <li><i class="fa-solid fa-file"></i><a href="./hubBob.html  ">Hub BobIA</a></li>
                     <li><i class="fa-solid fa-headphones-simple"></i><a href="https://parkwise.zohodesk.com/portal/pt-br/home">Fale
                             Conosco</a></li>
                 </ul>
             </div>
-            <a href="./tela_login.html"><button>Login</button></a>
+            <butto id="btn_log" onclick="limparSessao()">Logout</button>
         </section>
     </header>
 
@@ -67,6 +66,12 @@
             resposta.style.display = 'block';
             document.getElementById('resposta').innerText = data.resultado;
         }
+
+        function limparSessao() {
+        sessionStorage.clear();
+        alert('Voce foi deslogado com sucesso!')
+        window.location.href = '../public/index.html';
+    }
 </script>
 
 </html>
