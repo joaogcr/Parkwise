@@ -281,7 +281,6 @@ SET email = 'estacionamento_economico@exemplo.com',
     senha = 'Estac@namento123'
 WHERE idEstacionamento = 6;
 
-
 CREATE DATABASE parkwisePI;
 USE parkwisePI;
 
@@ -342,7 +341,6 @@ create table vaga(
     constraint fk_VagaFluxo foreign key (fkFluxo) references fluxo(idFluxo)
 );
 
-
 INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro) VALUES
 	('Estacionamento Central Park','11912345678',200,'12.345.678/0001-90','Rua das Flores','150','Centro'),
 	('Estacionamento Fácil Parking','21923456789',150,'23.456.789/0001-80','Avenida Rio Branco','220','Copacabana'),
@@ -374,8 +372,6 @@ INSERT INTO sensor (localizacao, fkEstacionamento) VALUES
     (4, 4),
     (5, 5),
     (6, 6);
-	
-
     
 INSERT INTO fluxo (entrada, statusVaga) VALUES
     ('2024-12-01 08:00:00', 1),
