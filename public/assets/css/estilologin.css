@@ -104,6 +104,7 @@ section > a > button{
     align-items: center;
     border: none;
     transition: 0.8s ease-in-out;
+    cursor: pointer;
 }
 
 body{
@@ -150,6 +151,7 @@ body{
     border-radius: 12px;
     display: flex;
     justify-content: space-around;
+    cursor: pointer;
 }
 
 a{
@@ -237,6 +239,7 @@ a{
     border-radius: 12px;
     margin-top: 10px;
     align-self: center;
+    cursor: pointer;
 }
 
 .btnEsqueci{

@@ -259,3 +259,24 @@ canvas:hover {
     padding: 10px;
     border-radius: 10px;
 }
+
+#btn_log{
+    display: flex;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #F46200;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    transition: 0.8s;
+    font-size: 20px;
+}
+
+#btn_log:hover{
+    background-color: white;
+    color: #F46200;
+    transition: 0.8s;
+}
