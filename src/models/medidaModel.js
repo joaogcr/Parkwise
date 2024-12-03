@@ -23,23 +23,8 @@ function exibirVagas(idEstacionamento) {
 
 function exibirPicos(idEstacionamento) {
     var instrucaoSql = `
-SELECT 
-    CASE 
-        WHEN DAYOFWEEK(entrada) = 1 THEN 'Domingo'
-        WHEN DAYOFWEEK(entrada) = 2 THEN 'Segunda-feira'
-        WHEN DAYOFWEEK(entrada) = 3 THEN 'Terça-feira'
-        WHEN DAYOFWEEK(entrada) = 4 THEN 'Quarta-feira'
-        WHEN DAYOFWEEK(entrada) = 5 THEN 'Quinta-feira'
-        WHEN DAYOFWEEK(entrada) = 6 THEN 'Sexta-feira'
-        WHEN DAYOFWEEK(entrada) = 7 THEN 'Sábado'
-    END AS dia_da_semana,
-    COUNT(*) AS total_carros_estacionados
-FROM fluxo as f
-JOIN vaga as v ON v.fkFluxo = f.idFluxo
-JOIN sensor as s ON s.idSensor = v.fkSensor
-JOIN estacionamento as e ON s.fkEstacionamento = e.idEstacionamento
-WHERE statusVaga = 1
-AND e.idEstacionamento = ${idEstacionamento}
+SELECT * FROM dia_de_pico
+WHERE idEstacionamento = ${idEstacionamento}
 GROUP BY dia_da_semana
 ORDER BY total_carros_estacionados DESC
 LIMIT 1;
