@@ -136,7 +136,7 @@
             .then(data => {
                 if (data && data.length > 0) {
                     const kpiData = data[0];
-                    document.getElementById('kpi3').innerText = kpiData.pico_vagas;
+                    document.getElementById('kpi3').innerText = kpiData.dia_da_semana;
                 }
             })
             .catch(error => {
