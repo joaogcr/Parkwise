@@ -426,20 +426,6 @@ INSERT INTO vaga (fkSensor, fkFluxo) VALUES
 update estacionamento set email = "teste@gmail.com" where idEstacionamento = 1;
 update estacionamento set senha = "12345678!" where idEstacionamento = 1;
 
-CREATE VIEW dia_de_pico as
-SELECT 
-    CASE 
-        WHEN DAYOFWEEK(entrada) = 1 THEN 'Domingo'
-        WHEN DAYOFWEEK(entrada) = 2 THEN 'Segunda-feira'
-        WHEN DAYOFWEEK(entrada) = 3 THEN 'Terça-feira'
-        WHEN DAYOFWEEK(entrada) = 4 THEN 'Quarta-feira'
-        WHEN DAYOFWEEK(entrada) = 5 THEN 'Quinta-feira'
-        WHEN DAYOFWEEK(entrada) = 6 THEN 'Sexta-feira'
-        WHEN DAYOFWEEK(entrada) = 7 THEN 'Sábado'
-    END AS dia_da_semana,
-    COUNT(*) AS total_carros_estacionados
-FROM fluxo;
-
 SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 
 CREATE VIEW dia_de_pico AS 
