@@ -48,7 +48,7 @@ function grafico_vagas_dia(idEstacionamento) {
         AND
         f.entrada >= CURDATE() - INTERVAL 7 DAY
         GROUP BY dia
-        ORDER BY dia DESC LIMIT 7;
+        ORDER BY min(f.entrada) DESC LIMIT 7;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql, [idEstacionamento]);
