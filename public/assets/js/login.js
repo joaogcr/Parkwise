@@ -41,7 +41,11 @@ function passdash() {
       sessionStorage.EMAIL_USUARIO = json.email;
       sessionStorage.NOME_USUARIO = json.nome;
       sessionStorage.ID_ESTACIONAMENTO = json.idEstacionamento;
-      window.location = "./hub.html";
+      if(email_login == 'gabriella.antunes@gmail.com' && senha_login == 'senha%123'){
+        window.location = "./hubBob.html";
+      } else {
+        window.location = "./hub.html";
+      }
     }).catch(function (erro) {
       console.error("Erro de login:", erro);
       cardErro.style.display = "block";
@@ -66,6 +70,7 @@ function passdash() {
         console.log("ESTOU NO THEN DO passdash()!");
 
         if (resposta.ok) {
+          
           resposta.json().then(json => {
             console.log(json);
             console.log(JSON.stringify(json));
