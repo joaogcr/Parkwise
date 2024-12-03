@@ -317,10 +317,6 @@ insert into vaga (fkSensor, fkFluxo) values
     
     insert into vaga (fkSensor, fkFluxo) values
     (8, 144);
-    truncate table fluxo;
-    truncate table vaga;
-    truncate table sensor;
-    truncate table estacionamento;
     
 select * from estacionamento;
 
