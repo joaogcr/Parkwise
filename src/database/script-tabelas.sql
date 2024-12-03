@@ -281,6 +281,7 @@ SET email = 'estacionamento_economico@exemplo.com',
     senha = 'Estac@namento123'
 WHERE idEstacionamento = 6;
 
+<<<<<<< HEAD
 CREATE DATABASE parkwisePI;
 USE parkwisePI;
 
@@ -364,6 +365,8 @@ INSERT INTO suporte (email, descricao, dataSuporte, fkFuncionario) VALUES
     ('suporte@segurancatotal.com', 'Erro na leitura das placas', '2024-12-04', 4),
     ('suporte@vip.com', 'Sistema de pagamento não está funcionando', '2024-12-05', 5),
     ('suporte@economico.com', 'Falha no registro de entrada de veículos', '2024-12-06', 6);
+=======
+>>>>>>> f77ee24c47b30ce7a9c8b679d19a898b0dbbbb22
 
 INSERT INTO sensor (localizacao, fkEstacionamento) VALUES
     (1, 1),
@@ -599,10 +602,6 @@ insert into vaga (fkSensor, fkFluxo) values
     
     insert into vaga (fkSensor, fkFluxo) values
     (8, 144);
-    truncate table fluxo;
-    truncate table vaga;
-    truncate table sensor;
-    truncate table estacionamento;
     
 select * from estacionamento;
 
