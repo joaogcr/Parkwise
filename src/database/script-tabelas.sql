@@ -282,91 +282,6 @@ SET email = 'estacionamento_economico@exemplo.com',
 WHERE idEstacionamento = 6;
 
 
-CREATE DATABASE parkwisePI;
-USE parkwisePI;
-
-CREATE TABLE estacionamento(
-	idEstacionamento int primary key auto_increment,
-	nome varchar(45),
-	telefone char(15),
-	capacidadeVagas int,
-	cnpjEstacionamento char(18),
-	logradouro varchar(45),
-	numeroEnd char(4),
-	bairro varchar(45),
-	email varchar(100),
-	senha varchar(50)
-);
-
-CREATE TABLE funcionario(
-	idFuncionario int primary key auto_increment,
-	nomeFuncionario varchar(45),
-	email varchar(100),
-	senha varchar(45),
-	funcao varchar(45),
-	fkEstacionamento int,
-	constraint fkUsuarioEstacionamento foreign key (fkEstacionamento)
-	references estacionamento(idEstacionamento)
-);
-
-CREATE TABLE suporte(
-	idSuporte int primary key auto_increment,
-	email varchar(100),
-	descricao varchar(300),
-	dataSuporte date,
-	fkFuncionario int,
-	constraint fkSuporteFuncionario foreign key (fkFuncionario)
-	references funcionario(idFuncionario)
-);
-
-CREATE TABLE sensor(
-	idSensor int primary key auto_increment,
-	localizacao int,
-	fkEstacionamento int,
-	constraint fkSensorEstacionamento foreign key (fkEstacionamento)
-	references estacionamento(idEstacionamento)
-);
-
-CREATE TABLE fluxo(
-	idFluxo int primary key auto_increment,
-	entrada datetime,
-	statusVaga tinyint,
-	constraint chkStatus check (statusVaga in(0,1))
-);
-
-create table vaga(
-	fkSensor int,
-	fkFluxo int,
-	constraint pk_composta primary key (fkSensor, fkFluxo),
-    constraint fk_VagaSensor foreign key (fkSensor) references sensor(idSensor),
-    constraint fk_VagaFluxo foreign key (fkFluxo) references fluxo(idFluxo)
-);
-
-
-INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro) VALUES
-	('Estacionamento Central Park','11912345678',200,'12.345.678/0001-90','Rua das Flores','150','Centro'),
-	('Estacionamento Fácil Parking','21923456789',150,'23.456.789/0001-80','Avenida Rio Branco','220','Copacabana'),
-	('Estacionamento Rápido','31934567890',120,'34.567.890/0001-70','Rua João Pinheiro','300','Lourdes'),
-	('Estacionamento Segurança Total','41945678901',250,'45.678.901/0001-60','Avenida Paraná','180','Batel'),
-	('Estacionamento VIP','51956789012',300,'56.789.012/0001-50','Rua dos Andradas','75','Moinhos de Vento'),
-	('Estacionamento Econômico','71967890123',180,'67.890.123/0001-40','Avenida Sete de Setembro','400','Comércio');
-    
-INSERT INTO funcionario (nomeFuncionario, email, senha, funcao, fkEstacionamento) VALUES
-    ('João Silva', 'joao@centralpark.com', 'senha123', 'Gerente', 1),
-    ('Maria Oliveira', 'maria@facilparking.com', 'senha456', 'Atendente', 2),
-    ('Carlos Souza', 'carlos@rapido.com', 'senha789', 'Supervisor', 3),
-    ('Ana Pereira', 'ana@segurancatotal.com', 'senha321', 'Gerente', 4),
-    ('Lucas Lima', 'lucas@vip.com', 'senha654', 'Atendente', 5),
-    ('Fernanda Santos', 'fernanda@economico.com', 'senha987', 'Supervisor', 6);
-    
-INSERT INTO suporte (email, descricao, dataSuporte, fkFuncionario) VALUES
-    ('suporte@centralpark.com', 'Problema com o sistema de câmeras', '2024-12-01', 1),
-    ('suporte@facilparking.com', 'Dúvida sobre funcionamento do sensor de vagas', '2024-12-02', 2),
-    ('suporte@rapido.com', 'Problema de conexão no software de gestão', '2024-12-03', 3),
-    ('suporte@segurancatotal.com', 'Erro na leitura das placas', '2024-12-04', 4),
-    ('suporte@vip.com', 'Sistema de pagamento não está funcionando', '2024-12-05', 5),
-    ('suporte@economico.com', 'Falha no registro de entrada de veículos', '2024-12-06', 6);
-
 INSERT INTO sensor (localizacao, fkEstacionamento) VALUES
     (1, 1),
     (2, 2),
@@ -603,10 +518,6 @@ insert into vaga (fkSensor, fkFluxo) values
     
     insert into vaga (fkSensor, fkFluxo) values
     (8, 144);
-    truncate table fluxo;
-    truncate table vaga;
-    truncate table sensor;
-    truncate table estacionamento;
     
 select * from estacionamento;
 
