@@ -102,9 +102,9 @@
                         });
 
                         kpi1Elements.forEach(kpi => {
-                            kpi.style.color = "green";
+                            kpi.style.color = "red";
                         });
-                    } else {
+                    } else if (kpiData.vagas_desocupadas < kpiData.vagas_ocupadas){
                         // Estiliza kpi2 como vermelho e kpi1 como verde
                         kpi2Elements.forEach(kpi => {
                             kpi.style.color = "green";
@@ -112,6 +112,18 @@
 
                         kpi1Elements.forEach(kpi => {
                             kpi.style.color = "red";
+                        });
+                    } if(kpiData.vagas_desocupadas == kpiData.vagas_ocupadas) {
+                        kpi2Elements.forEach(kpi => {
+                            kpi.style.color = "yellow";
+                        });
+
+                        kpi1Elements.forEach(kpi => {
+                            kpi.style.color = "yellow";
+                        });
+                    } if(kpiData.vagas_desocupadas == 0) {
+                        kpi1Elements.forEach(kpi => {
+                            kpi.style.color = "green";
                         });
                     }
                 }
