@@ -183,6 +183,7 @@ section>a>button {
 .kpis p {
     color: #F46200;
     font-size: 40px;
+    font-weight: bold;
 }
 
 .container div{
