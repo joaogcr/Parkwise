@@ -105,7 +105,7 @@ section>a>button {
     padding: 20px;
     width: 80%;
     margin: auto;
-    height: calc(100vh - 120px); 
+    height: calc(100vh - 200px); 
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
@@ -118,7 +118,7 @@ section>a>button {
 }
 
 .container .kpis{
-    width: 100%;   
+    width: 106%;   
     align-items: center;
     display: flex;
     justify-content: space-evenly;
