@@ -23,13 +23,6 @@ function exibirVagas(idEstacionamento) {
 
 function exibirPicos(idEstacionamento) {
     var instrucaoSql = `
-<<<<<<< HEAD
-    SELECT * FROM dia_de_pico
-    WHERE idEstacionamento = ${idEstacionamento}
-    GROUP BY dia_da_semana
-    ORDER BY total_carros_estacionados DESC
-    LIMIT 1;
-=======
  SELECT 
     idEstacionamento,
     dia_da_semana,
@@ -38,7 +31,6 @@ FROM dia_de_pico
 WHERE idEstacionamento = ${idEstacionamento}
 GROUP BY 
     idEstacionamento, dia_da_semana ORDER BY total_carros_estacionados DESC; 
->>>>>>> ecb33aff041188b0d5d2fd994209d990df406d5e
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql, [idEstacionamento]);
