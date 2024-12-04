@@ -23,11 +23,11 @@ function exibirVagas(idEstacionamento) {
 
 function exibirPicos(idEstacionamento) {
     var instrucaoSql = `
-SELECT * FROM dia_de_pico
-WHERE idEstacionamento = ${idEstacionamento}
-GROUP BY dia_da_semana
-ORDER BY total_carros_estacionados DESC
-LIMIT 1;
+    SELECT * FROM dia_de_pico
+    WHERE idEstacionamento = ${idEstacionamento}
+    GROUP BY dia_da_semana
+    ORDER BY total_carros_estacionados DESC
+    LIMIT 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql, [idEstacionamento]);
@@ -59,7 +59,7 @@ function grafico_vagas_mes(idEstacionamento) {
     SELECT 
         e.idEstacionamento,
         e.nome AS estacionamento,
-        DATE_FORMAT(f.entrada, '%Y-%m') AS mes,
+        DATE_FORMAT(f.entrada, '%b %Y') AS mes,  -- formato 'mes ano'
         SUM(CASE WHEN f.statusVaga = 1 THEN 1 ELSE 0 END) AS vagas_ocupadas
     FROM 
         estacionamento e
@@ -71,13 +71,13 @@ function grafico_vagas_mes(idEstacionamento) {
         fluxo f ON v.fkFluxo = f.idFluxo
     WHERE 
         e.idEstacionamento = ${idEstacionamento}
-        AND f.entrada >= DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 2 MONTH), '%Y-%m-01')
-        AND f.entrada < DATE_FORMAT(DATE_ADD(CURDATE(), INTERVAL 1 MONTH), '%Y-%m-01')
+        AND f.entrada >= DATE_SUB(CURDATE(), INTERVAL 2 MONTH)
     GROUP BY 
         e.idEstacionamento, 
         mes
     ORDER BY 
-        e.idEstacionamento, mes;
+        e.idEstacionamento, 
+        STR_TO_DATE(mes, '%b %Y');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql, [idEstacionamento]); // Passe o parâmetro como array
