@@ -67,6 +67,9 @@ INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento,
     ('Estacionamento VIP', '51956789012', 300, '56.789.012/0001-50', 'Rua dos Andradas', '75', 'Moinhos de Vento', 'vip@estacionamentovip.com', 'VipEstac2024!'),
     ('Estacionamento Econômico', '71967890123', 180, '67.890.123/0001-40', 'Avenida Sete de Setembro', '400', 'Comércio', 'economico@estacionaeco.com', 'Econo#321');
     
+    insert into estacionamento (email, senha) values
+	('gabriella.antunes@gmail.com', 'senha%123');
+    
 INSERT INTO funcionario (nomeFuncionario, email, senha, funcao, fkEstacionamento) VALUES
     ('João Silva', 'joao@centralpark.com', 'senha123', 'Gerente', 1),
     ('Maria Oliveira', 'maria@facilparking.com', 'senha456', 'Atendente', 2),
