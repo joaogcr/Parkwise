@@ -59,13 +59,13 @@ create table vaga(
     constraint fk_VagaFluxo foreign key (fkFluxo) references fluxo(idFluxo)
 );
 
-INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro) VALUES
-	('Estacionamento Central Park','11912345678',200,'12.345.678/0001-90','Rua das Flores','150','Centro'),
-	('Estacionamento Fácil Parking','21923456789',150,'23.456.789/0001-80','Avenida Rio Branco','220','Copacabana'),
-	('Estacionamento Rápido','31934567890',120,'34.567.890/0001-70','Rua João Pinheiro','300','Lourdes'),
-	('Estacionamento Segurança Total','41945678901',250,'45.678.901/0001-60','Avenida Paraná','180','Batel'),
-	('Estacionamento VIP','51956789012',300,'56.789.012/0001-50','Rua dos Andradas','75','Moinhos de Vento'),
-	('Estacionamento Econômico','71967890123',180,'67.890.123/0001-40','Avenida Sete de Setembro','400','Comércio');
+INSERT INTO estacionamento (nome, telefone, capacidadeVagas, cnpjEstacionamento, logradouro, numeroEnd, bairro, email, senha) VALUES
+    ('Estacionamento Central Park', '11912345678', 200, '12.345.678/0001-90', 'Rua das Flores', '150', 'Centro', 'contato@centralpark.com', 'Central123!'),
+    ('Estacionamento Fácil Parking', '21923456789', 150, '23.456.789/0001-80', 'Avenida Rio Branco', '220', 'Copacabana', 'suporte@facilparking.com', 'Facil2024$'),
+    ('Estacionamento Rápido', '31934567890', 120, '34.567.890/0001-70', 'Rua João Pinheiro', '300', 'Lourdes', 'info@rapidoestaciona.com', 'Rapido@789'),
+    ('Estacionamento Segurança Total', '41945678901', 250, '45.678.901/0001-60', 'Avenida Paraná', '180', 'Batel', 'seguranca@totalpark.com', 'SegTotal#456'),
+    ('Estacionamento VIP', '51956789012', 300, '56.789.012/0001-50', 'Rua dos Andradas', '75', 'Moinhos de Vento', 'vip@estacionamentovip.com', 'VipEstac2024!'),
+    ('Estacionamento Econômico', '71967890123', 180, '67.890.123/0001-40', 'Avenida Sete de Setembro', '400', 'Comércio', 'economico@estacionaeco.com', 'Econo#321');
     
 INSERT INTO funcionario (nomeFuncionario, email, senha, funcao, fkEstacionamento) VALUES
     ('João Silva', 'joao@centralpark.com', 'senha123', 'Gerente', 1),
@@ -434,8 +434,58 @@ INSERT INTO fluxo (idFluxo, entrada, statusVaga) VALUES
 (347, '2024-11-04 14:05:29', 1),
 (348, '2024-11-04 14:11:29', 0),
 (349, '2024-11-04 14:17:29', 1),
-(350, '2024-11-04 14:23:29', 0);
-
+(350, '2024-11-04 14:23:29', 0),
+(351, '2024-11-04 14:29:29', 1),
+(352, '2024-11-04 14:35:29', 0),
+(353, '2024-11-04 14:41:29', 1),
+(354, '2024-11-04 14:47:29', 0),
+(355, '2024-11-04 14:53:29', 1),
+(356, '2024-11-04 14:59:29', 0),
+(357, '2024-11-04 15:05:29', 1),
+(358, '2024-11-04 15:11:29', 0),
+(359, '2024-11-04 15:17:29', 1),
+(360, '2024-11-04 15:23:29', 0),
+(361, '2024-11-04 15:29:29', 1),
+(362, '2024-11-04 15:35:29', 0),
+(363, '2024-11-04 15:41:29', 1),
+(364, '2024-11-04 15:47:29', 0),
+(365, '2024-11-04 15:53:29', 1),
+(366, '2024-11-04 15:59:29', 0),
+(367, '2024-11-04 16:05:29', 1),
+(368, '2024-11-04 16:11:29', 0),
+(369, '2024-11-04 16:17:29', 1),
+(370, '2024-11-04 16:23:29', 0),
+(371, '2024-11-04 16:29:29', 1),
+(372, '2024-11-04 16:35:29', 0),
+(373, '2024-11-04 16:41:29', 1),
+(374, '2024-11-04 16:47:29', 0),
+(375, '2024-11-04 16:53:29', 1),
+(376, '2024-11-04 16:59:29', 0),
+(377, '2024-11-04 17:05:29', 1),
+(378, '2024-11-04 17:11:29', 0),
+(379, '2024-11-04 17:17:29', 1),
+(380, '2024-11-04 17:23:29', 0),
+(381, '2024-11-04 17:29:29', 1),
+(382, '2024-11-04 17:35:29', 0),
+(383, '2024-11-04 17:41:29', 1),
+(384, '2024-11-04 17:47:29', 0),
+(385, '2024-11-04 17:53:29', 1),
+(386, '2024-11-04 17:59:29', 0),
+(387, '2024-11-04 18:05:29', 1),
+(388, '2024-11-04 18:11:29', 0),
+(389, '2024-11-04 18:17:29', 1),
+(390, '2024-11-04 18:23:29', 0),
+(391, '2024-11-04 18:29:29', 1),
+(392, '2024-11-04 18:35:29', 0),
+(393, '2024-11-04 18:41:29', 1),
+(394, '2024-11-04 18:47:29', 0),
+(395, '2024-11-04 18:53:29', 1),
+(396, '2024-11-04 18:59:29', 0),
+(397, '2024-11-04 19:05:29', 1),
+(398, '2024-11-04 19:11:29', 0),
+(399, '2024-11-04 19:17:29', 1),
+(400, '2024-11-04 19:23:29', 0),
+(401, '2024-10-06 12:00:00', 1);
 
 INSERT INTO sensor (idSensor, localizacao, fkEstacionamento) VALUES
 (1, 1, 1),
@@ -487,7 +537,17 @@ INSERT INTO sensor (idSensor, localizacao, fkEstacionamento) VALUES
 (47, 45, 1),
 (48, 46, 1),
 (49, 47, 1),
-(50, 48, 1);
+(50, 48, 1),
+(51, 49, 1),
+(52, 50, 1),
+(53, 51, 1),
+(54, 52, 1),
+(55, 53, 1),
+(56, 54, 1),
+(57, 55, 1),
+(58, 56, 1),
+(59, 57, 1),
+(60, 58, 1);
 
 INSERT INTO vaga (fkSensor, fkFluxo) VALUES
 (1, 1),
@@ -770,7 +830,7 @@ INSERT INTO vaga (fkSensor, fkFluxo) VALUES
 (14, 274),
 (16, 275),
 (16, 276),
-(21, 277),
+(21, 277), 
 (18, 278),
 (19, 279),
 (21, 280),
@@ -843,29 +903,89 @@ INSERT INTO vaga (fkSensor, fkFluxo) VALUES
 (41, 347),
 (35, 348),
 (26, 349),
-(34, 350);
+(34, 350),
+(57, 351),
+(28, 352),
+(33, 353),
+(54, 354),
+(32, 355),
+(25, 356),
+(36, 357),
+(60, 358),
+(31, 359),
+(42, 360),
+(38, 361),
+(40, 362),
+(39, 363),
+(41, 364),
+(35, 365),
+(56, 366),
+(39, 367),
+(57, 368),
+(58, 369),
+(53, 370),
+(30, 371),
+(32, 372),
+(55, 373),
+(36, 374),
+(29, 375),
+(31, 376),
+(37, 377),
+(51, 378),
+(53, 379),
+(59, 380),
+(41, 381),
+(35, 382),
+(26, 383),
+(54, 384),
+(57, 385),
+(28, 386),
+(38, 387),
+(35, 388),
+(53, 389),
+(25, 390),
+(36, 391),
+(29, 392),
+(50, 393),
+(37, 394),
+(38, 395),
+(57, 396),
+(37, 397),
+(56, 398),
+(55, 399),
+(41, 400),
+(52, 401);
 
-
-update estacionamento set email = "teste@gmail.com" where idEstacionamento = 1;
-update estacionamento set senha = "12345678!" where idEstacionamento = 1;
 
 SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 
 CREATE VIEW dia_de_pico AS 
 SELECT 
-	e.idEstacionamento,
+    e.idEstacionamento,
     CASE 
-        WHEN DAYOFWEEK(entrada) = 1 THEN 'Domingo'
-        WHEN DAYOFWEEK(entrada) = 2 THEN 'Segunda-feira'
-        WHEN DAYOFWEEK(entrada) = 3 THEN 'Terça-feira'
-        WHEN DAYOFWEEK(entrada) = 4 THEN 'Quarta-feira'
-        WHEN DAYOFWEEK(entrada) = 5 THEN 'Quinta-feira'
-        WHEN DAYOFWEEK(entrada) = 6 THEN 'Sexta-feira'
-        WHEN DAYOFWEEK(entrada) = 7 THEN 'Sábado'
+        WHEN DAYOFWEEK(f.entrada) = 1 THEN 'Domingo'
+        WHEN DAYOFWEEK(f.entrada) = 2 THEN 'Segunda-feira'
+        WHEN DAYOFWEEK(f.entrada) = 3 THEN 'Terça-feira'
+        WHEN DAYOFWEEK(f.entrada) = 4 THEN 'Quarta-feira'
+        WHEN DAYOFWEEK(f.entrada) = 5 THEN 'Quinta-feira'
+        WHEN DAYOFWEEK(f.entrada) = 6 THEN 'Sexta-feira'
+        WHEN DAYOFWEEK(f.entrada) = 7 THEN 'Sábado'
     END AS dia_da_semana,
+    f.entrada, 
+    f.statusVaga
+FROM fluxo AS f
+JOIN vaga AS v ON v.fkFluxo = f.idFluxo
+JOIN sensor AS s ON s.idSensor = v.fkSensor
+JOIN estacionamento AS e ON s.fkEstacionamento = e.idEstacionamento
+WHERE f.statusVaga = 1
+    AND WEEK(f.entrada, 1) = WEEK(CURDATE(), 1);  
+    
+   /* SELECT 
+    idEstacionamento,
+    dia_da_semana,
     COUNT(*) AS total_carros_estacionados
-FROM fluxo as f
-JOIN vaga as v ON v.fkFluxo = f.idFluxo
-JOIN sensor as s ON s.idSensor = v.fkSensor
-JOIN estacionamento as e ON s.fkEstacionamento = e.idEstacionamento
-WHERE statusVaga = 1;
+FROM dia_de_pico
+WHERE idEstacionamento = 1
+GROUP BY 
+    idEstacionamento, dia_da_semana ORDER BY total_carros_estacionados DESC; 
+*/
