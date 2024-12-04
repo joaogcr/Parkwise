@@ -17,8 +17,8 @@ router.get("/grafico_vagas_dia/:idEstacionamento", function (req, res) {
     medidaController.grafico_vagas_dia (req, res);
 });
 
-router.get("/grafico_vagas_semana/:idEstacionamento", function (req, res) {
-    medidaController.grafico_vagas_semana(req, res);
+router.get("/grafico_vagas_mes/:idEstacionamento", function (req, res) {
+    medidaController.grafico_vagas_mes(req, res);
 });
 
 module.exports = router;

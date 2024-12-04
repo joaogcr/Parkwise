@@ -54,32 +54,30 @@ function grafico_vagas_dia(idEstacionamento) {
     return database.executar(instrucaoSql, [idEstacionamento]);
 }
 
-function grafico_vagas_semana(idEstacionamento) {
+function grafico_vagas_mes(idEstacionamento) {
     var instrucaoSql = `
-        SELECT 
-            e.idEstacionamento,
-            e.nome AS estacionamento,
-            -- Calculando as semanas baseadas na diferença de dias de 7 em 7
-            CONCAT('Semana ', FLOOR(DATEDIFF(CURDATE(), f.entrada) / 7) + 1) AS semana,
-            -- Contagem de vagas ocupadas (statusVaga = 1)
-            SUM(CASE WHEN f.statusVaga = 1 THEN 1 ELSE 0 END) AS vagas_ocupadas
-        FROM 
-            estacionamento e
-        JOIN 
-            sensor s ON e.idEstacionamento = s.fkEstacionamento
-        JOIN 
-            vaga v ON s.idSensor = v.fkSensor
-        JOIN 
-            fluxo f ON v.fkFluxo = f.idFluxo
-        WHERE 
-            e.idEstacionamento = ${idEstacionamento}
-            AND 
-            f.entrada >= CURDATE() - INTERVAL 27 DAY  -- Considera os últimos 27 dias
-        GROUP BY 
-            e.idEstacionamento, 
-            CONCAT('Semana ', FLOOR(DATEDIFF(CURDATE(), f.entrada) / 7) + 1)
-        ORDER BY 
-            e.idEstacionamento, semana;
+    SELECT 
+        e.idEstacionamento,
+        e.nome AS estacionamento,
+        DATE_FORMAT(f.entrada, '%Y-%m') AS mes,
+        SUM(CASE WHEN f.statusVaga = 1 THEN 1 ELSE 0 END) AS vagas_ocupadas
+    FROM 
+        estacionamento e
+    JOIN 
+        sensor s ON e.idEstacionamento = s.fkEstacionamento
+    JOIN 
+        vaga v ON s.idSensor = v.fkSensor
+    JOIN 
+        fluxo f ON v.fkFluxo = f.idFluxo
+    WHERE 
+        e.idEstacionamento = ${idEstacionamento}
+        AND f.entrada >= DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 2 MONTH), '%Y-%m-01')
+        AND f.entrada < DATE_FORMAT(DATE_ADD(CURDATE(), INTERVAL 1 MONTH), '%Y-%m-01')
+    GROUP BY 
+        e.idEstacionamento, 
+        mes
+    ORDER BY 
+        e.idEstacionamento, mes;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql, [idEstacionamento]); // Passe o parâmetro como array
@@ -89,6 +87,5 @@ module.exports = {
     exibirVagas,
     exibirPicos,
     grafico_vagas_dia,
-    grafico_vagas_semana
+    grafico_vagas_mes
 };
-

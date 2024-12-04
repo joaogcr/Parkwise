@@ -53,11 +53,11 @@ function grafico_vagas_dia(req, res) {
     });
 }
 
-function grafico_vagas_semana(req, res) {
+function grafico_vagas_mes(req, res) {
     var idEstacionamento = req.params.idEstacionamento; // Recupera o parâmetro da URL
     console.log(`Recuperando dados para o estacionamento com ID: ${idEstacionamento}`);
 
-    medidaModel.grafico_vagas_semana(idEstacionamento).then(function (resultado) {
+    medidaModel.grafico_vagas_mes(idEstacionamento).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado); // Retorna os resultados como JSON
         } else {
@@ -74,5 +74,5 @@ module.exports = {
     exibirVagas,
     exibirPicos,
     grafico_vagas_dia,
-    grafico_vagas_semana
+    grafico_vagas_mes
 }
