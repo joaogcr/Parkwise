@@ -1,29 +1,40 @@
-function formatar(mascara, documento) {
-  var i = documento.value.length;
-  var saida = '#';
-  var texto = mascara.substring(i);
-  while (texto.substring(0, 1) != saida && texto.length) {
-    documento.value += texto.substring(0, 1);
-    i++;
-    texto = mascara.substring(i);
+function aplicarMascaraCNPJ(valor) {
+  // remove caracteres n numericos 
+  var cnpjLimpo = "";
+
+  for (var i = 0; i < valor.length; i++) {
+    var char = valor[i];
+    if (char >= '0' && char <= '9') {
+      cnpjLimpo += char;
+    }
   }
+
+  // formatacao dos caracteres
+  var cnpjFormatado = "";
+  var tamanho = cnpjLimpo.length;
+
+  for (var i = 0; i < tamanho; i++) {
+    if (i === 2 || i === 5) {
+      cnpjFormatado += ".";
+    } else if (i === 8) {
+      cnpjFormatado += "/";
+    } else if (i === 12) {
+      cnpjFormatado += "-";
+    }
+    cnpjFormatado += cnpjLimpo[i];
+  }
+
+  return cnpjFormatado;
 }
 
-function formatarCnpj() {
-  var cnpj = input_cnpj.value.replace(/\D/g, "");
+// pega o id do elemento
+var inputCNPJ = document.getElementById('input_cnpj');
 
-  if (cnpj.length > 2) {
-    cnpj = cnpj.replace(/^(\d{2})(\d)/, "$1.$2");
-  }
-  if (cnpj.length > 8) {
-    cnpj = cnpj.replace(/^(\d{2})\.(\d{6})(\d)/, "$1.$2/$3");
-  }
-  if (cnpj.length > 12) {
-    cnpj = cnpj.replace(/^(\d{2})\.(\d{6})\/(\d{4})(\d)/, "$1.$2/$3-$4");
-  }
+// add escutador de evento da input e funcao e aplica a funcao aplicarmascaracnpj
+inputCNPJ.addEventListener('input', function () {
+  this.value = aplicarMascaraCNPJ(this.value);
 
-  input_cnpj.value = cnpj;
-}
+});
 
 function campoNull() {
   var email = input_email.value;
@@ -72,7 +83,7 @@ function validacaoCnpj() {
 function tamanhoCnpj() {
   var cnpj = input_cnpj.value;
 
-  if(cnpj.length < 16){
+  if (cnpj.length < 16) {
     return false;
   }
 
@@ -126,16 +137,14 @@ function senhaNum() {
   return false;
 }
 
-function tell15(){
+function tell15() {
   var telefone = input_telefone.value;
 
-  if(telefone.length < 15){
+  if (telefone.length < 15) {
     return false;
   }
 
-    return true;
-  
-
+  return true;
 
 }
 
@@ -151,7 +160,7 @@ function cadastrar() {
     return;
   }
 
-  if(!tell15()){
+  if (!tell15()) {
     cardErro.style.display = "block";
     mensagem_erro.innerHTML =
       "O telefone está incompleto";
@@ -180,7 +189,7 @@ function cadastrar() {
     return;
   }
 
-  if(!tamanhoCnpj()){
+  if (!tamanhoCnpj()) {
     cardErro.style.display = "block";
     mensagem_erro.innerHTML =
       "O CNPJ está incompleto.";
@@ -341,6 +350,7 @@ function verify(form) {
       div_verifyVaga.innerHTML = `Ok`;
     } else {
       div_verifyVaga.innerHTML = ``;
+      
     }
 
 

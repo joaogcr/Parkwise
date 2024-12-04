@@ -1,6 +1,4 @@
-
-
-  function cadastrarFuncionario() {
+function cadastrarFuncionario() {
       
           var nomeVar = nome.value;
           var emailVar = email.value;
@@ -43,3 +41,41 @@
         alert(erro.message);
     });
 }
+
+function aplicarMascaraCNPJ(valor) {
+    // remove caracteres n numericos 
+    var cnpjLimpo = "";
+  
+    for (var i = 0; i < valor.length; i++) {
+      var char = valor[i];
+      if (char >= '0' && char <= '9') {
+        cnpjLimpo += char;
+      }
+    }
+  
+    // formatacao dos caracteres
+    var cnpjFormatado = "";
+    var tamanho = cnpjLimpo.length;
+  
+    for (var i = 0; i < tamanho; i++) {
+      if (i === 2 || i === 5) {
+        cnpjFormatado += ".";
+      } else if (i === 8) {
+        cnpjFormatado += "/";
+      } else if (i === 12) {
+        cnpjFormatado += "-";
+      }
+      cnpjFormatado += cnpjLimpo[i];
+    }
+  
+    return cnpjFormatado;
+  }
+  
+  // pega o id do elemento
+  var inputCNPJ = document.getElementById('input_cnpj');
+  
+  // add escutador de evento da input e funcao e aplica a funcao aplicarmascaracnpj
+  inputCNPJ.addEventListener('input', function () {
+    this.value = aplicarMascaraCNPJ(this.value);
+  
+  });

@@ -48,53 +48,52 @@
       <h2>Crie sua conta</h2>
       <div class="inputs">
         <div class="campo">
-          <h5>Nome Estacionamento</h5>
-          <input type="text" id="input_estacionamento"  oninput="verify('nome')"/>
+          <h5>Nome do estacionamento</h5>
+          <input type="text" id="input_estacionamento"  maxlength="25" oninput="verify('nome')" placeholder="Park Wise"/>
           <div id="div_verifyEstacionamento"></div>
         </div>
         <div class="campo">
           <h5>Telefone/Celular</h5>
-          <input type="text" id="input_telefone" OnKeyPress="formatar('(##) #####-#####',this)" oninput="verify('telefone')" maxlength="15"/>
+          <input type="text" id="input_telefone" OnKeyPress="formatar('(##) #####-#####',this)" oninput="verify('telefone')" maxlength="15" placeholder="(11)12312-0908"/>
           <div id="div_verifyTelefone"></div>
         </div>
         <div class="campo">
-          <h5>Capacidade de Vaga</h5>
-          <input type="number" id="input_vaga"  oninput="verify('vaga')"/>
+          <h5>Capacidade de Vagas</h5>
+          <input type="number" id="input_vaga"  oninput="verify('vaga')"  placeholder="350"/>
           <div id="div_verifyVaga"></div>
         </div>
         <div class="campo">
           <h5>CNPJ</h5>
-          <input type="text" id="input_cnpj" OnKeyPress="formatarCnpj()" oninput="verify('cnpj')" maxlength="17"/>
+          <input type="text" id="input_cnpj" OnKeyPress="formatarCnpj()" oninput="verify('cnpj')" maxlength="18" placeholder="12.345.678/0001-90"/>
           <div id="div_verifyCnpj"></div>
         </div>
         <div class="campo">
           <h5>CEP</h5>
-          <input type="text" id="input_cep" placeholder="Apenas Números" maxlength="8" oninput="buscarCep()"/>
-          <div>(opcional)</div>
+          <input type="text" id="input_cep" placeholder="01414-001" maxlength="8" oninput="buscarCep()"/>
         </div>
         <div class="campo">
           <h5>Logradouro (Rua)</h5>
-          <input type="text" id="input_logradouro" oninput="verify('logradouro')"/>
+          <input type="text" id="input_logradouro" oninput="verify('logradouro')" placeholder="Haddock Lobo"/>
           <div id="div_verifyLogradouro"></div>
         </div>
         <div class="campo">
-          <h5>Número Endereço</h5>
-          <input type="text" id="input_endereco" oninput="verify('endereco')"/>
+          <h5>Número do endereço</h5>
+          <input type="text" id="input_endereco" oninput="verify('endereco')" placeholder="595"/>
           <div id="div_verifyEndereco"></div>
         </div>
         <div class="campo">
           <h5>Bairro</h5>
-          <input type="text" id="input_bairro" oninput="verify('bairro')"/>
+          <input type="text" id="input_bairro" oninput="verify('bairro')" placeholder="Consolação"/>
           <div id="div_verifyBairro"></div>
         </div>
         <div class="campo">
           <h5>E-mail</h5>
-          <input type="text" id="input_email" oninput="verify('email')"/>
+          <input type="text" id="input_email" oninput="verify('email')" placeholder="abcdef@abcdef.com"/>
           <div id="div_verifyEmail"></div>
         </div>
         <div class="campo">
           <h5>Senha</h5>
-          <input type="password" id="input_senha" oninput="verify('senha')"/>
+          <input type="password" id="input_senha" oninput="verify('senha')" placeholder="********"/>
           <div id="div_verifySenha"></div>
         </div>
 
