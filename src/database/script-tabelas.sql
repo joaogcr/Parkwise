@@ -543,6 +543,19 @@ INSERT INTO fluxo (idFluxo, entrada, statusVaga) VALUES
 (451, '2024-10-06 13:38:00', 0),
 (452, '2024-10-06 13:40:00', 1);
 
+insert into fluxo (idFluxo, entrada, statusVaga) values
+(453, '2024-10-06 13:42:00', 1);
+
+insert into vaga (fkSensor, fkFluxo) values
+(1, 453);
+
+insert into fluxo (idFluxo, entrada, statusVaga) values
+(454, '2024-10-06 13:44:00', 0);
+
+insert into vaga (fkSensor, fkFluxo) values
+(1, 454);
+
+
 
 
 INSERT INTO sensor (idSensor, localizacao, fkEstacionamento) VALUES
